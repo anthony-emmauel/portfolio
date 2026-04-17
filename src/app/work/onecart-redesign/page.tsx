@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -53,12 +54,14 @@ function Highlight({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ImagePlaceholder({ height = "387px", className = "" }: { height?: string; className?: string }) {
+function ImagePlaceholder({ height = "387px", className = "", src }: { height?: string; className?: string; src: string }) {
   return (
     <div
-      className={`w-full rounded-[6px] bg-[#E5FCF3] ${className}`}
+      className={`w-full rounded-[6px] overflow-hidden relative ${className}`}
       style={{ height }}
-    />
+    >
+      <Image src={src} alt="" fill className="object-cover" />
+    </div>
   );
 }
 
@@ -119,7 +122,7 @@ export default function OneCartCaseStudy() {
                 Average Returning User Growth (YoY 2023 – 2025)
               </p>
             </div>
-            <ImagePlaceholder />
+            <ImagePlaceholder src="/images/onecart/oc.1.png" />
           </div>
 
           {/* ── Sections ── */}
@@ -149,7 +152,7 @@ export default function OneCartCaseStudy() {
                     the evidence.
                   </Body>
                 </div>
-                <ImagePlaceholder />
+                <ImagePlaceholder src="/images/onecart/oc.2.png" />
               </div>
             </section>
 
@@ -243,7 +246,7 @@ export default function OneCartCaseStudy() {
                       </Body>
                     </div>
                   </div>
-                  <ImagePlaceholder height="366px" />
+                  <ImagePlaceholder src="/images/onecart/oc.3.png" height="366px" />
                 </div>
 
                 {/* Customer interviews */}
@@ -280,7 +283,7 @@ export default function OneCartCaseStudy() {
                       </p>
                     </div>
                   </div>
-                  <ImagePlaceholder height="366px" />
+                  <ImagePlaceholder src="/images/onecart/oc.4.png" height="366px" />
                 </div>
 
                 {/* Strategy */}
@@ -331,8 +334,8 @@ export default function OneCartCaseStudy() {
                   </Body>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <ImagePlaceholder />
-                  <ImagePlaceholder />
+                  <ImagePlaceholder src="/images/onecart/oc.5.png" />
+                  <ImagePlaceholder src="/images/onecart/oc.6.png" />
                 </div>
 
                 <Highlight>
@@ -351,8 +354,8 @@ export default function OneCartCaseStudy() {
                 </Highlight>
 
                 <div className="flex flex-col gap-4">
-                  <ImagePlaceholder />
-                  <ImagePlaceholder />
+                  <ImagePlaceholder src="/images/onecart/oc.7.png" />
+                  <ImagePlaceholder src="/images/onecart/oc.8.png" />
                 </div>
               </div>
             </section>
@@ -387,9 +390,9 @@ export default function OneCartCaseStudy() {
                 </Body>
               </div>
               <div className="flex flex-col gap-4">
-                <ImagePlaceholder />
-                <ImagePlaceholder />
-                <ImagePlaceholder height="366px" />
+                <ImagePlaceholder src="/images/onecart/oc.9.png" />
+                <ImagePlaceholder src="/images/onecart/oc.10.png" />
+                <ImagePlaceholder src="/images/onecart/oc.11.png" height="366px" />
               </div>
 
               <Highlight>
@@ -412,7 +415,7 @@ export default function OneCartCaseStudy() {
                 reviews, and stop coming back.
               </Highlight>
 
-              <ImagePlaceholder />
+              <ImagePlaceholder src="/images/onecart/oc.12.png" />
             </section>
 
             {/* Impact */}
