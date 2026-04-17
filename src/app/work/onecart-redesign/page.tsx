@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
+import ClickableImage from "@/components/ClickableImage";
 
 export const metadata: Metadata = {
   title: "OneCart Redesign — Emmanuel Anthony",
@@ -55,14 +55,7 @@ function Highlight({ children }: { children: React.ReactNode }) {
 }
 
 function ImagePlaceholder({ height = "387px", className = "", src }: { height?: string; className?: string; src: string }) {
-  return (
-    <div
-      className={`w-full rounded-[6px] overflow-hidden relative ${className}`}
-      style={{ height }}
-    >
-      <Image src={src} alt="" fill className="object-cover" />
-    </div>
-  );
+  return <ClickableImage src={src} height={height} className={className} />;
 }
 
 /* ─────────────────────────────────────────────────── */
@@ -139,17 +132,22 @@ export default function OneCartCaseStudy() {
                     aggregating products from 6–7 retailers (Woolworths, Pick n Pay,
                     Makro, Dis-Chem, Clicks) with same-day delivery through personal
                     shoppers and drivers. Most customers come to compare prices across
-                    stores. Operationally, things were solid — shoppers, drivers,
-                    retailer partnerships all functioned. But the customer-facing
-                    experience hadn&apos;t kept up. The homepage was static. Search broke on
-                    misspellings. Every retailer organised products differently. After
-                    checkout, customers had no idea what was happening with their order
-                    until it showed up — or didn&apos;t. We were brought in for a visual
-                    redesign. Customer interviews and Baymard benchmarking showed the
-                    problems were structural, not cosmetic. My PM and I reframed the scope
-                    around three specific gaps: fragmented discovery, broken search, and
-                    post-purchase silence. Business backed it once we walked them through
-                    the evidence.
+                    stores.
+                  </Body>
+                  <Body>
+                    Operationally, things were solid — shoppers, drivers, retailer
+                    partnerships all functioned. But the customer-facing experience
+                    hadn&apos;t kept up. The homepage was static. Search broke on misspellings.
+                    Every retailer organised products differently. After checkout, customers
+                    had no idea what was happening with their order until it showed up — or
+                    didn&apos;t.
+                  </Body>
+                  <Body>
+                    We were brought in for a visual redesign. Customer interviews and
+                    Baymard benchmarking showed the problems were structural, not cosmetic.
+                    My PM and I reframed the scope around three specific gaps: fragmented
+                    discovery, broken search, and post-purchase silence. Business backed it
+                    once we walked them through the evidence.
                   </Body>
                 </div>
                 <ImagePlaceholder src="/images/onecart/oc.2.png" />
@@ -229,21 +227,23 @@ export default function OneCartCaseStudy() {
                         benchmark OneCart&apos;s experience against industry standards. Three
                         findings were directly relevant:
                       </Body>
-                      <Body>
-                        Product sub-types are often misused as categories instead of
-                        filters — this validated what we saw in retailer category structures
-                        and shaped how we designed the unified taxonomy.
-                      </Body>
-                      <Body>
-                        Search must tolerate spelling variation and intent mismatch — this
-                        made autocomplete and fuzzy matching non-negotiable in our search
-                        redesign.
-                      </Body>
-                      <Body>
-                        Category-aware filtering after search is critical for findability —
-                        this informed our decision to group search results by OneCart
-                        categories and add filter components.
-                      </Body>
+                      <ul className="flex flex-col gap-2 list-disc list-outside pl-5">
+                        <li className="text-base leading-6 text-[#A1A1AA]">
+                          Product sub-types are often misused as categories instead of
+                          filters — this validated what we saw in retailer category structures
+                          and shaped how we designed the unified taxonomy.
+                        </li>
+                        <li className="text-base leading-6 text-[#A1A1AA]">
+                          Search must tolerate spelling variation and intent mismatch — this
+                          made autocomplete and fuzzy matching non-negotiable in our search
+                          redesign.
+                        </li>
+                        <li className="text-base leading-6 text-[#A1A1AA]">
+                          Category-aware filtering after search is critical for findability —
+                          this informed our decision to group search results by OneCart
+                          categories and add filter components.
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <ImagePlaceholder src="/images/onecart/oc.3.png" height="366px" />
@@ -258,28 +258,28 @@ export default function OneCartCaseStudy() {
                         We interviewed 12 customers across three segments: new users,
                         frequent users, and low-frequency users.
                       </Body>
-                      <Highlight>
-                        Most users cared deeply about promotions and price comparison across
-                        stores: The homepage needed to surface deals dynamically, and
-                        discovery had to work across retailers, not within them. This
-                        directly drove the Sanity CMS integration and unified taxonomy.
-                      </Highlight>
-                      <p className="text-base leading-6 font-medium text-white">
-                        Search was used primarily to compare prices, not to browse: Search
-                        results needed to group by product across stores, not by store. The
-                        results page and filters needed to support comparison as the primary
-                        behaviour.
+                      <p className="text-base leading-6 text-[#A1A1AA]">
+                        <span className="font-semibold text-white">Most users cared deeply about promotions and price comparison across stores:</span>{" "}
+                        The homepage needed to surface deals dynamically, and discovery had
+                        to work across retailers, not within them. This directly drove the
+                        Sanity CMS integration and unified taxonomy.
                       </p>
-                      <p className="text-base leading-6 font-medium text-white">
-                        Lack of order visibility created anxiety and reduced repeat usage:
+                      <p className="text-base leading-6 text-[#A1A1AA]">
+                        <span className="font-semibold text-white">Search was used primarily to compare prices, not to browse:</span>{" "}
+                        Search results needed to group by product across stores, not by
+                        store. The results page and filters needed to support comparison as
+                        the primary behaviour.
+                      </p>
+                      <p className="text-base leading-6 text-[#A1A1AA]">
+                        <span className="font-semibold text-white">Lack of order visibility created anxiety and reduced repeat usage:</span>{" "}
                         Post-purchase communication was directly linked to retention. This
                         made the order status translation layer a priority.
                       </p>
-                      <p className="text-base leading-6 font-medium text-white">
-                        Users preferred proactive communication over having to &ldquo;check
-                        manually&rdquo;: The notification strategy needed to be event-driven and
-                        channel-aware. Customers shouldn&apos;t have to open the app to know what
-                        was happening.
+                      <p className="text-base leading-6 text-[#A1A1AA]">
+                        <span className="font-semibold text-white">Users preferred proactive communication over having to &ldquo;check manually&rdquo;:</span>{" "}
+                        The notification strategy needed to be event-driven and
+                        channel-aware. Customers shouldn&apos;t have to open the app to know
+                        what was happening.
                       </p>
                     </div>
                   </div>
@@ -289,22 +289,31 @@ export default function OneCartCaseStudy() {
                 {/* Strategy */}
                 <div className="flex flex-col gap-3">
                   <SectionHeading>Strategy</SectionHeading>
-                  <div className="flex flex-col gap-1">
-                    <Body>Discovery, checkout, and post-purchase are one experience. Treat them as a system.</Body>
-                    <Body>Work within existing backend systems. Only push for investment where customer impact clearly justifies it.</Body>
-                    <Body>Web and mobile reach parity.</Body>
-                    <Body>Every status and notification answers a customer question, not a backend event.</Body>
-                  </div>
+                  <ul className="flex flex-col gap-2 list-disc list-outside pl-5">
+                    <li className="text-base leading-6 text-[#A1A1AA]">Discovery, checkout, and post-purchase are one experience. Treat them as a system.</li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">Work within existing backend systems. Only push for investment where customer impact clearly justifies it.</li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">Web and mobile reach parity.</li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">Every status and notification answers a customer question, not a backend event.</li>
+                  </ul>
                 </div>
 
                 {/* What we excluded */}
                 <div className="flex flex-col gap-3">
                   <SectionHeading>What We Excluded &amp; Why</SectionHeading>
-                  <div className="flex flex-col gap-1">
-                    <Highlight>Full backend restructuring: Business vetoed against a new backend restructuring</Highlight>
-                    <p className="text-base leading-6 font-medium text-white">Live map tracking: Delivery partner APIs didn&apos;t support real-time GPS</p>
-                    <p className="text-base leading-6 font-medium text-white">Advanced notification preferences: Needed the foundation before adding complexity</p>
-                  </div>
+                  <ul className="flex flex-col gap-2 list-disc list-outside pl-5">
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Full backend restructuring:</span>{" "}
+                      Business vetoed against a new backend restructuring
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Live map tracking:</span>{" "}
+                      Delivery partner APIs didn&apos;t support real-time GPS
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Advanced notification preferences:</span>{" "}
+                      Needed the foundation before adding complexity
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -318,40 +327,60 @@ export default function OneCartCaseStudy() {
                   <Body>
                     Discovery and search were two sides of the same problem: customers
                     couldn&apos;t reliably find and compare products across retailers.
-                    Taxonomy: We introduced a OneCart-level category system that mapped all
-                    retailer inventories into one structure. Categories followed how
-                    customers think (&ldquo;Beverages &amp; Juices&rdquo;, &ldquo;Bread, Bakery &amp; Desserts&rdquo;),
-                    not how stores organise shelves. NLP handled most of the mapping; our
-                    PM and an engineer filled gaps manually so we could ship without
-                    waiting for automation to mature. Homepage: Sanity CMS replaced the
-                    static homepage with dynamic content feeds — promotions, &ldquo;Top Deals&rdquo;,
-                    seasonal collections. Marketing could update what customers saw without
-                    filing engineering tickets. Search: We redesigned the entire search
-                    experience: autocomplete with spelling tolerance, cross-store results in
-                    a single view (searching &ldquo;milk&rdquo; showed every retailer&apos;s options in one
-                    list), new filter and sort components, and all search states designed
-                    properly (empty, loading, results, no results).
                   </Body>
+                  <p className="text-base leading-6 text-[#A1A1AA]">
+                    <span className="font-semibold text-white">Taxonomy:</span>{" "}
+                    We introduced a OneCart-level category system that mapped all retailer
+                    inventories into one structure. Categories followed how customers think
+                    (&ldquo;Beverages &amp; Juices&rdquo;, &ldquo;Bread, Bakery &amp; Desserts&rdquo;), not how stores
+                    organise shelves. NLP handled most of the mapping; our PM and an
+                    engineer filled gaps manually so we could ship without waiting for
+                    automation to mature.
+                  </p>
+                  <p className="text-base leading-6 text-[#A1A1AA]">
+                    <span className="font-semibold text-white">Homepage:</span>{" "}
+                    Sanity CMS replaced the static homepage with dynamic content feeds —
+                    promotions, &ldquo;Top Deals&rdquo;, seasonal collections. Marketing could update
+                    what customers saw without filing engineering tickets.
+                  </p>
+                  <p className="text-base leading-6 text-[#A1A1AA]">
+                    <span className="font-semibold text-white">Search:</span>{" "}
+                    We redesigned the entire search experience: autocomplete with spelling
+                    tolerance, cross-store results in a single view (searching &ldquo;milk&rdquo;
+                    showed every retailer&apos;s options in one list), new filter and sort
+                    components, and all search states designed properly (empty, loading,
+                    results, no results).
+                  </p>
                 </div>
                 <div className="flex flex-col gap-4">
                   <ImagePlaceholder src="/images/onecart/oc.5.png" />
                   <ImagePlaceholder src="/images/onecart/oc.6.png" />
                 </div>
 
-                <Highlight>
-                  Decisions that mattered: Unified taxonomy was non-negotiable. Layering
-                  filters on top of seven different retailer category structures would have
-                  preserved exactly the inconsistency customers were complaining about. One
-                  browsing model, period. We shipped with manual category mapping alongside
-                  NLP. Waiting for automation to get accurate enough would have blocked the
-                  entire redesign with no clear timeline. Manual mapping filled the gaps
-                  while NLP improved in the background. Sanity CMS for the homepage was a
-                  pragmatic call — marketing needed independence from engineering, and
-                  building a custom content system for that would have been overkill. Search
-                  results show all stores in one view rather than separated by retailer. The
-                  whole point of searching on OneCart is to compare — siloing results by
-                  store would have defeated that.
-                </Highlight>
+                <div className="flex flex-col gap-3">
+                  <p className="text-base leading-6 font-bold text-white">Decisions that mattered</p>
+                  <Body>
+                    Unified taxonomy was non-negotiable. Layering filters on top of seven
+                    different retailer category structures would have preserved exactly the
+                    inconsistency customers were complaining about. One browsing model, period.
+                  </Body>
+                  <Body>
+                    We shipped with manual category mapping alongside NLP. Waiting for
+                    automation to get accurate enough would have blocked the entire redesign
+                    with no clear timeline. Manual mapping filled the gaps while NLP improved
+                    in the background.
+                  </Body>
+                  <Body>
+                    Sanity CMS for the homepage was a pragmatic call — marketing needed
+                    independence from engineering, and building a custom content system for
+                    that would have been overkill.
+                  </Body>
+                  <Body>
+                    Search results show all stores in one view rather than separated by
+                    retailer. The whole point of searching on OneCart is to compare —
+                    siloing results by store would have defeated that.
+                  </Body>
+                </div>
 
                 <div className="flex flex-col gap-4">
                   <ImagePlaceholder src="/images/onecart/oc.7.png" />
@@ -365,29 +394,48 @@ export default function OneCartCaseStudy() {
               <div className="flex flex-col gap-3">
                 <SectionHeading>Designing the Order Status &amp; Notification System</SectionHeading>
                 <Body>
-                  This was the most complex piece of the project. A single customer order
-                  could contain multiple sub-orders across different retailers, each with
-                  its own personal shopper. Shoppers and drivers operated independently.
-                  The backend tracked dozens of operational events, but customers saw almost
-                  none of it. We couldn&apos;t restructure the backend — business vetoed that on
-                  time and cost. The translation layer: Through workshops with business and
-                  engineering, we mapped every backend event to what it meant for the
-                  customer. I designed a finite set of customer-facing states, each
-                  answering: what&apos;s happening now, and what comes next? Seven primary
-                  states: Order placed → Shopper assigned → Shopping in progress (with
-                  item-level indicators: found, partially found, not found, substituted) →
-                  Shopping completed → Handover to driver → Driver on the way (ETA + driver
-                  details + call button) → Delivered (with rating prompt). Four exception
-                  states: Order running late (with updated ETA), delivery rescheduled (with
-                  cancel option), unable to find order (all items out of stock), driver
-                  couldn&apos;t find you (contact info surfaced). Notifications: Rather than
-                  notifying on every backend event, we mapped urgency to channels. Push
-                  notifications for time-sensitive moments (shopper assigned, driver on the
-                  way). SMS with tracking URL as the default for web users. Email for
-                  confirmation and post-delivery feedback. In-app as the persistent,
-                  full-detail view. The idea was that if you got a notification, it meant
-                  something actually changed — not just a system event firing.
+                  This was the most complex piece of the project.
                 </Body>
+                <Body>
+                  A single customer order could contain multiple sub-orders across
+                  different retailers, each with its own personal shopper. Shoppers and
+                  drivers operated independently.
+                </Body>
+                <Body>
+                  The backend tracked dozens of operational events, but customers saw
+                  almost none of it. We couldn&apos;t restructure the backend — business vetoed
+                  that on time and cost.
+                </Body>
+                <p className="text-base leading-6 text-[#A1A1AA]">
+                  <span className="font-medium text-white">The translation layer:</span>{" "}
+                  Through workshops with business and engineering, we mapped every backend
+                  event to what it meant for the customer. I designed a finite set of
+                  customer-facing states, each answering: what&apos;s happening now, and what
+                  comes next?
+                </p>
+                <p className="text-base leading-6 text-[#A1A1AA]">
+                  <span className="font-medium text-white">Seven primary states:</span>{" "}
+                  Order placed → Shopper assigned → Shopping in progress (with item-level
+                  indicators: found, partially found, not found, substituted) → Shopping
+                  completed → Handover to driver → Driver on the way (ETA + driver details
+                  + call button) → Delivered (with rating prompt).
+                </p>
+                <p className="text-base leading-6 text-[#A1A1AA]">
+                  <span className="font-medium text-white">Four exception states:</span>{" "}
+                  Order running late (with updated ETA), delivery rescheduled (with cancel
+                  option), unable to find order (all items out of stock), driver couldn&apos;t
+                  find you (contact info surfaced).
+                </p>
+                <p className="text-base leading-6 text-[#A1A1AA]">
+                  <span className="font-medium text-white">Notifications:</span>{" "}
+                  Rather than notifying on every backend event, we mapped urgency to
+                  channels. Push notifications for time-sensitive moments (shopper
+                  assigned, driver on the way). SMS with tracking URL as the default for
+                  web users. Email for confirmation and post-delivery feedback. In-app as
+                  the persistent, full-detail view. The idea was that if you got a
+                  notification, it meant something actually changed — not just a system
+                  event firing.
+                </p>
               </div>
               <div className="flex flex-col gap-4">
                 <ImagePlaceholder src="/images/onecart/oc.9.png" />
@@ -395,25 +443,35 @@ export default function OneCartCaseStudy() {
                 <ImagePlaceholder src="/images/onecart/oc.11.png" height="366px" />
               </div>
 
-              <Highlight>
-                Decisions that mattered: Engineering had proposed restructuring the event
-                system. Business said no — too expensive, too slow. The translation layer
-                was the alternative: an abstraction that shipped within existing sprint
-                cycles and gave customers what they needed without touching backend
-                architecture. A subtle but important rule: &ldquo;Shopping completed&rdquo; only fires
-                when the last active sub-order finishes. If a sub-order gets cancelled or
-                rescheduled, it doesn&apos;t count. Without that, customers would see
-                &ldquo;completed&rdquo; while items were still being picked up in another store. For
-                the driver stage, we had a choice between a live map and an
-                information-based approach (ETA, driver name, call button). The GPS data
-                from delivery partners wasn&apos;t reliable enough for a map — so we went with
-                information and direct contact. A laggy, inaccurate map would have made
-                things worse. Exception states are shown explicitly with explanations, not
-                hidden behind happy-path screens. When a delivery gets rescheduled, you
-                see why. When items can&apos;t be found, you see that too. We&apos;d seen what
-                happens when platforms hide delays — customers call support, leave bad
-                reviews, and stop coming back.
-              </Highlight>
+              <div className="flex flex-col gap-3">
+                <p className="text-base leading-6 font-bold text-white">Decisions that mattered</p>
+                <Body>
+                  Engineering had proposed restructuring the event system. Business said
+                  no — too expensive, too slow. The translation layer was the alternative:
+                  an abstraction that shipped within existing sprint cycles and gave
+                  customers what they needed without touching backend architecture.
+                </Body>
+                <Body>
+                  A subtle but important rule: &ldquo;Shopping completed&rdquo; only fires when the
+                  last active sub-order finishes. If a sub-order gets cancelled or
+                  rescheduled, it doesn&apos;t count. Without that, customers would see
+                  &ldquo;completed&rdquo; while items were still being picked up in another store.
+                </Body>
+                <Body>
+                  For the driver stage, we had a choice between a live map and an
+                  information-based approach (ETA, driver name, call button). The GPS data
+                  from delivery partners wasn&apos;t reliable enough for a map — so we went
+                  with information and direct contact. A laggy, inaccurate map would have
+                  made things worse.
+                </Body>
+                <Body>
+                  Exception states are shown explicitly with explanations, not hidden
+                  behind happy-path screens. When a delivery gets rescheduled, you see why.
+                  When items can&apos;t be found, you see that too. We&apos;d seen what happens when
+                  platforms hide delays — customers call support, leave bad reviews, and
+                  stop coming back.
+                </Body>
+              </div>
 
               <ImagePlaceholder src="/images/onecart/oc.12.png" />
             </section>
@@ -466,25 +524,42 @@ export default function OneCartCaseStudy() {
             {/* Reflection */}
             <section className="flex flex-col gap-2">
               <SectionLabel>reflection</SectionLabel>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-6">
                 <SectionHeading>Conclusion</SectionHeading>
-                <Highlight>
-                  What worked: The research reframed the project. Without customer
-                  interviews and Baymard benchmarking, this would have stayed a visual
-                  redesign. The evidence let us expand the scope without friction — every
-                  design went to business with the reasoning behind it. By the time we were
-                  presenting the order status model, the team had enough trust in the
-                  process that scope conversations were quick — we weren&apos;t relitigating
-                  decisions from three sprints ago. The translation layer was the right
-                  call. A backend restructure would have taken months and might not have
-                  happened. The abstraction gave customers clarity on top of what already
-                  existed. What I&apos;d do differently: Do research before starting design, not
-                  alongside it. We discovered structural problems mid-execution, which meant
-                  some early work had to be revisited. Research first, scope second, design
-                  third. Test designs with customers before development. We shipped based on
-                  research and internal validation. Even lightweight usability testing would
-                  have caught things earlier.
-                </Highlight>
+
+                {/* What worked */}
+                <div className="flex flex-col gap-3">
+                  <p className="text-base leading-6 font-bold text-white">What worked</p>
+                  <Body>
+                    The research reframed the project. Without customer interviews and
+                    Baymard benchmarking, this would have stayed a visual redesign. The
+                    evidence let us expand the scope without friction — every design went
+                    to business with the reasoning behind it. By the time we were
+                    presenting the order status model, the team had enough trust in the
+                    process that scope conversations were quick — we weren&apos;t relitigating
+                    decisions from three sprints ago.
+                  </Body>
+                  <Body>
+                    The translation layer was the right call. A backend restructure would
+                    have taken months and might not have happened. The abstraction gave
+                    customers clarity on top of what already existed.
+                  </Body>
+                </div>
+
+                {/* What I'd do differently */}
+                <div className="flex flex-col gap-3">
+                  <p className="text-base leading-6 font-bold text-white">What I&apos;d do differently</p>
+                  <Body>
+                    Do research before starting design, not alongside it. We discovered
+                    structural problems mid-execution, which meant some early work had to
+                    be revisited. Research first, scope second, design third.
+                  </Body>
+                  <Body>
+                    Test designs with customers before development. We shipped based on
+                    research and internal validation. Even lightweight usability testing
+                    would have caught things earlier.
+                  </Body>
+                </div>
               </div>
             </section>
 
