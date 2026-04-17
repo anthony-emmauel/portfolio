@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const caseStudies = [
   {
@@ -8,11 +9,7 @@ const caseStudies = [
       "Redesigning discovery and order transparency for a multi-store grocery marketplace",
     tag: "E-COMMERCE",
     imageBg: "bg-[#B8F2C8]",
-    imageContent: (
-      <div className="w-full h-full flex items-center justify-center bg-[#B8F2C8]">
-        <div className="text-[#0D0D0D]/20 text-xs">Project preview</div>
-      </div>
-    ),
+    image: "/images/homepage/OneCartHomepagethumbnail.png",
   },
   {
     slug: "spotlight-2",
@@ -21,7 +18,7 @@ const caseStudies = [
       "Rebuilding an internal OMS around status clarity and operational visibility",
     tag: "INTERNAL TOOLS",
     imageBg: "bg-[#1A1F2E]",
-    imageContent: null,
+    image: "/images/homepage/SpotlightHomepagethumbnail.png",
   },
   {
     slug: "system-one",
@@ -30,7 +27,7 @@ const caseStudies = [
       "Unifying a design system across 3 platforms from audit to architecture",
     tag: "DESIGN SYSTEMS",
     imageBg: "bg-[#0F1117]",
-    imageContent: null,
+    image: "/images/homepage/SystemOneHomepagethumbnail.png",
   },
   {
     slug: "nokgridcore",
@@ -39,7 +36,7 @@ const caseStudies = [
       "An open-source token-driven design system built for dashboards",
     tag: "OPEN SOURCE",
     imageBg: "bg-[#1A1A1A]",
-    imageContent: null,
+    image: "/images/homepage/NokgridcoreHomepagethumbnail.png",
   },
 ];
 
@@ -66,8 +63,8 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="bg-[#0D0D0D] min-h-screen">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="bg-[#0D0D0D]">
+      <div className="max-w-5xl mx-auto px-6 pb-16">
 
         {/* ── Hero ── */}
         <section className="pt-28 pb-24">
@@ -97,9 +94,16 @@ export default function Home() {
                 className="group flex flex-col"
               >
                 {/* Card image */}
-                <div
-                  className={`w-full aspect-[4/3] rounded-lg overflow-hidden mb-4 ${study.imageBg} border border-white/5`}
-                />
+                <div className={`rounded-lg overflow-hidden mb-4 ${study.imageBg} border border-white/5`}>
+                  <Image
+                    src={study.image}
+                    alt={study.title}
+                    width={478}
+                    height={269}
+                    className="object-cover w-full"
+                    style={{ aspectRatio: "231/130" }}
+                  />
+                </div>
 
                 {/* Title row */}
                 <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -148,7 +152,7 @@ export default function Home() {
 
         {/* ── Currently Building ── */}
         <section className="py-6">
-          <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-10 items-start">
+          <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-10 items-center">
             {/* Left */}
             <div className="flex-1 min-w-0">
               <p className="text-[10px] tracking-[0.2em] text-white/40 uppercase mb-4">
@@ -173,9 +177,17 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Right: mockup placeholder */}
-            <div className="w-full md:w-72 shrink-0 aspect-[4/3] bg-[#0D0D0D] rounded-xl border border-white/10 flex items-center justify-center">
-              <p className="text-white/15 text-xs">App preview</p>
+            {/* Right: mockup */}
+            <div
+              className="shrink-0 rounded-xl border border-white/10 overflow-hidden relative"
+              style={{ width: "375px", height: "469px" }}
+            >
+              <Image
+                src="/images/homepage/crowdsyncHomepagethumbnail.png"
+                alt="CrowdSyncHive"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </section>
