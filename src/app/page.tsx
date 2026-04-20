@@ -100,6 +100,7 @@ export default function Home() {
                     alt={study.title}
                     width={478}
                     height={269}
+                    quality={100}
                     className="object-cover w-full"
                     style={{ aspectRatio: "231/130" }}
                   />
@@ -186,6 +187,7 @@ export default function Home() {
                 src="/images/homepage/crowdsyncHomepagethumbnail.png"
                 alt="CrowdSyncHive"
                 fill
+                quality={100}
                 className="object-cover"
               />
             </div>

@@ -34,7 +34,7 @@ export default function ClickableImage({ src, alt = "", height = "387px", classN
         className={`w-full rounded-[6px] overflow-hidden relative cursor-zoom-in bg-[#111111] ${className}`}
         style={{ height }}
       >
-        <Image src={src} alt={alt} fill className="object-contain" />
+        <Image src={src} alt={alt} fill className="object-contain" quality={100} />
       </div>
 
       {open && (
@@ -58,6 +58,7 @@ export default function ClickableImage({ src, alt = "", height = "387px", classN
               alt={alt}
               width={1440}
               height={900}
+              quality={100}
               className="object-contain w-full h-auto max-h-[90vh] rounded-lg"
             />
           </div>
