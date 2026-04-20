@@ -31,10 +31,10 @@ export default function ClickableImage({ src, alt = "", height = "387px", classN
         tabIndex={0}
         onClick={() => setOpen(true)}
         onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
-        className={`w-full rounded-[6px] overflow-hidden relative cursor-zoom-in ${className}`}
+        className={`w-full rounded-[6px] overflow-hidden relative cursor-zoom-in bg-[#111111] ${className}`}
         style={{ height }}
       >
-        <Image src={src} alt={alt} fill className="object-cover" />
+        <Image src={src} alt={alt} fill className="object-contain" />
       </div>
 
       {open && (

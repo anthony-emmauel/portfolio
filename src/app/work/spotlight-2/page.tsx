@@ -278,21 +278,23 @@ export default function SpotlightCaseStudy() {
                       I evaluated all seven core modules using Nielsen&apos;s 10 heuristics
                       plus criteria specific to Spotlight&apos;s operational context.
                     </Body>
-                    <Body>
-                      Critical (Severity 4): No confirmation for destructive actions.
-                      Cancel Order and Reset Order could fire accidentally with no undo.
-                    </Body>
-                    <Body>
-                      Major (Severity 3): Overlapping status fields creating ambiguity.
-                      Key actions hidden in menus. UI didn&apos;t adapt to user roles.
-                      Workflow stages (shopping, handover, delivery) weren&apos;t clearly
-                      separated.
-                    </Body>
-                    <Body>
-                      Minor (Severity 2): Non-intuitive module naming (&ldquo;Action Orders&rdquo;
-                      actually means completed/cancelled orders). 16+ column tables.
-                      Filter and search limitations. No contextual help anywhere.
-                    </Body>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Critical (Severity 4):</span>{" "}
+                      No confirmation for destructive actions. Cancel Order and Reset
+                      Order could fire accidentally with no undo.
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Major (Severity 3):</span>{" "}
+                      Overlapping status fields creating ambiguity. Key actions hidden
+                      in menus. UI didn&apos;t adapt to user roles. Workflow stages
+                      (shopping, handover, delivery) weren&apos;t clearly separated.
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Minor (Severity 2):</span>{" "}
+                      Non-intuitive module naming (&ldquo;Action Orders&rdquo; actually means
+                      completed/cancelled orders). 16+ column tables. Filter and search
+                      limitations. No contextual help anywhere.
+                    </p>
                   </div>
                 </div>
 
@@ -304,34 +306,38 @@ export default function SpotlightCaseStudy() {
                       We surveyed 35 ops users (30 agents, 4 leads, 1 other). The
                       results quantified what the heuristic evaluation had found:
                     </Body>
-                    <Body>
-                      60% reported needing constant refreshing just to see current
-                      orders: The system had no real-time updates — agents were manually
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">60% reported needing constant refreshing just to see current orders:</span>{" "}
+                      The system had no real-time updates — agents were manually
                       refreshing every few minutes instead of trusting the screen.
-                    </Body>
-                    <Body>
-                      57% experienced search friction: Finding an order required an
-                      exact order ID plus a specific date. No search by customer name or
-                      phone, and filters reset after viewing an order detail.
-                    </Body>
-                    <Body>
-                      54% cited slow system performance: Load times and responsiveness
-                      were a persistent source of frustration across all roles.
-                    </Body>
-                    <Body>
-                      40% flagged filtering limitations: No date range filtering, no
-                      persistent filters — agents re-applied their filters every time
-                      they navigated back from an order.
-                    </Body>
-                    <Body>
-                      34% wanted communication tools like a call button: Agents had to
-                      switch between Spotlight and other tools to contact shoppers or
-                      drivers.
-                    </Body>
-                    <Body>
-                      31% needed basic automation like auto-refresh: The system required
-                      manual effort for things that should have been automatic.
-                    </Body>
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">57% experienced search friction:</span>{" "}
+                      Finding an order required an exact order ID plus a specific date.
+                      No search by customer name or phone, and filters reset after
+                      viewing an order detail.
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">54% cited slow system performance:</span>{" "}
+                      Load times and responsiveness were a persistent source of
+                      frustration across all roles.
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">40% flagged filtering limitations:</span>{" "}
+                      No date range filtering, no persistent filters — agents
+                      re-applied their filters every time they navigated back from an
+                      order.
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">34% wanted communication tools like a call button:</span>{" "}
+                      Agents had to switch between Spotlight and other tools to contact
+                      shoppers or drivers.
+                    </p>
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">31% needed basic automation like auto-refresh:</span>{" "}
+                      The system required manual effort for things that should have
+                      been automatic.
+                    </p>
                   </div>
                   <ClickableImage src="/images/spotlight/spotlight 3.png" height="387px" />
                 </div>
@@ -339,44 +345,50 @@ export default function SpotlightCaseStudy() {
                 {/* Strategy */}
                 <div className="flex flex-col gap-3">
                   <SectionHeading>Strategy</SectionHeading>
-                  <Body>
-                    Fix the fundamentals first. Terminology, status visibility, search,
-                    role alignment — before any automation or smart features.
-                  </Body>
-                  <Body>
-                    Deterministic automation only. Auto-refresh, default to today&apos;s
-                    date, session-scoped behaviours. No auto-assignment, no escalation,
-                    no customer-facing notifications.
-                  </Body>
-                  <Body>
-                    Separate workflow progress from attention signals. &ldquo;Where is this
-                    order?&rdquo; and &ldquo;Does this order need attention?&rdquo; are different
-                    questions. The system has to treat them differently.
-                  </Body>
-                  <Body>
-                    Role-aware, not role-generic. Show each user what&apos;s relevant to
-                    their job.
-                  </Body>
+                  <ul className="flex flex-col gap-2 list-disc list-outside pl-5">
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      Fix the fundamentals first. Terminology, status visibility,
+                      search, role alignment — before any automation or smart features.
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      Deterministic automation only. Auto-refresh, default to today&apos;s
+                      date, session-scoped behaviours. No auto-assignment, no
+                      escalation, no customer-facing notifications.
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      Separate workflow progress from attention signals. &ldquo;Where is
+                      this order?&rdquo; and &ldquo;Does this order need attention?&rdquo; are
+                      different questions. The system has to treat them differently.
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      Role-aware, not role-generic. Show each user what&apos;s relevant to
+                      their job.
+                    </li>
+                  </ul>
                 </div>
 
                 {/* What we excluded */}
                 <div className="flex flex-col gap-3">
                   <SectionHeading>What We Excluded &amp; Why</SectionHeading>
-                  <Body>
-                    Auto-assignment of orders: Too high-risk without validated
-                    assignment logic
-                  </Body>
-                  <Body>
-                    Customer-facing notifications from Spotlight: Internal tool —
-                    customer notifications belong in customer-facing systems
-                  </Body>
-                  <Body>
-                    Escalation logic: Needs the clarity foundation first
-                  </Body>
-                  <Body>
-                    Full driver data integration: Third-party APIs still being
-                    negotiated
-                  </Body>
+                  <ul className="flex flex-col gap-2 list-disc list-outside pl-5">
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Auto-assignment of orders:</span>{" "}
+                      Too high-risk without validated assignment logic
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Customer-facing notifications from Spotlight:</span>{" "}
+                      Internal tool — customer notifications belong in customer-facing
+                      systems
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Escalation logic:</span>{" "}
+                      Needs the clarity foundation first
+                    </li>
+                    <li className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white">Full driver data integration:</span>{" "}
+                      Third-party APIs still being negotiated
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -612,13 +624,13 @@ export default function SpotlightCaseStudy() {
                       Search and filter overhaul is in active development, directly
                       addressing the top pain points from the survey.
                     </Body>
-                    <Body>
-                      Metrics we&apos;ll measure against once the system is live: Page load
-                      time and manual refresh frequency. Time to resolve an order.
-                      Successful search rate without external tools. Reduction in manual
-                      steps. Agent satisfaction. Reduction in errors from unclear
+                    <p className="text-base leading-6 text-[#A1A1AA]">
+                      <span className="font-semibold text-white/80">Metrics we&apos;ll measure against once the system is live:</span>{" "}
+                      Page load time and manual refresh frequency. Time to resolve an
+                      order. Successful search rate without external tools. Reduction in
+                      manual steps. Agent satisfaction. Reduction in errors from unclear
                       statuses or accidental destructive actions.
-                    </Body>
+                    </p>
                     <div className="flex flex-col gap-4">
                       <ClickableImage src="/images/spotlight/spotlight 11.png" height="387px" />
                       <ClickableImage src="/images/spotlight/spotlight 12.png" height="387px" />
@@ -692,13 +704,13 @@ export default function SpotlightCaseStudy() {
             </Link>
 
             {/* Next project */}
-            <Link href="/work/spotlight-2" className="inline-flex flex-col items-end gap-2 group">
+            <Link href="/work/system-one" className="inline-flex flex-col items-end gap-2 group">
               <span className="text-[12px] tracking-[0.2em] uppercase text-white/80">
                 Next Project
               </span>
               <span className="flex items-center gap-3">
                 <span className="text-[28px] font-bold leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
-                  Spotlight 2.0
+                  SystemOne
                 </span>
                 <span className="text-white group-hover:text-white/80 transition-colors text-2xl">→</span>
               </span>
