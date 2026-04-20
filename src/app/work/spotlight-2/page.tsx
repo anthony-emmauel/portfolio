@@ -46,47 +46,22 @@ function Body({ children }: { children: React.ReactNode }) {
   return <p className="text-base leading-6 text-[#A1A1AA]">{children}</p>;
 }
 
-function Highlight({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-base leading-6 font-semibold text-white">{children}</p>
-  );
-}
-
-function CaptionedImage({
-  src,
-  caption,
-}: {
-  src: string;
-  caption?: string;
-}) {
-  return (
-    <div className="flex flex-col gap-4">
-      <ClickableImage src={src} height="387px" />
-      {caption && (
-        <p className="text-[12px] leading-[18px] font-medium text-black text-center bg-white rounded-sm px-2 py-1 self-center">
-          {caption}
-        </p>
-      )}
-    </div>
-  );
-}
-
 /* ─────────────────────────────────────────────────── */
 
 export default function SpotlightCaseStudy() {
   return (
     <div className="bg-black">
-      <div className="max-w-5xl mx-auto px-12 pt-[90px] pb-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-20 md:pt-[90px] pb-20">
 
         {/* ── Header ── */}
-        <div className="flex flex-col gap-10 mb-20">
+        <div className="flex flex-col gap-10 mb-12 md:mb-20">
 
           {/* Title + subtitle + pills */}
           <div className="flex flex-col gap-3">
-            <h1 className="text-[36px] font-bold leading-10 tracking-[-0.9px] text-white">
+            <h1 className="text-[24px] md:text-[36px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white">
               Redesigning Spotlight OMS for Operational Clarity
             </h1>
-            <p className="text-xl leading-[30px] text-[#A1A1AA]">
+            <p className="text-base md:text-xl leading-[26px] md:leading-[30px] text-[#A1A1AA]">
               Redesigning an internal OMS around status clarity, search, and
               operational visibility for ops users.
             </p>
@@ -103,7 +78,7 @@ export default function SpotlightCaseStudy() {
           </div>
 
           {/* Meta bar */}
-          <div className="flex flex-row flex-wrap items-center gap-14 py-9 border-y border-[#262626]">
+          <div className="flex flex-row flex-wrap items-center gap-6 md:gap-14 py-9 border-y border-[#262626]">
             {meta.map((m) => (
               <div key={m.label} className="flex flex-col gap-2">
                 <span className="text-[12px] tracking-[0.2em] text-[#A1A1AA]">
@@ -121,10 +96,10 @@ export default function SpotlightCaseStudy() {
           {/* Outcome stat + hero image */}
           <div className="flex flex-col gap-20">
             <div className="flex flex-col items-center justify-center gap-4 py-10 bg-white/5 border border-[#262626] rounded-[6px]">
-              <p className="text-[44px] font-bold leading-10 tracking-[-0.9px] text-white text-center">
+              <p className="text-[32px] font-bold leading-10 tracking-[-0.9px] text-white text-center">
                 60%
               </p>
-              <p className="text-xl leading-[30px] text-[#A1A1AA] text-center">
+              <p className="text-sm leading-5 text-[#A1A1AA] text-center">
                 Agents refreshed manually just to see current orders.
               </p>
             </div>
@@ -689,7 +664,7 @@ export default function SpotlightCaseStudy() {
           </div>{/* end sections */}
 
           {/* ── CTA ── */}
-          <div className="flex flex-row items-center justify-between pt-6 border-t border-[#262626]">
+          <div className="flex flex-row flex-wrap items-center justify-between gap-6 pt-6 border-t border-[#262626]">
             {/* Previous project */}
             <Link href="/work/onecart-redesign" className="inline-flex flex-col items-start gap-2 group">
               <span className="text-[12px] tracking-[0.2em] uppercase text-white/80">
@@ -697,7 +672,7 @@ export default function SpotlightCaseStudy() {
               </span>
               <span className="flex items-center gap-3">
                 <span className="text-white group-hover:text-white/80 transition-colors text-2xl">←</span>
-                <span className="text-[28px] font-bold leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
+                <span className="text-[20px] md:text-[28px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
                   OneCart Redesign
                 </span>
               </span>
@@ -709,7 +684,7 @@ export default function SpotlightCaseStudy() {
                 Next Project
               </span>
               <span className="flex items-center gap-3">
-                <span className="text-[28px] font-bold leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
+                <span className="text-[20px] md:text-[28px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
                   SystemOne
                 </span>
                 <span className="text-white group-hover:text-white/80 transition-colors text-2xl">→</span>

@@ -48,12 +48,6 @@ function Body({ children, className = "" }: { children: React.ReactNode; classNa
   );
 }
 
-function Highlight({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-base leading-6 font-semibold text-white">{children}</p>
-  );
-}
-
 function ImagePlaceholder({ height = "387px", className = "", src }: { height?: string; className?: string; src: string }) {
   return <ClickableImage src={src} height={height} className={className} />;
 }
@@ -63,17 +57,17 @@ function ImagePlaceholder({ height = "387px", className = "", src }: { height?: 
 export default function OneCartCaseStudy() {
   return (
     <div className="bg-black">
-      <div className="max-w-5xl mx-auto px-12 pt-[90px] pb-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-20 md:pt-[90px] pb-20">
 
         {/* ── Header ── */}
-        <div className="flex flex-col gap-10 mb-20">
+        <div className="flex flex-col gap-10 mb-12 md:mb-20">
 
           {/* Title + subtitle + pills */}
           <div className="flex flex-col gap-3">
-            <h1 className="text-[36px] font-bold leading-10 tracking-[-0.9px] text-white">
+            <h1 className="text-[24px] md:text-[36px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white">
               Redesigning Product Discovery &amp; Order Transparency at OneCart
             </h1>
-            <p className="text-xl leading-[30px] text-[#A1A1AA]">
+            <p className="text-base md:text-xl leading-[26px] md:leading-[30px] text-[#A1A1AA]">
               Redesigning how customers find products and track orders across a
               multi-store grocery marketplace.
             </p>
@@ -90,7 +84,7 @@ export default function OneCartCaseStudy() {
           </div>
 
           {/* Meta bar */}
-          <div className="flex flex-row flex-wrap items-center gap-14 py-9 border-y border-[#262626]">
+          <div className="flex flex-row flex-wrap items-center gap-6 md:gap-14 py-9 border-y border-[#262626]">
             {meta.map((m) => (
               <div key={m.label} className="flex flex-col gap-2">
                 <span className="text-[12px] tracking-[0.2em] text-[#A1A1AA]">
@@ -108,10 +102,10 @@ export default function OneCartCaseStudy() {
           {/* Outcome stat + hero image */}
           <div className="flex flex-col gap-20">
             <div className="flex flex-col items-center justify-center gap-4 py-10 bg-white/5 border border-[#262626] rounded-[6px]">
-              <p className="text-[44px] font-bold leading-10 tracking-[-0.9px] text-white text-center">
+              <p className="text-[32px] font-bold leading-10 tracking-[-0.9px] text-white text-center">
                 29%
               </p>
-              <p className="text-xl leading-[30px] text-[#A1A1AA] text-center">
+              <p className="text-sm leading-5 text-[#A1A1AA] text-center">
                 Average Returning User Growth (YoY 2023 – 2025)
               </p>
             </div>
@@ -566,7 +560,7 @@ export default function OneCartCaseStudy() {
           </div>{/* end sections */}
 
           {/* ── CTA ── */}
-          <div className="flex flex-row items-center justify-between pt-6 border-t border-[#262626]">
+          <div className="flex flex-row flex-wrap items-center justify-between gap-6 pt-6 border-t border-[#262626]">
             {/* Back */}
             <Link
               href="/"
@@ -585,7 +579,7 @@ export default function OneCartCaseStudy() {
                 Next Project
               </span>
               <span className="flex items-center gap-3">
-                <span className="text-[28px] font-bold leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
+                <span className="text-[20px] md:text-[28px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
                   Spotlight 2.0
                 </span>
                 <span className="text-white group-hover:text-white/80 transition-colors text-2xl">→</span>

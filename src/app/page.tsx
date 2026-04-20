@@ -67,17 +67,17 @@ const testimonials = [
 export default function Home() {
   return (
     <div className="bg-black">
-      <div className="max-w-5xl mx-auto px-6 pb-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
 
         {/* ── Hero ── */}
-        <section className="pt-28 pb-24">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-3">
+        <section className="pt-24 pb-16 md:pt-28 md:pb-24">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3">
             Emmanuel Anthony
           </h1>
-          <p className="text-xs tracking-[0.2em] text-white/50 uppercase mb-8">
+          <p className="text-xs tracking-[0.2em] text-white/50 uppercase mb-6 md:mb-8">
             Product Designer &nbsp;·&nbsp; Design Engineer
           </p>
-          <p className="text-xl md:text-2xl text-white/80 leading-snug max-w-xl font-normal">
+          <p className="text-lg md:text-2xl text-white/80 leading-snug max-w-xl font-normal">
             I design products, then I build them — not prototypes, products.
             Currently crafting digital experiences that bridge the gap between
             design and code.
@@ -138,14 +138,14 @@ export default function Home() {
           <p className="text-xs tracking-[0.2em] text-white/40 uppercase mb-8">
             What People Say
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {testimonials.map((t) => (
               <a
                 key={t.name}
                 href={t.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-[#262626] hover:border-white/20 transition-colors rounded-xl p-6 flex flex-col justify-between gap-8"
+                className="border border-[#262626] hover:border-white/20 transition-colors rounded-xl p-6 flex flex-col justify-between gap-8 cursor-pointer"
               >
                 <p className="text-sm text-white/55 leading-relaxed">{t.quote}</p>
                 <div>
@@ -163,10 +163,10 @@ export default function Home() {
             href="https://crowdsynchive.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="block border border-[#262626] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-10 items-center hover:border-white/20 transition-colors"
+            className="border border-[#262626] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 items-center hover:border-white/20 transition-colors"
           >
             {/* Left */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 w-full">
               <p className="text-[10px] tracking-[0.2em] text-white/40 uppercase mb-4">
                 Currently Building
               </p>
@@ -187,10 +187,7 @@ export default function Home() {
             </div>
 
             {/* Right: mockup */}
-            <div
-              className="shrink-0 rounded-xl border border-white/10 overflow-hidden relative"
-              style={{ width: "375px", height: "469px" }}
-            >
+            <div className="shrink-0 rounded-xl border border-white/10 overflow-hidden relative w-full md:w-[375px] h-[260px] md:h-[469px]">
               <Image
                 src="/images/homepage/crowdsyncHomepagethumbnail.png"
                 alt="CrowdSyncHive"

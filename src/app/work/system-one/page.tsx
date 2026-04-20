@@ -67,17 +67,17 @@ function FindingRow({
 export default function SystemOneCaseStudy() {
   return (
     <div className="bg-black">
-      <div className="max-w-5xl mx-auto px-12 pt-[90px] pb-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-20 md:pt-[90px] pb-20">
 
         {/* ── Header ── */}
-        <div className="flex flex-col gap-10 mb-20">
+        <div className="flex flex-col gap-10 mb-12 md:mb-20">
 
           {/* Title + subtitle + pills */}
           <div className="flex flex-col gap-3">
-            <h1 className="text-[36px] font-bold leading-10 tracking-[-0.9px] text-white">
+            <h1 className="text-[24px] md:text-[36px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white">
               SystemOne
             </h1>
-            <p className="text-xl leading-[30px] text-[#A1A1AA]">
+            <p className="text-base md:text-xl leading-[26px] md:leading-[30px] text-[#A1A1AA]">
               Unifying a multi-platform design system from audit to architecture
               — across 3 platforms with no shared tokens, no component
               documentation, and 3 different hex values for the same brand green.
@@ -95,7 +95,7 @@ export default function SystemOneCaseStudy() {
           </div>
 
           {/* Meta bar */}
-          <div className="flex flex-row flex-wrap items-center gap-14 py-9 border-y border-[#262626]">
+          <div className="flex flex-row flex-wrap items-center gap-6 md:gap-14 py-9 border-y border-[#262626]">
             {meta.map((m) => (
               <div key={m.label} className="flex flex-col gap-2">
                 <span className="text-[12px] tracking-[0.2em] text-[#A1A1AA]">
@@ -113,10 +113,10 @@ export default function SystemOneCaseStudy() {
           {/* Outcome stat + hero image */}
           <div className="flex flex-col gap-20">
             <div className="flex flex-col items-center justify-center gap-4 py-10 bg-white/5 border border-[#262626] rounded-[6px]">
-              <p className="text-[44px] font-bold leading-10 tracking-[-0.9px] text-white text-center">
+              <p className="text-[32px] font-bold leading-10 tracking-[-0.9px] text-white text-center">
                 225+
               </p>
-              <p className="text-xl leading-[30px] text-[#A1A1AA] text-center">
+              <p className="text-sm leading-5 text-[#A1A1AA] text-center">
                 Tokens across three(3) products into one system.
               </p>
             </div>
@@ -564,7 +564,7 @@ export default function SystemOneCaseStudy() {
           </div>{/* end sections */}
 
           {/* ── CTA ── */}
-          <div className="flex flex-row items-center justify-between pt-6 border-t border-[#262626]">
+          <div className="flex flex-row flex-wrap items-center justify-between gap-6 pt-6 border-t border-[#262626]">
             {/* Previous project */}
             <Link href="/work/spotlight-2" className="inline-flex flex-col items-start gap-2 group">
               <span className="text-[12px] tracking-[0.2em] uppercase text-white/80">
@@ -572,7 +572,7 @@ export default function SystemOneCaseStudy() {
               </span>
               <span className="flex items-center gap-3">
                 <span className="text-white group-hover:text-white/80 transition-colors text-2xl">←</span>
-                <span className="text-[28px] font-bold leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
+                <span className="text-[20px] md:text-[28px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
                   Spotlight 2.0
                 </span>
               </span>
@@ -584,7 +584,7 @@ export default function SystemOneCaseStudy() {
                 Next Project
               </span>
               <span className="flex items-center gap-3">
-                <span className="text-[28px] font-bold leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
+                <span className="text-[20px] md:text-[28px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white group-hover:text-white/80 transition-colors">
                   NokGridCore
                 </span>
                 <span className="text-white group-hover:text-white/80 transition-colors text-2xl">→</span>

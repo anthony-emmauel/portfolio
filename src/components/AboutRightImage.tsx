@@ -39,8 +39,7 @@ export default function AboutRightImage() {
     <div className="flex flex-col gap-8">
       {/* Image */}
       <div
-        className="relative w-full rounded-[4px] overflow-hidden cursor-pointer"
-        style={{ height: "545px" }}
+        className="relative w-full rounded-[4px] overflow-hidden cursor-pointer h-[320px] md:h-[545px]"
         onClick={() => {
           setFading(true);
           setTimeout(() => {

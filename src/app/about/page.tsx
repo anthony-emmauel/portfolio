@@ -79,7 +79,7 @@ const skillGroups = [
 export default function About() {
   return (
     <div className="bg-black min-h-screen">
-      <div className="max-w-5xl mx-auto px-12 pt-16 pb-0">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-16 pb-0">
 
         {/* ── Hero ── */}
         <section className="flex flex-col md:flex-row md:items-start gap-10 md:gap-0 pt-10">
@@ -87,14 +87,14 @@ export default function About() {
           {/* Left column */}
           <div className="flex flex-col gap-0 flex-1 min-w-0">
             {/* Heading */}
-            <h1 className="text-[36px] font-bold leading-10 tracking-[-0.9px] text-white mb-6">
+            <h1 className="text-[28px] md:text-[36px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white mb-6">
               Designing systems at the edge of code
             </h1>
 
             {/* Bio paragraphs */}
             <div className="flex flex-col gap-0">
               <div className="pt-4 pb-0">
-                <p className="text-xl leading-[30px] text-[#A1A1AA]">
+                <p className="text-lg md:text-xl leading-[28px] md:leading-[30px] text-[#A1A1AA]">
                   I&apos;m a Senior Product Designer based in Lisbon, originally
                   from Nigeria. For the past four years I&apos;ve been embedded
                   with OneCart, designing their marketplace experience,
@@ -104,7 +104,7 @@ export default function About() {
                 </p>
               </div>
               <div className="pt-4">
-                <p className="text-xl leading-[30px] text-[#A1A1AA]">
+                <p className="text-lg md:text-xl leading-[28px] md:leading-[30px] text-[#A1A1AA]">
                   I&apos;m building toward a Design Engineer role where I can
                   own both the design and the implementation. When I&apos;m not
                   designing, I&apos;m running 10Ks around Lisbon or working on
@@ -115,8 +115,7 @@ export default function About() {
 
             {/* Left image */}
             <div
-              className="relative w-full mt-8 rounded-[6px] overflow-hidden"
-              style={{ height: "555px" }}
+              className="relative w-full mt-8 rounded-[6px] overflow-hidden h-[320px] md:h-[555px]"
             >
               <Image
                 src="/images/about/about image left.png"
@@ -135,23 +134,23 @@ export default function About() {
         </section>
 
         {/* ── Testimonials ── */}
-        <section className="mt-20">
+        <section className="mt-16 md:mt-20">
           {/* Section header */}
-          <div className="pb-4 mb-12 border-b border-[#262626]">
+          <div className="pb-4 mb-10 md:mb-12 border-b border-[#262626]">
             <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80">
               What people say
             </p>
           </div>
 
           {/* Cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[22px]">
             {testimonials.map((t) => (
               <a
                 key={t.name}
                 href={t.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col gap-8 p-4 border border-[#262626] hover:border-white/20 transition-colors rounded-[6px]"
+                className="flex flex-col gap-8 p-4 border border-[#262626] hover:border-white/20 transition-colors rounded-[6px] cursor-pointer"
               >
                 <p className="text-sm text-white/55 leading-relaxed flex-1">
                   {t.quote}
@@ -170,7 +169,7 @@ export default function About() {
         </section>
 
         {/* ── Tools & Skills ── */}
-        <section className="mt-20 pb-20">
+        <section className="mt-16 md:mt-20 pb-20">
           {/* Section header */}
           <div className="pb-4 mb-8 border-b border-[#262626]">
             <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80">

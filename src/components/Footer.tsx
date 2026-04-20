@@ -1,30 +1,30 @@
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 mt-0">
-      <div className="max-w-5xl mx-auto px-6 pt-20 pb-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 md:pt-20 pb-10">
         {/* Main footer content */}
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-12 mb-16">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-10 md:gap-12 mb-16 text-center md:text-left">
           {/* Left: CTA heading */}
-          <div className="max-w-sm">
-            <h2 className="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight">
+          <div className="max-w-sm mx-auto md:mx-0">
+            <h2 className="text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight">
               Let&apos;s build something exceptional.
             </h2>
             <p className="mt-4 text-sm text-white/40">Open to new opportunities</p>
           </div>
 
           {/* Right: email + links */}
-          <div className="flex flex-col items-start md:items-end gap-8">
+          <div className="flex flex-col items-center md:items-end gap-8">
             <a
               href="mailto:antorneejnr@gmail.com"
               className="text-base font-bold underline underline-offset-2 text-white hover:text-white/70 transition-colors"
             >
               antorneejnr@gmail.com
             </a>
-            <div className="text-right">
+            <div className="text-center md:text-right">
               <p className="text-xs tracking-widest text-white/40 uppercase mb-3">
                 Relevant Links
               </p>
-              <div className="flex flex-col items-end gap-2">
+              <div className="flex flex-col items-center md:items-end gap-2">
                 <a
                   href="https://www.linkedin.com/in/emmanuel-anthony-639b07122/"
                   target="_blank"
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6">
+        <div className="border-t border-white/10 pt-6 text-center md:text-left">
           <p className="text-xs text-white/30 tracking-wide uppercase">
             2026 Emmanuel Anthony. All Right Reserved
           </p>
