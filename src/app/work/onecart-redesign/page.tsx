@@ -75,7 +75,7 @@ export default function OneCartCaseStudy() {
               {pills.map((p) => (
                 <span
                   key={p}
-                  className="text-[10px] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1"
+                  className="text-[10px] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1 hover:bg-white/5 transition-colors duration-150"
                 >
                   {p}
                 </span>
@@ -564,7 +564,7 @@ export default function OneCartCaseStudy() {
             {/* Back */}
             <Link
               href="/"
-              className="inline-flex items-center gap-3 text-base text-[#A1A1AA] hover:text-white transition-colors"
+              className="inline-flex items-center gap-3 text-base text-[#A1A1AA] hover:text-[#00DF88] transition-colors duration-150"
             >
               <span>←</span>
               <span>Back to home</span>

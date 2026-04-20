@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import AboutRightImage from "@/components/AboutRightImage";
+import GrowLine from "@/components/GrowLine";
 
 export const metadata: Metadata = {
   title: "About — Emmanuel Anthony",
@@ -81,8 +82,8 @@ export default function About() {
     <div className="bg-black min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-12 pt-16 pb-0">
 
-        {/* ── Hero ── */}
-        <section className="flex flex-col md:flex-row md:items-start gap-10 md:gap-0 pt-10">
+        {/* ── Hero — AnimateSections skips this ── */}
+        <section data-no-animate className="flex flex-col md:flex-row md:items-start gap-10 md:gap-0 pt-10">
 
           {/* Left column */}
           <div className="flex flex-col gap-0 flex-1 min-w-0">
@@ -136,10 +137,11 @@ export default function About() {
         {/* ── Testimonials ── */}
         <section className="mt-16 md:mt-20">
           {/* Section header */}
-          <div className="pb-4 mb-10 md:mb-12 border-b border-[#262626]">
-            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80">
+          <div className="pb-4 mb-10 md:mb-12">
+            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80 mb-4">
               What people say
             </p>
+            <GrowLine color="bg-[#262626]" />
           </div>
 
           {/* Cards grid */}
@@ -171,10 +173,11 @@ export default function About() {
         {/* ── Tools & Skills ── */}
         <section className="mt-16 md:mt-20 pb-20">
           {/* Section header */}
-          <div className="pb-4 mb-8 border-b border-[#262626]">
-            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80">
+          <div className="pb-4 mb-8">
+            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80 mb-4">
               Tools &amp; Skills
             </p>
+            <GrowLine color="bg-[#262626]" />
           </div>
 
           {/* Three-column skill groups */}
@@ -186,7 +189,7 @@ export default function About() {
                     {row.map((pill) => (
                       <span
                         key={pill}
-                        className="text-[10px] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1"
+                        className="text-[10px] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1 hover:bg-white/5 transition-colors duration-150"
                       >
                         {pill}
                       </span>

@@ -33,3 +33,70 @@ body {
     text-wrap: balance;
   }
 }
+
+/* ── Lightbox animations ── */
+@keyframes lightboxBackdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes lightboxBackdropOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes lightboxImageIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes lightboxImageOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.96); }
+}
+.lightbox-backdrop-in  { animation: lightboxBackdropIn  0.22s ease-out forwards; }
+.lightbox-backdrop-out { animation: lightboxBackdropOut 0.18s ease-in  forwards; }
+.lightbox-image-in     { animation: lightboxImageIn  0.22s ease-out forwards; }
+.lightbox-image-out    { animation: lightboxImageOut 0.18s ease-in  forwards; }
+
+/* ── Nav / footer link white glow on hover ── */
+.link-hover {
+  transition: color 150ms ease, text-shadow 150ms ease;
+}
+.link-hover:hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+}
+
+/* ── Hero stagger animations ── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade {
+  opacity: 0;
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+.hero-fade-1 { animation-delay: 0ms; }
+.hero-fade-2 { animation-delay: 100ms; }
+.hero-fade-3 { animation-delay: 200ms; }
+
+/* ── Respect prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-fade {
+    opacity: 1 !important;
+  }
+}

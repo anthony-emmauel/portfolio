@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
+import GrowLine from "@/components/GrowLine";
 
 const caseStudies = [
   {
@@ -69,15 +71,15 @@ export default function Home() {
     <div className="bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
 
-        {/* ── Hero ── */}
-        <section className="pt-24 pb-16 md:pt-28 md:pb-24">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3">
+        {/* ── Hero — staggered fade-in, skipped by AnimateSections ── */}
+        <section data-no-animate className="pt-24 pb-16 md:pt-28 md:pb-24">
+          <h1 className="hero-fade hero-fade-1 text-3xl md:text-5xl font-bold tracking-tight mb-3">
             Emmanuel Anthony
           </h1>
-          <p className="text-xs tracking-[0.2em] text-white/50 uppercase mb-6 md:mb-8">
+          <p className="hero-fade hero-fade-2 text-xs tracking-[0.2em] text-white/50 uppercase mb-6 md:mb-8">
             Product Designer &nbsp;·&nbsp; Design Engineer
           </p>
-          <p className="text-lg md:text-2xl text-white/80 leading-snug max-w-xl font-normal">
+          <p className="hero-fade hero-fade-3 text-lg md:text-2xl text-white/80 leading-snug max-w-xl font-normal">
             I design products, then I build them — not prototypes, products.
             Currently crafting digital experiences that bridge the gap between
             design and code.
@@ -86,90 +88,99 @@ export default function Home() {
 
         {/* ── Selected Case Studies ── */}
         <section className="py-10">
-          <p className="text-xs tracking-[0.2em] text-white/40 uppercase mb-6">
+          <p className="text-xs tracking-[0.2em] text-white/40 uppercase mb-4">
             Selected Case Study
           </p>
-          <div className="border-t border-white/10 pt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {caseStudies.map((study) => (
-              <Link
-                key={study.slug}
-                href={`/work/${study.slug}`}
-                className="group flex flex-col"
-              >
-                {/* Card image */}
-                <div className={`rounded-lg overflow-hidden mb-4 ${study.imageBg} border border-white/5`}>
-                  <Image
-                    src={study.image}
-                    alt={study.title}
-                    width={478}
-                    height={269}
-                    quality={100}
-                    className="object-cover w-full"
-                    style={{ aspectRatio: "231/130" }}
-                  />
-                </div>
+          {/* Growing line */}
+          <GrowLine className="mb-8" />
 
-                {/* Title row */}
-                <div className="flex items-start justify-between gap-2 mb-1.5">
-                  <h3 className="text-base font-semibold group-hover:text-white/80 transition-colors">
-                    {study.title}
-                  </h3>
-                  <span className="text-white/40 text-sm mt-0.5 shrink-0">↗</span>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {caseStudies.map((study, i) => (
+              <FadeIn key={study.slug} delay={i * 80}>
+                <Link
+                  href={`/work/${study.slug}`}
+                  className="group flex flex-col hover:-translate-y-1 transition-transform duration-200"
+                >
+                  {/* Card image */}
+                  <div className={`rounded-lg overflow-hidden mb-4 ${study.imageBg} border border-white/5 group-hover:border-white/15 transition-colors duration-200`}>
+                    <Image
+                      src={study.image}
+                      alt={study.title}
+                      width={478}
+                      height={269}
+                      quality={100}
+                      className="object-cover w-full"
+                      style={{ aspectRatio: "231/130" }}
+                    />
+                  </div>
 
-                {/* Description */}
-                <p className="text-sm text-white/50 leading-relaxed mb-3 min-h-[42px]">
-                  {study.description}
-                </p>
+                  {/* Title row */}
+                  <div className="flex items-start justify-between gap-2 mb-1.5">
+                    <h3 className="text-base font-semibold group-hover:text-white/80 transition-colors duration-200">
+                      {study.title}
+                    </h3>
+                    <span className="text-white/40 text-sm mt-0.5 shrink-0">↗</span>
+                  </div>
 
-                {/* Tag */}
-                <div>
-                  <span className="text-[10px] tracking-widest uppercase border border-white/15 text-white/50 px-2.5 py-1 rounded-full">
-                    {study.tag}
-                  </span>
-                </div>
-              </Link>
+                  {/* Description */}
+                  <p className="text-sm text-white/50 leading-relaxed mb-3 min-h-[42px]">
+                    {study.description}
+                  </p>
+
+                  {/* Tag */}
+                  <div>
+                    <span className="text-[10px] tracking-widest uppercase border border-white/15 text-white/50 px-2.5 py-1 rounded-full hover:bg-white/5 transition-colors duration-150 cursor-default">
+                      {study.tag}
+                    </span>
+                  </div>
+                </Link>
+              </FadeIn>
             ))}
           </div>
         </section>
 
         {/* ── Testimonials ── */}
         <section className="py-16">
-          <p className="text-xs tracking-[0.2em] text-white/40 uppercase mb-8">
+          <p className="text-xs tracking-[0.2em] text-white/40 uppercase mb-4">
             What People Say
           </p>
+          <GrowLine className="mb-8" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {testimonials.map((t) => (
-              <a
-                key={t.name}
-                href={t.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-[#262626] hover:border-white/20 transition-colors rounded-xl p-6 flex flex-col justify-between gap-8 cursor-pointer"
-              >
-                <p className="text-sm text-white/55 leading-relaxed">{t.quote}</p>
-                <div>
-                  <p className="text-sm font-medium text-white">{t.name}</p>
-                  <p className="text-xs text-white/40 mt-0.5">{t.role}</p>
-                </div>
-              </a>
+            {testimonials.map((t, i) => (
+              <FadeIn key={t.name} delay={i * 80}>
+                <a
+                  href={t.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-[#262626] hover:border-white/20 transition-colors duration-200 rounded-xl p-6 flex flex-col justify-between gap-8 cursor-pointer h-full"
+                >
+                  <p className="text-sm text-white/55 leading-relaxed">{t.quote}</p>
+                  <div>
+                    <p className="text-sm font-medium text-white">{t.name}</p>
+                    <p className="text-xs text-white/40 mt-0.5">{t.role}</p>
+                  </div>
+                </a>
+              </FadeIn>
             ))}
           </div>
         </section>
 
         {/* ── Currently Building ── */}
         <section className="py-6">
+          <p className="text-xs tracking-[0.2em] text-white/40 uppercase mb-4">
+            Currently Building
+          </p>
+          <GrowLine className="mb-8" />
+
           <a
             href="https://crowdsynchive.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-[#262626] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 items-center hover:border-white/20 transition-colors"
+            className="border border-[#262626] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-10 items-center hover:border-white/20 transition-colors duration-200 hover:scale-[1.01] transition-all"
           >
             {/* Left */}
             <div className="flex-1 min-w-0 w-full">
-              <p className="text-[10px] tracking-[0.2em] text-white/40 uppercase mb-4">
-                Currently Building
-              </p>
               <h2 className="text-2xl font-bold mb-4">CrowdSyncHive</h2>
               <p className="text-sm text-white/55 leading-relaxed mb-6">
                 I&apos;m building the{" "}
@@ -181,7 +192,7 @@ export default function Home() {
                 promoter collectives, and high-traffic venues. Not a generic
                 ticketing tool. An execution insurance layer.
               </p>
-              <span className="inline-flex items-center gap-1.5 text-sm text-white/70">
+              <span className="inline-flex items-center gap-1.5 text-sm text-white/70 link-hover hover:scale-[1.02]">
                 View project <span>↗</span>
               </span>
             </div>

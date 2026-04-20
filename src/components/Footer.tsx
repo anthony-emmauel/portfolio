@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-end gap-8">
             <a
               href="mailto:antorneejnr@gmail.com"
-              className="text-base font-bold underline underline-offset-2 text-white hover:text-white/70 transition-colors"
+              className="text-base font-bold underline underline-offset-2 text-white link-hover"
             >
               antorneejnr@gmail.com
             </a>
@@ -29,7 +29,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/emmanuel-anthony-639b07122/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 hover:text-white transition-colors"
+                  className="text-sm text-white/60 link-hover"
                 >
                   LinkedIn
                 </a>
@@ -37,7 +37,7 @@ export default function Footer() {
                   href="https://medium.com/me/stories?tab=posts-published"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 hover:text-white transition-colors"
+                  className="text-sm text-white/60 link-hover"
                 >
                   Medium
                 </a>
@@ -45,14 +45,14 @@ export default function Footer() {
                   href="https://github.com/anthony-emmauel"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 hover:text-white transition-colors"
+                  className="text-sm text-white/60 link-hover"
                 >
                   Github
                 </a>
                 <a
                   href="/resume/Emmanuel Anthony CVpdf.pdf"
                   download="Emmanuel-Anthony-Resume.pdf"
-                  className="text-sm text-white/60 hover:text-white transition-colors"
+                  className="text-sm text-white/60 link-hover"
                 >
                   Resume
                 </a>
