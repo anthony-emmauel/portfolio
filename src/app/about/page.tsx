@@ -14,42 +14,49 @@ const testimonials = [
       "Emmanuel meticulously bridges the gap between complex business requirements and seamless user experiences. He is a rare, tech-oriented designer who doesn't just talk the talk but acts as a strategic asset by deeply understanding the evolving market and the language of tech.",
     name: "Temitope Ogundipe",
     role: "Senior Product Designer, Wema Bank",
+    linkedin: "https://www.linkedin.com/in/temitope-ogundipe",
   },
   {
     quote:
       "I have collaborated very well with Emmanuel. We have exchanged a lot of good feedback from technical and user experience side. Emmanuel is very user centric in his craft.",
     name: "Luntu Mavukuza",
     role: "Senior Software Engineer, Mr D",
+    linkedin: "https://www.linkedin.com/in/luntu-m-474ab5116",
   },
   {
     quote:
       "He invests significant effort into understanding user behaviour by running surveys, gathering feedback, and continuously refining his approach. One of the most impactful initiatives he led was bringing the development team together to propose building a shared UI framework — his goal was to simplify development workflows by standardising components and reducing inconsistencies across platforms.",
     name: "Victor Machimana",
     role: "Head of TechOps, OneCart",
+    linkedin: "https://www.linkedin.com/in/victor-m-38259110a/",
   },
   {
     quote:
       "Anthony is a very talented designer with a rare tendency of questioning the status quo, which helps other people on the team to always dig deeper into their deliverables. Design for him isn't just about pushing pixels.",
     name: "Frank Kyambadde",
     role: "Senior UI/UX Designer, Fingo Global",
+    linkedin: "https://www.linkedin.com/in/kyambadde-frank-5a58b9a7",
   },
   {
     quote:
       "His work is consistently thorough, detailed, and creative. He handles feedback professionally and isn't afraid to push back on scope creep or questionable design decisions when it matters. He's reliable and genuinely easy to work with.",
     name: "Peter Brania",
     role: "Head of Software Development, OneCart",
+    linkedin: "https://www.linkedin.com/in/peter-brania-075b69223/",
   },
   {
     quote:
       "Everything he works on needs to solve the intended problem as effectively as possible. If it doesn't work, he's not afraid to revise the designs.",
     name: "Theto Mokganya",
     role: "Mobile App Engineer, OneCart",
+    linkedin: "https://www.linkedin.com/in/theto-mokganya/",
   },
   {
     quote:
       "His ability to turn complex ideas into intuitive, user-friendly designs that made both engineering and user experience better is exceptional. He's a thoughtful collaborator who brings clarity and impact to every project.",
     name: "Philip Onyango",
     role: "Senior Software Engineer, OneCart",
+    linkedin: "https://www.linkedin.com/in/philip-onyango",
   },
 ];
 
@@ -139,11 +146,14 @@ export default function About() {
           {/* Cards grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
             {testimonials.map((t) => (
-              <div
+              <a
                 key={t.name}
-                className="flex flex-col gap-4 p-4 border border-[#262626] rounded-[6px]"
+                href={t.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col gap-8 p-4 border border-[#262626] hover:border-white/20 transition-colors rounded-[6px]"
               >
-                <p className="text-[12px] leading-[18px] italic font-light tracking-[-0.9px] text-white flex-1">
+                <p className="text-sm text-white/55 leading-relaxed flex-1">
                   {t.quote}
                 </p>
                 <div className="flex flex-col gap-0.5">
@@ -154,7 +164,7 @@ export default function About() {
                     {t.role}
                   </p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>

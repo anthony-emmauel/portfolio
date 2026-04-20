@@ -46,24 +46,27 @@ const testimonials = [
       "His work is consistently thorough, detailed, and creative. He handles feedback professionally and isn't afraid to push back on scope creep or questionable design decisions when it matters. He's reliable and genuinely easy to work with.",
     name: "Peter Brania",
     role: "Head of Software Development, OneCart",
+    linkedin: "https://www.linkedin.com/in/peter-brania-075b69223/",
   },
   {
     quote:
       "He invests significant effort into understanding user behaviour by running surveys, gathering feedback, and continuously refining his approach. One of the most impactful initiatives he led was bringing the development team together to propose building a shared UI framework his goal was to simplify development workflows by standardising components and reducing inconsistencies across platforms.",
     name: "Victor Machimana",
     role: "Head of TechOps, OneCart",
+    linkedin: "https://www.linkedin.com/in/victor-m-38259110a/",
   },
   {
     quote:
       "Emmanuel meticulously bridges the gap between complex business requirements and seamless user experiences. He is a rare, tech-oriented designer who doesn't just talk the talk but acts as a strategic asset by deeply understanding the evolving market and the language of tech.",
     name: "Temitope Ogundipe",
     role: "Senior Product Designer, Wema Bank",
+    linkedin: "https://www.linkedin.com/in/temitope-ogundipe",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="bg-[#0D0D0D]">
+    <div className="bg-black">
       <div className="max-w-5xl mx-auto px-6 pb-16">
 
         {/* ── Hero ── */}
@@ -115,7 +118,7 @@ export default function Home() {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-white/50 leading-relaxed mb-3">
+                <p className="text-sm text-white/50 leading-relaxed mb-3 min-h-[42px]">
                   {study.description}
                 </p>
 
@@ -137,23 +140,31 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {testimonials.map((t) => (
-              <div
+              <a
                 key={t.name}
-                className="bg-[#161616] border border-white/5 rounded-xl p-6 flex flex-col justify-between gap-8"
+                href={t.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-[#262626] hover:border-white/20 transition-colors rounded-xl p-6 flex flex-col justify-between gap-8"
               >
                 <p className="text-sm text-white/55 leading-relaxed">{t.quote}</p>
                 <div>
                   <p className="text-sm font-medium text-white">{t.name}</p>
                   <p className="text-xs text-white/40 mt-0.5">{t.role}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>
 
         {/* ── Currently Building ── */}
         <section className="py-6">
-          <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-10 items-center">
+          <a
+            href="https://crowdsynchive.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border border-[#262626] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-10 items-center hover:border-white/20 transition-colors"
+          >
             {/* Left */}
             <div className="flex-1 min-w-0">
               <p className="text-[10px] tracking-[0.2em] text-white/40 uppercase mb-4">
@@ -170,12 +181,9 @@ export default function Home() {
                 promoter collectives, and high-traffic venues. Not a generic
                 ticketing tool. An execution insurance layer.
               </p>
-              <a
-                href="#"
-                className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors"
-              >
+              <span className="inline-flex items-center gap-1.5 text-sm text-white/70">
                 View project <span>↗</span>
-              </a>
+              </span>
             </div>
 
             {/* Right: mockup */}
@@ -191,7 +199,7 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-          </div>
+          </a>
         </section>
 
       </div>

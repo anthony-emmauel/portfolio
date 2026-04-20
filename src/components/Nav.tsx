@@ -13,15 +13,18 @@ export default function Nav() {
           EA
         </Link>
         <div className="flex items-center gap-8">
-          {["WORK", "ABOUT", "CONTACT"].map((label) => (
-            <Link
-              key={label}
-              href={label === "WORK" ? "/" : `/${label.toLowerCase()}`}
-              className="text-xs tracking-widest text-white/70 hover:text-white transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
+          <Link href="/" className="text-xs tracking-widest text-white/70 hover:text-white transition-colors">
+            WORK
+          </Link>
+          <Link href="/about" className="text-xs tracking-widest text-white/70 hover:text-white transition-colors">
+            ABOUT
+          </Link>
+          <a
+            href="mailto:antorneejnr@gmail.com"
+            className="text-xs tracking-widest text-white/70 hover:text-white transition-colors"
+          >
+            CONTACT
+          </a>
         </div>
       </div>
     </nav>

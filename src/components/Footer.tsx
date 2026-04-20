@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="flex flex-col items-start md:items-end gap-8">
             <a
               href="mailto:antorneejnr@gmail.com"
-              className="text-base font-medium text-white hover:text-white/70 transition-colors"
+              className="text-base font-bold underline underline-offset-2 text-white hover:text-white/70 transition-colors"
             >
               antorneejnr@gmail.com
             </a>
@@ -25,22 +25,37 @@ export default function Footer() {
                 Relevant Links
               </p>
               <div className="flex flex-col items-end gap-2">
-                {[
-                  { label: "LinkedIn", href: "https://linkedin.com" },
-                  { label: "Medium", href: "https://medium.com" },
-                  { label: "Github", href: "https://github.com" },
-                  { label: "Resume", href: "#" },
-                ].map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-white/60 hover:text-white transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                <a
+                  href="https://www.linkedin.com/in/emmanuel-anthony-639b07122/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://medium.com/me/stories?tab=posts-published"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  Medium
+                </a>
+                <a
+                  href="https://github.com/anthony-emmauel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  Github
+                </a>
+                <a
+                  href="/resume/Emmanuel Anthony CVpdf.pdf"
+                  download="Emmanuel-Anthony-Resume.pdf"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
+                >
+                  Resume
+                </a>
               </div>
             </div>
           </div>
