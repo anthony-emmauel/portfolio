@@ -1,164 +1,195 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
+import AboutRightImage from "@/components/AboutRightImage";
 
 export const metadata: Metadata = {
-  title: "About — Your Name",
-  description: "About Your Name, product designer.",
+  title: "About — Emmanuel Anthony",
+  description:
+    "Senior Product Designer based in Lisbon. Designing systems at the edge of code.",
 };
 
-const skills = [
-  "Brand Identity",
-  "Product Design",
-  "UX Research",
-  "Design Systems",
-  "Prototyping",
-  "Motion Design",
-  "Figma",
-  "Framer",
+const testimonials = [
+  {
+    quote:
+      "Emmanuel meticulously bridges the gap between complex business requirements and seamless user experiences. He is a rare, tech-oriented designer who doesn't just talk the talk but acts as a strategic asset by deeply understanding the evolving market and the language of tech.",
+    name: "Temitope Ogundipe",
+    role: "Senior Product Designer, Wema Bank",
+  },
+  {
+    quote:
+      "I have collaborated very well with Emmanuel. We have exchanged a lot of good feedback from technical and user experience side. Emmanuel is very user centric in his craft.",
+    name: "Luntu Mavukuza",
+    role: "Senior Software Engineer, Mr D",
+  },
+  {
+    quote:
+      "He invests significant effort into understanding user behaviour by running surveys, gathering feedback, and continuously refining his approach. One of the most impactful initiatives he led was bringing the development team together to propose building a shared UI framework — his goal was to simplify development workflows by standardising components and reducing inconsistencies across platforms.",
+    name: "Victor Machimana",
+    role: "Head of TechOps, OneCart",
+  },
+  {
+    quote:
+      "Anthony is a very talented designer with a rare tendency of questioning the status quo, which helps other people on the team to always dig deeper into their deliverables. Design for him isn't just about pushing pixels.",
+    name: "Frank Kyambadde",
+    role: "Senior UI/UX Designer, Fingo Global",
+  },
+  {
+    quote:
+      "His work is consistently thorough, detailed, and creative. He handles feedback professionally and isn't afraid to push back on scope creep or questionable design decisions when it matters. He's reliable and genuinely easy to work with.",
+    name: "Peter Brania",
+    role: "Head of Software Development, OneCart",
+  },
+  {
+    quote:
+      "Everything he works on needs to solve the intended problem as effectively as possible. If it doesn't work, he's not afraid to revise the designs.",
+    name: "Theto Mokganya",
+    role: "Mobile App Engineer, OneCart",
+  },
+  {
+    quote:
+      "His ability to turn complex ideas into intuitive, user-friendly designs that made both engineering and user experience better is exceptional. He's a thoughtful collaborator who brings clarity and impact to every project.",
+    name: "Philip Onyango",
+    role: "Senior Software Engineer, OneCart",
+  },
 ];
 
-const experience = [
-  {
-    role: "Senior Product Designer",
-    company: "Acme Corp",
-    period: "2022 — Present",
-    description:
-      "Leading design for the core product, a B2B SaaS platform with 50k+ users. Own the design system and drive cross-functional design reviews.",
-  },
-  {
-    role: "Product Designer",
-    company: "Studio XYZ",
-    period: "2020 — 2022",
-    description:
-      "Worked with early-stage startups on 0→1 product design. Shipped 10+ products across fintech, health, and e-commerce.",
-  },
-  {
-    role: "UX Designer",
-    company: "Agency Co.",
-    period: "2018 — 2020",
-    description:
-      "Client-facing design for brands including FMCG and retail. Built skills in design sprints, research, and rapid prototyping.",
-  },
+const skillGroups = [
+  [
+    ["Design Ops", "UX Strategy", "Product Design"],
+    ["User Research", "Design Management", "Figma"],
+    ["Design System", "System Thinking", "Prototyping"],
+    ["Visual Design", "Information Architecture"],
+  ],
+  [
+    ["JavaScript", "HTML", "CSS", "AI-assisted development"],
+    ["Claude Code", "Codex"],
+  ],
+  [
+    ["Vercel", "Git", "Style Dictionary", "Storybook"],
+  ],
 ];
 
 export default function About() {
   return (
-    <div className="max-w-5xl mx-auto px-6">
-      {/* Header */}
-      <section className="py-28 md:py-40 border-b border-white/10">
-        <p className="text-sm text-white/50 mb-6 tracking-widest uppercase">
-          About
-        </p>
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] max-w-2xl">
-          Designer, thinker,{" "}
-          <span className="text-white/40">occasional over-engineer.</span>
-        </h1>
-        <p className="mt-8 text-base md:text-lg text-white/50 max-w-xl leading-relaxed">
-          I&apos;ve spent 7 years designing products for startups and scale-ups.
-          I care about clarity — in interfaces, in communication, and in
-          process.
-        </p>
-      </section>
+    <div className="bg-black min-h-screen">
+      <div className="max-w-5xl mx-auto px-12 pt-16 pb-0">
 
-      {/* Bio */}
-      <section className="py-16 border-b border-white/10 grid md:grid-cols-2 gap-12">
-        <div>
-          <h2 className="text-xs text-white/40 tracking-widest uppercase mb-6">
-            Background
-          </h2>
-          <div className="space-y-4 text-white/70 leading-relaxed">
-            <p>
-              I started designing at 19, building websites for local businesses
-              in exchange for coffee and (occasionally) actual money. That
-              scrappiness stuck — I still approach every project like the budget
-              is smaller than it should be and the deadline is tighter than
-              anyone admits.
-            </p>
-            <p>
-              I studied Graphic Design at university, then spent three years at
-              a digital agency before going in-house at a Series A startup.
-              That transition changed how I think about design — less about
-              aesthetics, more about outcomes.
-            </p>
-            <p>
-              These days I split my time between a full-time role and select
-              freelance projects. I&apos;m particularly interested in the
-              intersection of brand and product — companies that do both well
-              are rare, and that gap is interesting.
-            </p>
-          </div>
-        </div>
-        <div>
-          <h2 className="text-xs text-white/40 tracking-widest uppercase mb-6">
-            Skills
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="text-sm text-white/70 border border-white/15 px-3 py-1.5 rounded-full"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-          <div className="mt-10">
-            <h2 className="text-xs text-white/40 tracking-widest uppercase mb-6">
-              Currently
-            </h2>
-            <p className="text-white/70 leading-relaxed text-sm">
-              Based in London. Open to remote and hybrid projects worldwide.
-              Available for brand, product, and design system work.
-            </p>
-            <a
-              href="mailto:hello@yourname.com"
-              className="inline-block mt-6 text-sm bg-white text-black font-medium px-5 py-2.5 rounded-full hover:bg-white/90 transition-colors"
-            >
-              Say hello
-            </a>
-          </div>
-        </div>
-      </section>
+        {/* ── Hero ── */}
+        <section className="flex flex-col md:flex-row md:items-start gap-10 md:gap-0 pt-10">
 
-      {/* Experience */}
-      <section className="py-16">
-        <h2 className="text-xs text-white/40 tracking-widest uppercase mb-12">
-          Experience
-        </h2>
-        <div className="flex flex-col divide-y divide-white/10">
-          {experience.map((job) => (
-            <div key={job.company} className="py-8 grid md:grid-cols-3 gap-4">
-              <div>
-                <p className="font-medium">{job.role}</p>
-                <p className="text-sm text-white/50 mt-1">{job.company}</p>
-                <p className="text-xs text-white/30 mt-1 font-mono">
-                  {job.period}
+          {/* Left column */}
+          <div className="flex flex-col gap-0 flex-1 min-w-0">
+            {/* Heading */}
+            <h1 className="text-[36px] font-bold leading-10 tracking-[-0.9px] text-white mb-6">
+              Designing systems at the edge of code
+            </h1>
+
+            {/* Bio paragraphs */}
+            <div className="flex flex-col gap-0">
+              <div className="pt-4 pb-0">
+                <p className="text-xl leading-[30px] text-[#A1A1AA]">
+                  I&apos;m a Senior Product Designer based in Lisbon, originally
+                  from Nigeria. For the past four years I&apos;ve been embedded
+                  with OneCart, designing their marketplace experience,
+                  rebuilding their internal OMS, and initiating their first
+                  cross-platform design system. I think in systems — tokens,
+                  state architecture, design-to-code pipelines.
                 </p>
               </div>
-              <div className="md:col-span-2">
-                <p className="text-white/60 leading-relaxed text-sm">
-                  {job.description}
+              <div className="pt-4">
+                <p className="text-xl leading-[30px] text-[#A1A1AA]">
+                  I&apos;m building toward a Design Engineer role where I can
+                  own both the design and the implementation. When I&apos;m not
+                  designing, I&apos;m running 10Ks around Lisbon or working on
+                  CrowdSync, my event operations startup.
                 </p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 border-t border-white/10">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <p className="text-white/50 text-sm">
-            Want to see my work first?
-          </p>
-          <Link
-            href="/"
-            className="text-sm border border-white/20 hover:border-white/60 px-5 py-2.5 rounded-full transition-colors self-start sm:self-auto"
-          >
-            View case studies
-          </Link>
-        </div>
-      </section>
+            {/* Left image */}
+            <div
+              className="relative w-full mt-8 rounded-[6px] overflow-hidden"
+              style={{ height: "555px" }}
+            >
+              <Image
+                src="/images/about/about image left.png"
+                alt="Emmanuel Anthony"
+                fill
+                quality={100}
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Right column — interactive image */}
+          <div className="md:ml-10 shrink-0 w-full md:w-[314px]">
+            <AboutRightImage />
+          </div>
+        </section>
+
+        {/* ── Testimonials ── */}
+        <section className="mt-20">
+          {/* Section header */}
+          <div className="pb-4 mb-12 border-b border-[#262626]">
+            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80">
+              What people say
+            </p>
+          </div>
+
+          {/* Cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[22px]">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="flex flex-col gap-4 p-4 border border-[#262626] rounded-[6px]"
+              >
+                <p className="text-[12px] leading-[18px] italic font-light tracking-[-0.9px] text-white flex-1">
+                  {t.quote}
+                </p>
+                <div className="flex flex-col gap-0.5">
+                  <p className="text-[14px] font-medium leading-[17px] tracking-[-0.9px] text-white">
+                    {t.name}
+                  </p>
+                  <p className="text-[12px] leading-[15px] tracking-[-0.9px] text-white/50">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Tools & Skills ── */}
+        <section className="mt-20 pb-20">
+          {/* Section header */}
+          <div className="pb-4 mb-8 border-b border-[#262626]">
+            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80">
+              Tools &amp; Skills
+            </p>
+          </div>
+
+          {/* Three-column skill groups */}
+          <div className="flex flex-col md:flex-row gap-[22px]">
+            {skillGroups.map((group, gi) => (
+              <div key={gi} className="flex flex-col gap-3 flex-1">
+                {group.map((row, ri) => (
+                  <div key={ri} className="flex flex-wrap gap-3">
+                    {row.map((pill) => (
+                      <span
+                        key={pill}
+                        className="text-[10px] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1"
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
     </div>
   );
 }
