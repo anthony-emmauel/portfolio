@@ -77,12 +77,12 @@ export default function Home() {
             Emmanuel Anthony
           </h1>
           <p className="hero-fade hero-fade-2 text-xs tracking-[0.2em] text-white/50 uppercase mb-6 md:mb-8">
-            Product Designer &nbsp;·&nbsp; Design Engineer
+            Senior Product Designer &nbsp;·&nbsp; Design Engineer
           </p>
           <p className="hero-fade hero-fade-3 text-lg md:text-2xl text-white/80 leading-snug max-w-xl font-normal">
-            I design products, then I build them — not prototypes, products.
-            Currently crafting digital experiences that bridge the gap between
-            design and code.
+            I design complex systems that deliver real outcomes. Products I&apos;ve
+            shaped have processed over $25M in transactions across e-commerce
+            and operational platforms.
           </p>
         </section>
 

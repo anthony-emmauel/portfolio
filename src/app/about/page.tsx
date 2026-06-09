@@ -96,20 +96,28 @@ export default function About() {
             <div className="flex flex-col gap-0">
               <div className="pt-4 pb-0">
                 <p className="text-lg md:text-xl leading-[28px] md:leading-[30px] text-[#A1A1AA]">
-                  I&apos;m a Senior Product Designer based in Lisbon, originally
-                  from Nigeria. For the past four years I&apos;ve been embedded
-                  with OneCart, designing their marketplace experience,
-                  rebuilding their internal OMS, and initiating their first
-                  cross-platform design system. I think in systems — tokens,
+                  I&apos;m a Senior Product Designer and Design Engineer based in Lisbon, originally
+                  from Nigeria. Over the past five years I&apos;ve designed complex systems that deliver
+                  real outcomes. Products I&apos;ve shaped have processed over $25M in transactions
+                  across e-commerce and nationwide sales operations.
+                </p>
+              </div>
+              <div className="pt-4">
+                <p className="text-lg md:text-xl leading-[28px] md:leading-[30px] text-[#A1A1AA]">
+                  Most recently I spent four years embedded with OneCart, designing their marketplace
+                  experience, rebuilding their internal OMS, and initiating their first cross-platform
+                  design system. Before that I designed the operational dashboard and ordering app that
+                  powered GBNL&apos;s sales rep network across Nigeria. I think in systems — tokens,
                   state architecture, design-to-code pipelines.
                 </p>
               </div>
               <div className="pt-4">
                 <p className="text-lg md:text-xl leading-[28px] md:leading-[30px] text-[#A1A1AA]">
-                  I&apos;m building toward a Design Engineer role where I can
-                  own both the design and the implementation. When I&apos;m not
-                  designing, I&apos;m running 10Ks around Lisbon or working on
-                  CrowdSync, my event operations startup.
+                  I&apos;m building toward a Design Engineer role where I can own both the design and
+                  the implementation. Right now I&apos;m doing that through NokGridCore, an open-source
+                  token-driven design system built specifically for dashboards. When I&apos;m not
+                  designing or building, I&apos;m running 10Ks around Lisbon or working on CrowdSync,
+                  my event operations startup.
                 </p>
               </div>
             </div>
