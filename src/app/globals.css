@@ -2,90 +2,202 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Design tokens — mirrors the Figma variable collections
+ *   "v2 / Theme"     (Light / Dark)          → --bg-*, --text-*, --border-*, …
+ *   "v2 / EB accent" (Ink / Orange / Blue / Yellow) → --eb-accent, --eb-on-accent, --eb-radius
+ *
+ * Theme is driven by <html data-theme="light|dark">. With no attribute (Auto)
+ * the OS preference wins. Accent is <html data-accent>, radius is set inline
+ * as --eb-radius. See src/lib/appearance.ts.
+ */
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  color-scheme: light;
+
+  --bg-page: #f5f4f0;
+  --bg-surface: #ffffff;
+  --bg-sunken: #eceae4;
+  --bg-stage: #e2ddd4;
+  --bg-inverse: #141413;
+  --text-primary: #141413;
+  --text-secondary: #5c5b56;
+  --text-tertiary: #8c8a84;
+  --text-inverse: #f5f4f0;
+  --border-subtle: #e3e1da;
+  --border-strong: #c9c6bd;
+  --accent-base: #e0522b;
+  --accent-soft: #fae2d8;
+  --accent-on: #ffffff;
+  --status-live: #1f9d55;
+  --canvas-dot: #d6d3ca;
+  --select-base: #2f6bff;
+  --select-soft: #e4ecff;
+
+  /* EB accent palette (mode-independent) */
+  --eb-orange: #ff5b1f;
+  --eb-blue: #2d5bff;
+  --eb-yellow: #ffd60a;
+  --eb-on-orange: #ffffff;
+  --eb-on-blue: #ffffff;
+  --eb-on-yellow: #141413;
+
+  /* EB accent — Ink (default) aliases text/primary so it flips in dark mode */
+  --eb-accent: var(--text-primary);
+  --eb-on-accent: var(--text-inverse);
+  --eb-radius: 2px;
 }
 
-* {
-  box-sizing: border-box;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg-page: #0d0d0c;
+    --bg-surface: #161615;
+    --bg-sunken: #1d1d1b;
+    --bg-stage: #1f1e1c;
+    --bg-inverse: #f2f1ed;
+    --text-primary: #f2f1ed;
+    --text-secondary: #a6a49e;
+    --text-tertiary: #6e6c67;
+    --text-inverse: #0d0d0c;
+    --border-subtle: #262624;
+    --border-strong: #3a3936;
+    --accent-base: #ff6a3d;
+    --accent-soft: #34190f;
+    --accent-on: #0d0d0c;
+    --status-live: #3ddc84;
+    --canvas-dot: #2a2a27;
+    --select-base: #5b8cff;
+    --select-soft: #18223d;
+  }
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-page: #0d0d0c;
+  --bg-surface: #161615;
+  --bg-sunken: #1d1d1b;
+  --bg-stage: #1f1e1c;
+  --bg-inverse: #f2f1ed;
+  --text-primary: #f2f1ed;
+  --text-secondary: #a6a49e;
+  --text-tertiary: #6e6c67;
+  --text-inverse: #0d0d0c;
+  --border-subtle: #262624;
+  --border-strong: #3a3936;
+  --accent-base: #ff6a3d;
+  --accent-soft: #34190f;
+  --accent-on: #0d0d0c;
+  --status-live: #3ddc84;
+  --canvas-dot: #2a2a27;
+  --select-base: #5b8cff;
+  --select-soft: #18223d;
+}
+
+:root[data-accent="orange"] {
+  --eb-accent: var(--eb-orange);
+  --eb-on-accent: var(--eb-on-orange);
+}
+:root[data-accent="blue"] {
+  --eb-accent: var(--eb-blue);
+  --eb-on-accent: var(--eb-on-blue);
+}
+:root[data-accent="yellow"] {
+  --eb-accent: var(--eb-yellow);
+  --eb-on-accent: var(--eb-on-yellow);
+}
+
+/* Figma text defaults to "normal" line height; Tailwind's preflight sets 1.5. */
 html {
-  scroll-behavior: smooth;
+  line-height: normal;
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
-  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--eb-accent);
+  color: var(--eb-on-accent);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 
-/* ── Lightbox animations ── */
-@keyframes lightboxBackdropIn {
+/* ── Radius slider ── */
+.eb-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+}
+.eb-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--eb-accent) 0 var(--fill),
+    var(--range-track) var(--fill) 100%
+  );
+}
+.eb-range::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--range-track);
+}
+.eb-range::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--eb-accent);
+}
+.eb-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+}
+.eb-range::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+}
+.eb-range:focus-visible {
+  outline: none;
+}
+.eb-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+.eb-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* ── Bottom sheet ── */
+@keyframes sheetIn {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes scrimIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-@keyframes lightboxBackdropOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
-@keyframes lightboxImageIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes lightboxImageOut {
-  from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.96); }
-}
-.lightbox-backdrop-in  { animation: lightboxBackdropIn  0.22s ease-out forwards; }
-.lightbox-backdrop-out { animation: lightboxBackdropOut 0.18s ease-in  forwards; }
-.lightbox-image-in     { animation: lightboxImageIn  0.22s ease-out forwards; }
-.lightbox-image-out    { animation: lightboxImageOut 0.18s ease-in  forwards; }
+.sheet-in { animation: sheetIn 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.sheet-in::backdrop { animation: scrimIn 200ms ease-out both; }
 
-/* ── Nav / footer link white glow on hover ── */
-.link-hover {
-  transition: color 150ms ease, text-shadow 150ms ease;
-}
-.link-hover:hover {
-  color: #fff;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
-}
-
-/* ── Hero stagger animations ── */
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-fade {
-  opacity: 0;
-  animation: fadeSlideUp 0.5s ease forwards;
-}
-.hero-fade-1 { animation-delay: 0ms; }
-.hero-fade-2 { animation-delay: 100ms; }
-.hero-fade-3 { animation-delay: 200ms; }
-
-/* ── Respect prefers-reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -94,9 +206,5 @@ body {
     animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .hero-fade {
-    opacity: 1 !important;
   }
 }

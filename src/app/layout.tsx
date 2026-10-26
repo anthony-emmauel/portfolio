@@ -1,37 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import AnimateSections from "@/components/AnimateSections";
-import PageTransition from "@/components/PageTransition";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+import { AppearanceProvider } from "@/components/appearance/AppearanceProvider";
+import { appearanceBootScript } from "@/lib/appearance";
+import { site } from "@content/site";
 
 export const metadata: Metadata = {
-  title: "Emmanuel Anthony — Product Designer & Design Engineer",
-  description:
-    "I design products, then I build them. Product Designer and Design Engineer crafting digital experiences that bridge the gap between design and code.",
+  title: `${site.name} — Senior Product Designer`,
+  description: site.bio,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased bg-black text-white`}>
-        <Nav />
-        <AnimateSections />
-        <main className="pt-14">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+    // data-theme / data-accent / --eb-radius are set by the boot script before hydration.
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: appearanceBootScript }} />
+      </head>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} bg-page font-sans text-primary`}>
+        <a
+          href="#main"
+          className="sr-only z-50 rounded-eb bg-accent px-3 py-2 text-[13px] text-accent-on focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to content
+        </a>
+        <AppearanceProvider>{children}</AppearanceProvider>
       </body>
     </html>
   );
