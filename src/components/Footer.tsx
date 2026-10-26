@@ -50,8 +50,8 @@ export default function Footer() {
                   Github
                 </a>
                 <a
-                  href="/resume/Emmanuel Anthony CVpdf.pdf"
-                  download="Emmanuel-Anthony-Resume.pdf"
+                  href="/resume/Emmanuel-Anthony-CV.pdf"
+                  download="Emmanuel-Anthony-CV.pdf"
                   className="text-sm text-white/60 link-hover"
                 >
                   Resume

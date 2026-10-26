@@ -34,7 +34,7 @@ export const site = {
     { label: "Email", href: "mailto:antorneejnr@gmail.com" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/emmanuel-anthony-639b07122/" },
     { label: "GitHub", href: "https://github.com/anthony-emmauel" },
-    { label: "CV", href: "/resume/Emmanuel Anthony CVpdf.pdf" },
+    { label: "CV", href: "/resume/Emmanuel-Anthony-CV.pdf" },
   ],
 
   credit: {
