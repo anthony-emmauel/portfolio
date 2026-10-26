@@ -8,14 +8,14 @@ import { MobileMenu } from "./MobileMenu";
  * single-column mobile layout (Figma "Mobile", 390): profile, pills, filters as
  * chips, then the collapsed "Make it yours" row above the content.
  *
- * `filters` renders vertically in the sidebar on desktop and as a chip row on
- * mobile — the slot receives the breakpoint so callers can pick the layout.
+ * `filters.list` sits in the sidebar on desktop; `filters.chips` sits above the
+ * collapsed widget on mobile.
  */
 export function SiteShell({
   filters,
   children,
 }: {
-  filters?: (layout: "list" | "chips") => React.ReactNode;
+  filters?: { list: React.ReactNode; chips: React.ReactNode };
   children: React.ReactNode;
 }) {
   return (
@@ -28,7 +28,7 @@ export function SiteShell({
           <MetaRows />
           <SiteLinks />
           <div className="flex w-full flex-col gap-4">
-            {filters?.("list")}
+            {filters?.list}
             <MakeItYoursCard />
           </div>
         </div>
@@ -41,7 +41,7 @@ export function SiteShell({
         <MetaPills />
         <SiteLinks />
         <div className="flex flex-col gap-3">
-          {filters?.("chips")}
+          {filters?.chips}
           <MakeItYoursCollapsed />
         </div>
       </header>

@@ -1,0 +1,131 @@
+[
+  {
+    "title": "Same library, different patterns",
+    "url": "https://medium.com/design-bootcamp/same-library-different-patterns-b2501ca59361",
+    "date": "2026-10-02T11:08:51.000Z",
+    "readingMinutes": 3,
+    "tags": [
+      "product-design",
+      "ui-library",
+      "design-systems",
+      "front-end-development",
+      "ux-design"
+    ],
+    "excerpt": "Why dashboards need more than components."
+  },
+  {
+    "title": "Your design is not the final product",
+    "url": "https://medium.com/design-bootcamp/your-design-is-not-the-final-product-8d4a17933e25",
+    "date": "2026-09-24T09:55:37.000Z",
+    "readingMinutes": 3,
+    "tags": [
+      "front-end-development",
+      "software-engineering",
+      "ux-design",
+      "product-management"
+    ],
+    "excerpt": "What changes when design meets real implementation."
+  },
+  {
+    "title": "The ROI of Information Architecture",
+    "url": "https://medium.com/design-bootcamp/the-roi-of-information-architecture-560d961e0114",
+    "date": "2026-07-17T11:10:37.000Z",
+    "readingMinutes": 3,
+    "tags": [
+      "business-strategy",
+      "ux-design",
+      "information-architecture",
+      "ux"
+    ],
+    "excerpt": "Why IA decisions are business decisions."
+  },
+  {
+    "title": "Every product starts in chaos",
+    "url": "https://medium.com/design-bootcamp/every-product-starts-in-chaos-36c3463b24f6",
+    "date": "2026-07-13T11:09:00.000Z",
+    "readingMinutes": 4,
+    "tags": [],
+    "excerpt": "And why systems thinking is how you respond to it."
+  },
+  {
+    "title": "How many screens will this produce?",
+    "url": "https://medium.com/design-bootcamp/how-many-screens-will-this-produce-1658f8156ac6",
+    "date": "2026-06-26T10:31:45.000Z",
+    "readingMinutes": 5,
+    "tags": [
+      "apprenticeship",
+      "product-design",
+      "ux-design",
+      "learning"
+    ],
+    "excerpt": "Why designers default to output thinking and what it costs them."
+  },
+  {
+    "title": "Founder or co-founder…. not just a title",
+    "url": "https://antorneejnr.medium.com/founder-or-co-founder-not-just-a-title-8e19deefe3cd",
+    "date": "2026-06-19T13:34:25.000Z",
+    "readingMinutes": 3,
+    "tags": [
+      "building",
+      "business",
+      "founders"
+    ],
+    "excerpt": "Be ready to always question why you started, and be comfortable doubting yourself."
+  },
+  {
+    "title": "Data-Driven Design: The Foundation of Effective UX Strategies",
+    "url": "https://antorneejnr.medium.com/data-driven-design-the-foundation-of-effective-ux-strategies-2396ee9cf19d",
+    "date": "2024-02-12T16:25:12.000Z",
+    "readingMinutes": 4,
+    "tags": [
+      "ux-design",
+      "ux-strategy",
+      "leadership",
+      "design",
+      "product-design"
+    ],
+    "excerpt": "In the last few years, more and more design-focused companies are adopting UX strategy."
+  },
+  {
+    "title": "Case study: A peer to peer platform where people can rent & borrow an item",
+    "url": "https://medium.com/design-bootcamp/ejoor-a-peer-to-peer-platform-where-people-can-rent-borrow-an-item-a1ddcede92f3",
+    "date": "2021-08-24T20:54:59.000Z",
+    "readingMinutes": 3,
+    "tags": [
+      "ux",
+      "case-study",
+      "product-design",
+      "ui-design",
+      "fintech"
+    ],
+    "excerpt": "A Product Design challenge case study."
+  },
+  {
+    "title": "USABILITY HEURISTICS: Evaluation, principle and relevance to user experience and user interface.",
+    "url": "https://antorneejnr.medium.com/usability-heuristics-evaluation-principle-and-relevance-to-user-experience-and-user-interface-4df8e417e70c",
+    "date": "2021-03-13T12:23:19.000Z",
+    "readingMinutes": 1,
+    "tags": [
+      "heuristic-evaluation",
+      "design-thinking",
+      "user-experience-design",
+      "usability-testing",
+      "usability-heuristics"
+    ],
+    "excerpt": "MEANING."
+  },
+  {
+    "title": "LEAN UX: Applying Lean Principle To Improve User Experience (book summary)",
+    "url": "https://antorneejnr.medium.com/lean-ux-applying-lean-principle-to-improve-user-experience-book-summary-e5947f0471e3",
+    "date": "2021-03-03T17:29:47.000Z",
+    "readingMinutes": 4,
+    "tags": [
+      "design-thinking-mindset",
+      "book-summary",
+      "user-experience",
+      "ux-writing",
+      "lean-ux"
+    ],
+    "excerpt": "I read a book by Jeff Gothelf titled “LEAN UX” which I find very helpful as a UX designer, the author outlined some of the principles of creating a product in a collaborative way with a cross-functional team based on what the user what."
+  }
+]

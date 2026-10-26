@@ -1,13 +1,24 @@
+import { notes } from "@content/notes";
 import { SiteShell } from "@/components/shell/SiteShell";
+import { FeedProvider } from "@/components/feed/FeedState";
+import { Filters } from "@/components/feed/Filters";
+import { Changelog } from "@/components/feed/Changelog";
+import { counts, entries, latestReleaseSlug } from "@/lib/entries";
 
-// Stage 1 (tokens + layout). The changelog feed and filters land in stage 2.
+// Rebuild daily so new Medium posts appear even without a content commit.
+export const revalidate = 86400;
+
 export default function Home() {
   return (
-    <SiteShell>
-      <div className="flex w-full justify-between border-b border-subtle pb-3 font-mono text-[11px] text-tertiary">
-        <span>changelog</span>
-        <span>FEED · STAGE 2</span>
-      </div>
-    </SiteShell>
+    <FeedProvider>
+      <SiteShell
+        filters={{
+          list: <Filters layout="list" counts={counts} />,
+          chips: <Filters layout="chips" counts={counts} />,
+        }}
+      >
+        <Changelog entries={entries} counts={counts} notes={notes} latestReleaseSlug={latestReleaseSlug} />
+      </SiteShell>
+    </FeedProvider>
   );
 }

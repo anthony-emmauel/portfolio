@@ -14,6 +14,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        serif: ["var(--font-newsreader)", "Georgia", "serif"],
       },
       colors: {
         accent: { DEFAULT: "var(--eb-accent)", on: "var(--eb-on-accent)" },
