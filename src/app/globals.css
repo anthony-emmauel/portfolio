@@ -216,16 +216,6 @@ body {
   }
 }
 
-/* "Make it yours" → Motion: Off does the same, whatever the OS setting. */
-[data-motion="off"] *,
-[data-motion="off"] *::before,
-[data-motion="off"] *::after {
-  animation-duration: 0.01ms !important;
-  animation-delay: 0ms !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
-}
-
 /* Theme/accent switch: no colour transitions for that one frame. */
 [data-switching] *,
 [data-switching] *::before,

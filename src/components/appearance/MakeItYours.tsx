@@ -2,19 +2,13 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { site } from "@content/site";
-import { ACCENTS, RADIUS_MAX, RADIUS_MIN, type MotionPref, type ThemePref } from "@/lib/appearance";
+import { ACCENTS, RADIUS_MAX, RADIUS_MIN, type ThemePref } from "@/lib/appearance";
 import { useAppearance } from "./AppearanceProvider";
 
 const THEMES: { id: ThemePref; label: string }[] = [
   { id: "light", label: "Light" },
   { id: "dark", label: "Dark" },
   { id: "auto", label: "Auto" },
-];
-
-// Off is the pause control for the looping covers and the intro (WCAG 2.2.2).
-const MOTION: { id: MotionPref; label: string }[] = [
-  { id: "on", label: "On" },
-  { id: "off", label: "Off" },
 ];
 
 /** Segmented radio group (Figma "Theme segment"). */
@@ -149,13 +143,6 @@ function Controls({ track }: { track: "subtle" | "strong" }) {
         options={THEMES}
         value={appearance.theme}
         onChange={(theme) => update({ theme })}
-      />
-      <Segmented
-        name={`${name}-motion`}
-        label="MOTION"
-        options={MOTION}
-        value={appearance.motion}
-        onChange={(motion) => update({ motion })}
       />
     </div>
   );
