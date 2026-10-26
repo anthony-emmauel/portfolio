@@ -20,7 +20,7 @@ export const site = {
   meta: {
     // EXACT
     now: "Senior Product Designer · Scrums.com, embedded at OneCart",
-    focus: "Design systems · ops tools",
+    focus: ["Design systems", "ops tools", "platform tools", "mobile applications", "service design"],
   },
 
   status: {

@@ -42,6 +42,24 @@ export function Bio() {
   );
 }
 
+/** "A · B · C", breaking only between items (never inside one, never before a dot). */
+function Focus() {
+  const items = site.meta.focus;
+  return (
+    <>
+      {items.map((f, i) => (
+        <span key={f}>
+          <span className="whitespace-nowrap">
+            {f}
+            {i < items.length - 1 && " ·"}
+          </span>
+          {i < items.length - 1 && " "}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export type MetaRow = { label: string; value: React.ReactNode; align?: "start" };
 
 /** Labelled rows with top borders (sidebar facts; case-study project meta). */
@@ -69,7 +87,7 @@ export function MetaRows() {
     <MetaList
       rows={[
         { label: "NOW", value: site.meta.now, align: "start" },
-        { label: "FOCUS", value: site.meta.focus },
+        { label: "FOCUS", value: <Focus />, align: "start" },
         {
           label: "STATUS",
           value: (
@@ -101,7 +119,12 @@ export function MetaPills() {
   return (
     <ul className="flex flex-wrap gap-1.5">
       <li className={pill}>{site.meta.now}</li>
-      <li className={pill}>{site.meta.focus}</li>
+      {/* Five areas: this pill wraps (the others stay on one line) */}
+      <li className={`${pill} !whitespace-normal rounded-[14px]`}>
+        <span>
+          <Focus />
+        </span>
+      </li>
       <li className={pill}>
         {site.status.open && <StatusDot />}
         {site.status.label}
