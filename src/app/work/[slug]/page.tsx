@@ -9,7 +9,6 @@ import { WalkthroughButton } from "@/components/case/WalkthroughButton";
 import { walkthrough } from "@content/case-studies/walkthrough";
 import { OnThisPageDropdown, OnThisPageList } from "@/components/case/OnThisPage";
 import { MetaList, ProfileHeader, SiteLinks, StatusDot } from "@/components/shell/Profile";
-import { MobileMenu } from "@/components/shell/MobileMenu";
 import { caseStudySlugs, getCaseStudy, type NavLink } from "@/lib/case-studies";
 import { pad2 } from "@/lib/feed";
 
@@ -105,12 +104,9 @@ export default function CaseStudyPage({ params }: Props) {
 
       {/* Mobile header + sticky section picker */}
       <header className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="text-[0.875rem] font-medium text-primary">
-            <span aria-hidden>← </span>Changelog
-          </Link>
-          <MobileMenu />
-        </div>
+        <Link href="/" className="self-start text-[0.875rem] font-medium text-primary">
+          <span aria-hidden>← </span>Changelog
+        </Link>
       </header>
       <div className="sticky top-2 z-20 mx-4 mt-5 lg:hidden">
         <OnThisPageDropdown items={toc} />

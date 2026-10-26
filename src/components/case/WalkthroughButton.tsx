@@ -75,8 +75,9 @@ export function WalkthroughButton({
         <div
           role="menu"
           aria-label="Request a walkthrough"
-          className={`absolute top-full z-30 mt-1.5 w-60 overflow-hidden rounded-[4px] border border-subtle bg-surface py-1 shadow-sheet ${
-            align === "end" ? "right-0" : "left-0"
+          className={`absolute top-full z-30 mt-1.5 w-60 overflow-hidden max-w-[calc(100vw-32px)] rounded-[4px] border border-subtle bg-surface py-1 shadow-sheet ${
+            // On mobile the trigger sits at the start of a stacked block, so open from the left there.
+            align === "end" ? "left-0 lg:left-auto lg:right-0" : "left-0"
           }`}
         >
           <a role="menuitem" href={links.mailto} onClick={() => setOpen(false)} className={item}>

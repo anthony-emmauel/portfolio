@@ -1,6 +1,5 @@
 import { MakeItYoursCard, MakeItYoursCollapsed } from "@/components/appearance/MakeItYours";
 import { Bio, MetaPills, MetaRows, ProfileHeader, SiteLinks } from "./Profile";
-import { MobileMenu } from "./MobileMenu";
 
 /**
  * Two-column page shell (Figma "Home · Desktop", 1440): 360px sticky sidebar +
@@ -36,7 +35,7 @@ export function SiteShell({
 
       {/* Mobile header */}
       <header data-intro-part="main" className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
-        <ProfileHeader asHeading trailing={<MobileMenu />} />
+        <ProfileHeader asHeading />
         <Bio />
         <MetaPills />
         <SiteLinks />

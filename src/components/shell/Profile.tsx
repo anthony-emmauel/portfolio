@@ -5,9 +5,9 @@ export function StatusDot() {
   return <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-live" />;
 }
 
-/** Avatar + name + role. Desktop 48px avatar, mobile 44px with a MENU slot. */
+/** Avatar + name + role. Desktop 48px avatar, mobile 44px. */
 /** `asHeading`: the name is the page's <h1> (home), otherwise a paragraph (case studies have their own h1). */
-export function ProfileHeader({ trailing, asHeading = false }: { trailing?: React.ReactNode; asHeading?: boolean }) {
+export function ProfileHeader({ asHeading = false }: { asHeading?: boolean }) {
   const Name = asHeading ? "h1" : "p";
   return (
     <div className="flex w-full items-center justify-between">
@@ -31,7 +31,6 @@ export function ProfileHeader({ trailing, asHeading = false }: { trailing?: Reac
           <p className="text-[0.75rem] leading-[1.4] text-secondary">{site.role}</p>
         </div>
       </div>
-      {trailing}
     </div>
   );
 }
