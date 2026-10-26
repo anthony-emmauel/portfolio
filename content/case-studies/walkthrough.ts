@@ -1,5 +1,17 @@
 import { site } from "../site";
 
-// TODO(v2.3): confirm where "Request a walkthrough" should go (email for now).
-export const walkthroughHref = (title: string) =>
-  `mailto:${site.email}?subject=${encodeURIComponent(`Walkthrough: ${title}`)}`;
+// "Request a walkthrough" (NDA notice bar + closing CTA) opens an email to me
+// with the case study in the subject and a short template to fill in.
+export const walkthroughHref = (title: string) => {
+  const subject = `Walkthrough: ${title}`;
+  const body = [
+    "Hi Emmanuel,",
+    "",
+    `I'd like a 30-minute walkthrough of ${title}.`,
+    "",
+    "Name:",
+    "Company / role:",
+    "A few times that work for me:",
+  ].join("\n");
+  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
