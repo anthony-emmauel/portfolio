@@ -5,6 +5,8 @@ import { site } from "@content/site";
 import { MakeItYoursCard } from "@/components/appearance/MakeItYours";
 import { BlockView, Diff } from "@/components/case/Blocks";
 import { CoverMedia } from "@/components/media/CoverMedia";
+import { WalkthroughButton } from "@/components/case/WalkthroughButton";
+import { walkthrough } from "@content/case-studies/walkthrough";
 import { OnThisPageDropdown, OnThisPageList } from "@/components/case/OnThisPage";
 import { MetaList, ProfileHeader, SiteLinks, StatusDot } from "@/components/shell/Profile";
 import { MobileMenu } from "@/components/shell/MobileMenu";
@@ -146,9 +148,13 @@ export default function CaseStudyPage({ params }: Props) {
               </External>
             ))}
             {cs.entry.nda && (
-              <a href={cs.cta.button.href} className="text-[13px] font-medium text-primary hover:underline">
+              <WalkthroughButton
+                links={walkthrough(cs.cta.button.walkthrough ?? cs.entry.title)}
+                align="end"
+                className="text-[13px] font-medium text-primary hover:underline"
+              >
                 Request a walkthrough <span aria-hidden>→</span>
-              </a>
+              </WalkthroughButton>
             )}
           </aside>
 
@@ -197,7 +203,15 @@ export default function CaseStudyPage({ params }: Props) {
               <p className="text-[18px] font-medium text-primary @[720px]:text-[22px]">{cs.cta.title}</p>
               <p className="max-w-[520px] text-[14px] leading-[1.55] text-secondary">{cs.cta.text}</p>
             </div>
-            {cs.cta.button.external ? (
+            {cs.cta.button.walkthrough ? (
+              <WalkthroughButton
+                links={walkthrough(cs.cta.button.walkthrough)}
+                align="end"
+                className="block rounded-[4px] bg-inverse px-[18px] py-3 text-[14px] font-medium text-on-inverse"
+              >
+                {cs.cta.button.label}
+              </WalkthroughButton>
+            ) : cs.cta.button.external ? (
               <External
                 href={cs.cta.button.href}
                 className="shrink-0 rounded-[4px] bg-inverse px-[18px] py-3 text-[14px] font-medium text-on-inverse"

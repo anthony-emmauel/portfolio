@@ -130,7 +130,7 @@ const study: CaseStudy = {
   cta: {
     title: "Want the full story?",
     text: "Real screens and the research are in a 30-minute walkthrough.",
-    button: { label: "Request a walkthrough →", href: walkthroughHref("OneCart") },
+    button: { label: "Request a walkthrough →", href: walkthroughHref("OneCart"), walkthrough: "OneCart" },
   },
 };
 export default study;

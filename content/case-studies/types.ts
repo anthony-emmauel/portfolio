@@ -51,5 +51,10 @@ export type CaseStudy = {
   hero: { src: string; alt: string; video?: { src: string; startAt?: number } };
   glance: { label: string; diff: DiffLine[] };
   sections: Section[];
-  cta: { title: string; text: string; button: { label: string; href: string; external?: boolean } };
+  cta: {
+    title: string;
+    text: string;
+    /** `walkthrough`: the case-study name — renders the email/Gmail/copy menu instead of a plain link. */
+    button: { label: string; href: string; external?: boolean; walkthrough?: string };
+  };
 };

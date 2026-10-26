@@ -174,7 +174,7 @@ const study: CaseStudy = {
   cta: {
     title: "Want the full story?",
     text: "The real token set, component audit and adoption plan are in a 30-minute walkthrough.",
-    button: { label: "Request a walkthrough →", href: walkthroughHref("SystemOne") },
+    button: { label: "Request a walkthrough →", href: walkthroughHref("SystemOne"), walkthrough: "SystemOne" },
   },
 };
 export default study;

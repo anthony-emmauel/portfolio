@@ -171,7 +171,7 @@ const study: CaseStudy = {
   cta: {
     title: "Want the full story?",
     text: "Real screens, the survey results and the full decision log are in a 30-minute walkthrough.",
-    button: { label: "Request a walkthrough →", href: walkthroughHref("Spotlight 2.0") },
+    button: { label: "Request a walkthrough →", href: walkthroughHref("Spotlight 2.0"), walkthrough: "Spotlight 2.0" },
   },
 };
 export default study;
