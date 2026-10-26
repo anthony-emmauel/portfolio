@@ -29,6 +29,8 @@ export type ReleaseEntry = Base & {
   tag: string;
   nda?: boolean;
   cover: string;
+  /** Looping cover: `src` is the path without extension (.webm + .mp4); `startAt` (s) matches the poster. */
+  coverVideo?: { src: string; startAt?: number };
   diffLabel?: string;
   diff?: DiffLine[];
 };
@@ -44,6 +46,7 @@ export type ExplorationEntry = Base & {
   role: string;
   tag?: string;
   cover: string;
+  coverVideo?: { src: string; startAt?: number };
   /** live: built, shown in an iframe · image: design only, shown in an image viewer */
   media: "live" | "image";
   links?: { live?: string; caseStudy?: string };

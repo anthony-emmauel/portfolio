@@ -12,7 +12,7 @@ const study: CaseStudy = {
     { label: "TIMELINE", value: "2022 → 2023" },
   ],
   notice: { tag: "NDA" },
-  hero: { src: "/work/onecart/poster.png", alt: "" },
+  hero: { src: "/work/onecart/poster.png", alt: "", video: { src: "/work/onecart/cover", startAt: 6 } },
   glance: {
     label: "SHIPPED",
     diff: [

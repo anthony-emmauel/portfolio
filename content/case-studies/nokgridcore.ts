@@ -21,7 +21,7 @@ const study: CaseStudy = {
       { label: "GitHub", href: REPO },
     ],
   },
-  hero: { src: "/work/nokgridcore/poster.png", alt: "" },
+  hero: { src: "/work/nokgridcore/poster.png", alt: "", video: { src: "/work/nokgridcore/cover", startAt: 2 } },
   glance: {
     label: "1.0 RELEASE",
     diff: [

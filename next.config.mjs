@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: { formats: ["image/avif", "image/webp"] },
   async redirects() {
     // v2 slugs → v2.3 slugs (match the Figma breadcrumbs)
     return [

@@ -12,6 +12,7 @@ const entry: ExplorationEntry = {
   role: "Design + build · Figma to a live site",
   tag: "LIVE SITE",
   cover: "/work/base360/poster.png",
+  coverVideo: { src: "/work/base360/cover", startAt: 0.5 },
   media: "live",
   links: { live: "https://visionary-pegasus-d7362a.netlify.app/" },
   modal: {

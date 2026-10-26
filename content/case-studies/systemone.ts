@@ -12,7 +12,7 @@ const study: CaseStudy = {
     { label: "TIMELINE", value: "2025 → now" },
   ],
   notice: { tag: "NDA" },
-  hero: { src: "/work/systemone/poster.png", alt: "" },
+  hero: { src: "/work/systemone/poster.png", alt: "", video: { src: "/work/systemone/cover", startAt: 2 } },
   glance: {
     label: "LIVE",
     diff: [

@@ -14,6 +14,7 @@ const entry: ReleaseEntry = {
   role: "Initiated and led · audit, token architecture, rollout",
   tag: "225+ TOKENS",
   cover: "/work/systemone/poster.png",
+  coverVideo: { src: "/work/systemone/cover", startAt: 2 },
   diff: [
     { sign: "+", text: "adopted by the OneCart product team" },
     { sign: "-", text: "3 different hex values for “primary”" },

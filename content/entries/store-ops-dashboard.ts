@@ -12,6 +12,7 @@ const entry: ExplorationEntry = {
   role: "Design · built with NokGridCore",
   tag: "NOKGRID",
   cover: "/work/store-ops-dashboard/poster.png",
+  coverVideo: { src: "/work/store-ops-dashboard/cover", startAt: 2 },
   media: "image",
   links: { caseStudy: "/work/nokgridcore" },
   modal: {

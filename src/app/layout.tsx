@@ -5,6 +5,7 @@ import { Newsreader } from "next/font/google";
 import "./globals.css";
 import { AppearanceProvider } from "@/components/appearance/AppearanceProvider";
 import { appearanceBootScript } from "@/lib/appearance";
+import { introBootScript } from "@/lib/intro";
 import { site } from "@content/site";
 
 // Testimonial quotes (Figma: Newsreader Italic 400).
@@ -30,7 +31,7 @@ export default function RootLayout({
     // data-theme / data-accent / --eb-radius are set by the boot script before hydration.
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: appearanceBootScript }} />
+        <script dangerouslySetInnerHTML={{ __html: appearanceBootScript + introBootScript }} />
       </head>
       <body className={`${GeistSans.variable} ${GeistMono.variable} ${newsreader.variable} bg-page font-sans text-primary`}>
         <a

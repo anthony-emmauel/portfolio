@@ -48,7 +48,7 @@ export type CaseStudy = {
   meta: { label: string; value: string; /** green status dot, e.g. "In build" */ live?: boolean }[];
   /** NDA studies show the fixed NDA line; open ones say their own thing with links. */
   notice: { tag: string; text?: string; links?: { label: string; href: string }[] };
-  hero: { src: string; alt: string };
+  hero: { src: string; alt: string; video?: { src: string; startAt?: number } };
   glance: { label: string; diff: DiffLine[] };
   sections: Section[];
   cta: { title: string; text: string; button: { label: string; href: string; external?: boolean } };

@@ -12,6 +12,7 @@ const entry: ReleaseEntry = {
   role: "Design lead · research, tokens, Figma library · built the landing page",
   tag: "69 COMPONENTS",
   cover: "/work/nokgridcore/poster.png",
+  coverVideo: { src: "/work/nokgridcore/cover", startAt: 2 },
   diff: [
     { sign: "+", text: "69 components, 400+ tokens, light and dark" },
     { sign: "+", text: "full ops dashboard built only from its parts →" },

@@ -13,6 +13,7 @@ const entry: ReleaseEntry = {
   role: "Lead product designer · research, discovery, order tracking",
   tag: "+29% RETURNING USERS",
   cover: "/work/onecart/poster.png",
+  coverVideo: { src: "/work/onecart/cover", startAt: 6 },
   diff: [
     { sign: "+", text: "27% new users · 18% revenue (YoY)" },
     { sign: "-", text: "“where is my order?” tickets" },

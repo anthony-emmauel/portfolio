@@ -5,6 +5,7 @@ import type { FilterId } from "@/lib/feed";
 import { Changelog } from "./Changelog";
 import { FeedProvider } from "./FeedState";
 import { Filters } from "./Filters";
+import { IntroOverlay } from "./IntroOverlay";
 
 /** The changelog home. Also rendered under a directly-opened exploration. */
 export function HomeView({ initialFilter }: { initialFilter?: FilterId }) {
@@ -18,6 +19,7 @@ export function HomeView({ initialFilter }: { initialFilter?: FilterId }) {
       >
         <Changelog entries={entries} counts={counts} notes={notes} latestReleaseSlug={latestReleaseSlug} />
       </SiteShell>
+      <IntroOverlay />
     </FeedProvider>
   );
 }

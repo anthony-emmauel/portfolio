@@ -14,6 +14,7 @@ const entry: ReleaseEntry = {
   role: "Lead product designer · research with 35 ops users, status model, IA",
   tag: "IN BUILD",
   cover: "/work/spotlight-2/poster.png",
+  coverVideo: { src: "/work/spotlight-2/cover", startAt: 2 },
   diffLabel: "PHASE 1 SCOPE",
   diff: [
     { sign: "+", text: "live order list, no manual refresh" },

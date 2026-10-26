@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CoverMedia } from "@/components/media/CoverMedia";
 import Link from "next/link";
 import type {
   DiffLine,
@@ -37,6 +38,8 @@ function Marker({ size, filled }: { size: "release" | "patch"; filled?: boolean 
 function VersionTag({ version, latest }: { version: string; latest: boolean }) {
   return (
     <span
+      // The intro's v4.3.0 tag flies to whichever of these is visible (FLIP target).
+      data-intro-target={latest || undefined}
       className={`inline-flex rounded-eb px-[7px] py-[3px] font-mono text-[11px] tracking-[0.11px] ${
         latest ? "bg-accent text-accent-on" : "bg-sunken text-primary"
       }`}
@@ -76,6 +79,7 @@ function Row({
       </div>
 
       <div
+        data-intro-line={latest || undefined}
         className={`flex min-w-0 flex-1 flex-col border-l border-strong pl-4 lg:pl-6 ${
           release ? "gap-3 pb-[30px] pt-[22px] lg:gap-3.5 lg:pb-10 lg:pt-7" : "gap-3 pb-5 pt-4 lg:gap-2.5 lg:pb-6 lg:pt-[18px]"
         }`}
@@ -146,22 +150,26 @@ function MediaCard({
   href,
   badge,
   tag,
+  coverIndex,
 }: {
   entry: Versioned<ReleaseEntry> | Versioned<ExplorationEntry>;
   href: string;
   badge: string;
   tag?: string;
+  /** Position among the covers in the current view: drives eager loading and the intro's skeleton stagger. */
+  coverIndex: number;
 }) {
   return (
     <div className="group relative overflow-hidden rounded-eb border border-subtle bg-surface transition-colors hover:border-strong">
       <div aria-hidden className="relative aspect-[596/373] bg-stage">
-        <Image
-          src={entry.cover}
-          alt=""
-          fill
+        <CoverMedia
+          poster={entry.cover}
+          video={entry.coverVideo?.src}
+          startAt={entry.coverVideo?.startAt}
+          priority={coverIndex === 0}
           sizes="(min-width: 1024px) 596px, calc(100vw - 48px)"
-          className="object-cover"
         />
+        <span className="intro-skeleton" style={{ "--i": coverIndex } as React.CSSProperties} />
         <span className="absolute left-2.5 top-2.5 flex items-center gap-1.5 rounded-eb bg-surface px-2 py-1 font-mono text-[10px] tracking-[0.1px] text-primary lg:left-3 lg:top-3">
           <span className="size-1.5 rounded-full bg-accent" />
           {badge}
@@ -193,7 +201,15 @@ function MediaCard({
   );
 }
 
-export function ReleaseItem({ entry, latest }: { entry: Versioned<ReleaseEntry>; latest: boolean }) {
+export function ReleaseItem({
+  entry,
+  latest,
+  coverIndex,
+}: {
+  entry: Versioned<ReleaseEntry>;
+  latest: boolean;
+  coverIndex: number;
+}) {
   return (
     <Row entry={entry} latest={latest}>
       <DesktopLabel label={`RELEASE · ${entry.kind.toUpperCase()}`} />
@@ -202,18 +218,25 @@ export function ReleaseItem({ entry, latest }: { entry: Versioned<ReleaseEntry>;
         href={`/work/${entry.slug}`}
         badge={entry.nda ? "CASE STUDY · NDA" : "CASE STUDY"}
         tag={entry.tag}
+        coverIndex={coverIndex}
       />
       {entry.diff && <Diff label={entry.diffLabel} lines={entry.diff} />}
     </Row>
   );
 }
 
-export function ExplorationItem({ entry }: { entry: Versioned<ExplorationEntry> }) {
+export function ExplorationItem({ entry, coverIndex }: { entry: Versioned<ExplorationEntry>; coverIndex: number }) {
   if (entry.kind === "side project") return <SideProjectItem entry={entry} />;
   return (
     <Row entry={entry} latest={false}>
       <DesktopLabel label={`EXPLORATION · ${entry.kind.toUpperCase()}`} title={entry.title} />
-      <MediaCard entry={entry} href={`/explorations/${entry.slug}`} badge="EXPLORATION" tag={entry.tag} />
+      <MediaCard
+        entry={entry}
+        href={`/explorations/${entry.slug}`}
+        badge="EXPLORATION"
+        tag={entry.tag}
+        coverIndex={coverIndex}
+      />
     </Row>
   );
 }

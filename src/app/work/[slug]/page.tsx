@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { site } from "@content/site";
 import { MakeItYoursCard } from "@/components/appearance/MakeItYours";
 import { BlockView, Diff } from "@/components/case/Blocks";
+import { CoverMedia } from "@/components/media/CoverMedia";
 import { OnThisPageDropdown, OnThisPageList } from "@/components/case/OnThisPage";
 import { MetaList, ProfileHeader, SiteLinks, StatusDot } from "@/components/shell/Profile";
 import { MobileMenu } from "@/components/shell/MobileMenu";
@@ -143,7 +143,13 @@ export default function CaseStudyPage({ params }: Props) {
           </aside>
 
           <div aria-hidden className="relative aspect-[920/575] overflow-hidden rounded-[6px] bg-stage">
-            <Image src={cs.hero.src} alt="" fill priority sizes="(min-width: 1024px) 920px, 100vw" className="object-cover" />
+            <CoverMedia
+              poster={cs.hero.src}
+              video={cs.hero.video?.src}
+              startAt={cs.hero.video?.startAt}
+              priority
+              sizes="(min-width: 1024px) 920px, 100vw"
+            />
           </div>
 
           <section aria-labelledby="glance" className="flex flex-col gap-3.5">

@@ -43,12 +43,16 @@ export function Changelog({
       </div>
 
       <div>
-        {visible.map((e) => {
+        {visible.map((e, i) => {
+          // Index among cards with a cover image, in display order.
+          const coverIndex = visible
+            .slice(0, i)
+            .filter((v) => v.type === "release" || (v.type === "exploration" && v.kind !== "side project")).length;
           switch (e.type) {
             case "release":
-              return <ReleaseItem key={e.slug} entry={e} latest={e.slug === latestReleaseSlug} />;
+              return <ReleaseItem key={e.slug} entry={e} latest={e.slug === latestReleaseSlug} coverIndex={coverIndex} />;
             case "exploration":
-              return <ExplorationItem key={e.slug} entry={e} />;
+              return <ExplorationItem key={e.slug} entry={e} coverIndex={coverIndex} />;
             case "writing":
               return <WritingItem key={e.slug} entry={e} />;
             case "note":

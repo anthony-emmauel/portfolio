@@ -208,3 +208,169 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── First-visit intro (Figma 611:11802) ──────────────────────────────────
+   Only active while <html data-intro="play">, set by the pre-paint script.
+   Timings follow the 10.5s Figma timeline: counter 0–1.1s, tag springs to
+   1.15× and flies to the gutter 1.1–2.75s, sidebar reveals 2.25–3.1s, main
+   2.75–3.5s, line draws 2.5–3.75s, covers crossfade from ≈4.0s, 0.4s apart.
+   Everything ends in a hidden state, so the overlay clears without JS. */
+.intro,
+.intro-skeleton {
+  display: none;
+}
+[data-intro="play"] .intro {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.intro-panel {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-page);
+}
+.intro-panel-side {
+  display: none;
+}
+.intro-panel-main {
+  animation: introOut 750ms ease-out 2.25s forwards;
+}
+@media (min-width: 1024px) {
+  .intro-panel-side {
+    display: block;
+    right: auto;
+    width: 360px;
+    animation: introOut 875ms ease-out 2.25s forwards;
+  }
+  .intro-panel-main {
+    left: 360px;
+    animation: introOut 750ms ease-out 2.75s forwards;
+  }
+}
+.intro-tag {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: var(--eb-radius);
+  background: var(--eb-accent);
+  color: var(--eb-on-accent);
+  padding: 3px 7px;
+  font: 11px/normal var(--font-geist-mono), ui-monospace, monospace;
+  letter-spacing: 0.11px;
+  opacity: 0;
+}
+.intro-step {
+  animation: introBlip 375ms linear var(--d);
+}
+/* The fly and line animations need measured positions, so they're attached
+   once IntroOverlay has set --dx/--dy/--lx… (data-ready), starting at
+   --t0 = −(time already elapsed) to stay on the shared timeline. Without JS
+   they never run and the counter simply fades away. */
+.intro[data-ready] .intro-fly {
+  animation: introFly 3.5s linear var(--t0, 0ms) forwards;
+}
+.intro-meta {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 28px);
+  translate: -50% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  animation: introOut 300ms cubic-bezier(0.5, 0, 0.5, 1) 1.5s forwards;
+}
+.intro-dots {
+  display: flex;
+  gap: 6px;
+}
+.intro-dots > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--border-strong);
+  opacity: 0.35;
+  animation: introOn 1ms linear var(--d) forwards;
+}
+.intro-label {
+  font: 10px/normal var(--font-geist-mono), ui-monospace, monospace;
+  letter-spacing: 0.3px;
+  color: var(--text-tertiary);
+}
+.intro-line {
+  position: absolute;
+  left: var(--lx, 0);
+  top: var(--ly, 0);
+  width: 1px;
+  height: var(--lh, 0);
+  background: var(--border-strong);
+  transform-origin: top;
+  opacity: 0;
+}
+.intro[data-ready] .intro-line {
+  animation: introLine 4s linear var(--t0, 0ms) forwards;
+}
+[data-intro="play"] [data-intro-part="side"] {
+  animation: introRise10 875ms ease-out 2.25s backwards;
+}
+[data-intro="play"] [data-intro-part="main"] {
+  animation: introRise12 750ms ease-out 2.75s backwards;
+}
+[data-intro="play"] .intro-skeleton {
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg-sunken);
+  animation: introOut 500ms cubic-bezier(0.5, 0, 0.5, 1) calc(4s + var(--i, 0) * 0.4s) forwards;
+}
+[data-intro="play"] .intro-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 110px;
+  background: linear-gradient(90deg, transparent, var(--bg-surface), transparent);
+  opacity: 0.6;
+  animation: introShimmer 1.2s linear infinite;
+}
+
+@keyframes introOut {
+  to { opacity: 0; visibility: hidden; }
+}
+@keyframes introOn {
+  to { opacity: 1; }
+}
+@keyframes introBlip {
+  from, to { opacity: 1; }
+}
+@keyframes introRise10 {
+  from { transform: translateY(10px); }
+}
+@keyframes introRise12 {
+  from { transform: translateY(12px); }
+}
+@keyframes introShimmer {
+  from { transform: translateX(-110px); }
+  to { transform: translateX(956px); }
+}
+/* 3.5s: hidden → v4.3.0 at 1.125s → 1.15× by 1.55s → hold → fly + settle by
+   2.75s → hands over to the real tag (fade 3.125–3.5s). */
+@keyframes introFly {
+  0%, 32.13% { opacity: 0; transform: none; }
+  32.14% { opacity: 1; transform: scale(1); animation-timing-function: ease-out; }
+  44.29% { transform: scale(1.15); }
+  53.57% { transform: scale(1.15); animation-timing-function: ease-in-out; }
+  78.57% { transform: translate(var(--dx, 0), var(--dy, 0)) scale(1); }
+  89.29% { opacity: 1; transform: translate(var(--dx, 0), var(--dy, 0)); animation-timing-function: ease-out; }
+  100% { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)); }
+}
+/* 4s: appears at 2.5s, draws down to 3.75s, fades by 4s. */
+@keyframes introLine {
+  0%, 62.49% { opacity: 0; transform: scaleY(0); }
+  62.5% { opacity: 1; transform: scaleY(0); animation-timing-function: ease-out; }
+  93.75% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(1); }
+}

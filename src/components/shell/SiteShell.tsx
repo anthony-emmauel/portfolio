@@ -21,7 +21,7 @@ export function SiteShell({
   return (
     <div className="lg:flex">
       {/* Desktop sidebar */}
-      <aside className="sticky top-0 hidden h-screen w-[360px] shrink-0 overflow-y-auto border-r border-subtle px-10 pb-9 pt-10 lg:block">
+      <aside data-intro-part="side" className="sticky top-0 hidden h-screen w-[360px] shrink-0 overflow-y-auto border-r border-subtle px-10 pb-9 pt-10 lg:block">
         <div className="flex w-[280px] flex-col gap-[22px]">
           <ProfileHeader />
           <Bio />
@@ -35,7 +35,7 @@ export function SiteShell({
       </aside>
 
       {/* Mobile header */}
-      <header className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
+      <header data-intro-part="main" className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
         <ProfileHeader trailing={<MobileMenu />} />
         <Bio />
         <MetaPills />
@@ -47,6 +47,7 @@ export function SiteShell({
       </header>
 
       <main
+        data-intro-part="main"
         id="main"
         tabIndex={-1}
         className="min-w-0 flex-1 px-4 pb-10 pt-5 focus:outline-none lg:pb-20 lg:pl-20 lg:pr-10 lg:pt-12"
