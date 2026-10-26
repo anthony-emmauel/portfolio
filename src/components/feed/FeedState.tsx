@@ -13,8 +13,8 @@ const isFilter = (v: string | null): v is FilterId => FILTERS.some((f) => f.id =
  * shareable. The URL is updated with replaceState so filters don't pile up in
  * history.
  */
-export function FeedProvider({ children }: { children: React.ReactNode }) {
-  const [filter, setState] = useState<FilterId>(DEFAULT_FILTER);
+export function FeedProvider({ children, initial }: { children: React.ReactNode; initial?: FilterId }) {
+  const [filter, setState] = useState<FilterId>(initial ?? DEFAULT_FILTER);
 
   useEffect(() => {
     const show = new URLSearchParams(window.location.search).get("show");

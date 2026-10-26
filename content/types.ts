@@ -47,6 +47,19 @@ export type ExplorationEntry = Base & {
   /** live: built, shown in an iframe · image: design only, shown in an image viewer */
   media: "live" | "image";
   links?: { live?: string; caseStudy?: string };
+  /** The exploration modal (desktop) and full-screen sheet (mobile). */
+  modal?: {
+    /** One-line context under the title. Defaults to `summary`. */
+    context?: string;
+    /** Shorter context for the mobile sheet. */
+    contextShort?: string;
+    /** Title on the mobile sheet and in prev/next labels on mobile. */
+    titleShort?: string;
+    /** Footer role line. Defaults to `role`. */
+    footer?: string;
+    /** `media: "image"` only: high-res exports (PNG path; .avif/.webp siblings are generated). */
+    images?: { light: string; dark?: string; width: number; height: number };
+  };
 };
 
 export type WritingEntry = Base & {

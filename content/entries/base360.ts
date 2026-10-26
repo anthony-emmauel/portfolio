@@ -14,5 +14,9 @@ const entry: ExplorationEntry = {
   cover: "/work/base360/poster.png",
   media: "live",
   links: { live: "https://visionary-pegasus-d7362a.netlify.app/" },
+  modal: {
+    context: "Landing page for a social-commerce inbox. Designed in Figma, then built and animated with AI.",
+    contextShort: "Designed in Figma, then built and animated with AI.",
+  },
 };
 export default entry;

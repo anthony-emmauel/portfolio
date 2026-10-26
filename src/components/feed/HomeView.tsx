@@ -1,0 +1,23 @@
+import { notes } from "@content/notes";
+import { SiteShell } from "@/components/shell/SiteShell";
+import { counts, entries, latestReleaseSlug } from "@/lib/entries";
+import type { FilterId } from "@/lib/feed";
+import { Changelog } from "./Changelog";
+import { FeedProvider } from "./FeedState";
+import { Filters } from "./Filters";
+
+/** The changelog home. Also rendered under a directly-opened exploration. */
+export function HomeView({ initialFilter }: { initialFilter?: FilterId }) {
+  return (
+    <FeedProvider initial={initialFilter}>
+      <SiteShell
+        filters={{
+          list: <Filters layout="list" counts={counts} />,
+          chips: <Filters layout="chips" counts={counts} />,
+        }}
+      >
+        <Changelog entries={entries} counts={counts} notes={notes} latestReleaseSlug={latestReleaseSlug} />
+      </SiteShell>
+    </FeedProvider>
+  );
+}

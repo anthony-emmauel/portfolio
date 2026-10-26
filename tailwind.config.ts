@@ -21,6 +21,7 @@ const config: Config = {
         accent: { DEFAULT: "var(--eb-accent)", on: "var(--eb-on-accent)" },
         live: "var(--status-live)",
         scrim: "rgb(0 0 0 / 0.35)",
+        "scrim-strong": "rgb(13 13 13 / 0.55)",
       },
       backgroundColor: {
         page: "var(--bg-page)",
@@ -53,6 +54,7 @@ const config: Config = {
       },
       boxShadow: {
         sheet: "0 -8px 30px 0 rgb(0 0 0 / 0.2)",
+        modal: "0 24px 64px 0 rgb(0 0 0 / 0.25)",
       },
     },
   },

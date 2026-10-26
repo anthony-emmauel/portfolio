@@ -22,7 +22,10 @@ export const metadata: Metadata = {
   description: site.bio,
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+  modal,
+}: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
   return (
     // data-theme / data-accent / --eb-radius are set by the boot script before hydration.
     <html lang="en" suppressHydrationWarning>
@@ -36,7 +39,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <AppearanceProvider>{children}</AppearanceProvider>
+        <AppearanceProvider>
+          {children}
+          {modal}
+        </AppearanceProvider>
       </body>
     </html>
   );
