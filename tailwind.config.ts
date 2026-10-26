@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import containerQueries from "@tailwindcss/container-queries";
 
 // Every colour resolves to a CSS custom property from globals.css (Figma "v2 / Theme"
 // and "v2 / EB accent"). No hex values belong in components.
@@ -29,16 +30,20 @@ const config: Config = {
         inverse: "var(--bg-inverse)",
         "line-subtle": "var(--border-subtle)",
         "line-strong": "var(--border-strong)",
+        "accent-soft": "var(--accent-soft)",
       },
       textColor: {
         primary: "var(--text-primary)",
         secondary: "var(--text-secondary)",
         tertiary: "var(--text-tertiary)",
         inverse: "var(--text-inverse)",
+        /** Text on bg-inverse surfaces (dark button, check chips). */
+        "on-inverse": "var(--bg-surface)",
       },
       borderColor: {
         subtle: "var(--border-subtle)",
         strong: "var(--border-strong)",
+        primary: "var(--text-primary)",
       },
       outlineColor: {
         primary: "var(--text-primary)",
@@ -51,6 +56,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [containerQueries],
 };
 export default config;

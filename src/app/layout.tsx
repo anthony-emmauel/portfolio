@@ -11,7 +11,8 @@ import { site } from "@content/site";
 const newsreader = Newsreader({
   subsets: ["latin"],
   style: "italic",
-  weight: "400",
+  // Variable font with optical sizing, like Figma: the 28px quote uses a different cut than 17px notes.
+  axes: ["opsz"],
   variable: "--font-newsreader",
   display: "swap",
 });

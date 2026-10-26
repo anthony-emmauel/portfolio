@@ -2,7 +2,7 @@ import Image from "next/image";
 import { site } from "@content/site";
 import { LocalTime } from "./LocalTime";
 
-function StatusDot() {
+export function StatusDot() {
   return <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-live" />;
 }
 
@@ -37,30 +37,10 @@ export function Bio() {
   );
 }
 
-/** Desktop: labelled rows with top borders. */
-export function MetaRows() {
-  const rows: { label: string; value: React.ReactNode; align?: "start" }[] = [
-    { label: "NOW", value: site.meta.now, align: "start" },
-    { label: "FOCUS", value: site.meta.focus },
-    {
-      label: "STATUS",
-      value: (
-        <span className="flex items-center gap-[7px]">
-          {site.status.open && <StatusDot />}
-          {site.status.label}
-        </span>
-      ),
-    },
-    {
-      label: "BASED",
-      value: (
-        <>
-          {site.location.city} · <LocalTime timeZone={site.location.timeZone} />
-        </>
-      ),
-    },
-  ];
+export type MetaRow = { label: string; value: React.ReactNode; align?: "start" };
 
+/** Labelled rows with top borders (sidebar facts; case-study project meta). */
+export function MetaList({ rows }: { rows: MetaRow[] }) {
   return (
     <dl className="flex w-full flex-col">
       {rows.map((r) => (
@@ -75,6 +55,35 @@ export function MetaRows() {
         </div>
       ))}
     </dl>
+  );
+}
+
+/** Home sidebar facts. */
+export function MetaRows() {
+  return (
+    <MetaList
+      rows={[
+        { label: "NOW", value: site.meta.now, align: "start" },
+        { label: "FOCUS", value: site.meta.focus },
+        {
+          label: "STATUS",
+          value: (
+            <span className="flex items-center gap-[7px]">
+              {site.status.open && <StatusDot />}
+              {site.status.label}
+            </span>
+          ),
+        },
+        {
+          label: "BASED",
+          value: (
+            <>
+              {site.location.city} · <LocalTime timeZone={site.location.timeZone} />
+            </>
+          ),
+        },
+      ]}
+    />
   );
 }
 

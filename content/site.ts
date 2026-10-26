@@ -6,6 +6,10 @@ export const site = {
   // EXACT
   bio: "6 years in product design, 4 on an enterprise ops platform: 100+ agents, 20,000+ orders a day, on platforms that processed $25M+ in transactions. I design the systems behind it, and I build in code.",
   url: "https://emmanuelanthony.site",
+  email: "antorneejnr@gmail.com",
+
+  // EXACT — shown on every NDA case study.
+  ndaNotice: "Shared under NDA. All screens show illustrative data. Outcomes are real.",
 
   /** Version of the oldest entry; every later entry bumps from here. */
   startVersion: "3.0.0",
