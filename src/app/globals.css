@@ -186,6 +186,13 @@ body {
   outline-offset: 2px;
 }
 
+/* ── Changelog timeline: once TimelineProgress runs, its travelling dot is the
+   active state, so the static "latest" fill becomes a hollow marker. ── */
+[data-progress] .timeline-marker[data-filled] {
+  background: var(--bg-page);
+  border: 1.5px solid var(--border-strong);
+}
+
 /* ── Bottom sheet ── */
 @keyframes sheetIn {
   from { transform: translateY(100%); }

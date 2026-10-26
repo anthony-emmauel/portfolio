@@ -1,6 +1,7 @@
 import type { Bump, Entry, EntryInput, EntryType, Versioned, WritingEntry } from "@content/types";
 import writing from "@content/writing.json";
 import { fetchFeed, mergePosts, parseFeed, type Post } from "../../scripts/lib/medium.mjs";
+import { notes } from "@content/notes";
 import { site } from "@content/site";
 import { FILTERS, type FilterId } from "./feed";
 
@@ -85,6 +86,8 @@ export async function loadFeed() {
   const counts = Object.fromEntries(
     FILTERS.map((f) => [f.id, f.type ? all.filter((e) => e.type === f.type).length : all.length]),
   ) as Record<FilterId, number>;
+  // Notes is one changelog entry, but the filter counts the quotes in it.
+  counts.notes = notes.length;
   return {
     entries: all,
     counts,

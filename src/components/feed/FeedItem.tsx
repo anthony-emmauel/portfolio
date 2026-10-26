@@ -24,7 +24,9 @@ function Marker({ size, filled }: { size: "release" | "patch"; filled?: boolean 
   return (
     <span
       aria-hidden
-      className={`absolute rounded-full ${
+      data-marker
+      data-filled={filled || undefined}
+      className={`timeline-marker absolute rounded-full ${
         filled ? "bg-accent" : "border-[1.5px] border-strong bg-page"
       } ${
         size === "release"
@@ -271,9 +273,6 @@ function SideProjectItem({ entry }: { entry: Versioned<ExplorationEntry> }) {
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             )}
-            <Link href={`/explorations/${entry.slug}`} className="hidden hover:underline lg:inline">
-              Notes <span aria-hidden>→</span>
-            </Link>
           </p>
         </div>
       </div>
@@ -318,6 +317,18 @@ const initials = (name: string) =>
     .slice(0, 2)
     .toUpperCase();
 
+/** Teammate name, linked to their LinkedIn when we have it. */
+function Who({ note, className }: { note: Note; className: string }) {
+  return note.linkedin ? (
+    <a href={note.linkedin} target="_blank" rel="noopener noreferrer" className={`${className} hover:underline`}>
+      {note.name}
+      <span className="sr-only"> on LinkedIn (opens in a new tab)</span>
+    </a>
+  ) : (
+    <span className={className}>{note.name}</span>
+  );
+}
+
 function Quote({ note, size }: { note: Note; size: "group" | "full" }) {
   return (
     <blockquote
@@ -360,7 +371,7 @@ export function NotesItem({
               <figure className="flex flex-col gap-3 rounded-eb border border-subtle bg-surface px-[19px] py-[18px]">
                 <Quote note={n} size="full" />
                 <figcaption className="flex flex-col gap-0.5">
-                  <span className="text-[13px] font-medium text-primary">{n.name}</span>
+                  <Who note={n} className="self-start text-[13px] font-medium text-primary" />
                   <span className="text-[12px] text-tertiary">
                     {n.role}, {n.company}
                   </span>
@@ -373,7 +384,7 @@ export function NotesItem({
         <figure className="flex flex-col gap-2.5 rounded-eb border border-subtle bg-surface px-3.5 pb-3.5 pt-3 lg:gap-3 lg:px-[18px] lg:py-4">
           <Quote note={first} size="group" />
           <figcaption className="text-[12px] text-tertiary lg:flex lg:flex-col lg:gap-px">
-            <span className="lg:text-[13px] lg:font-medium lg:text-primary">{first.name}</span>
+            <Who note={first} className="lg:self-start lg:text-[13px] lg:font-medium lg:text-primary" />
             <span className="lg:hidden"> · </span>
             <span>
               {first.role}, {first.company}

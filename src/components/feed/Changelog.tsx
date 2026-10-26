@@ -4,6 +4,7 @@ import type { Note, Versioned } from "@content/types";
 import { FILTERS, pad2, type FilterId } from "@/lib/feed";
 import { useFeed } from "./FeedState";
 import { ExplorationItem, NotesItem, ReleaseItem, WritingItem } from "./FeedItem";
+import { TimelineProgress } from "./TimelineProgress";
 
 export function Changelog({
   entries,
@@ -42,7 +43,7 @@ export function Changelog({
         </p>
       </div>
 
-      <div>
+      <div className="relative">
         {visible.map((e, i) => {
           // Index among cards with a cover image, in display order.
           const coverIndex = visible
@@ -67,6 +68,7 @@ export function Changelog({
               );
           }
         })}
+        <TimelineProgress watch={filter} />
       </div>
 
       <button

@@ -9,7 +9,7 @@ export const FILTERS: { id: FilterId; label: string; heading: string; type?: Ent
   { id: "case-studies", label: "Case studies", heading: "case studies", type: "release" },
   { id: "explorations", label: "Explorations", heading: "explorations", type: "exploration" },
   { id: "writing", label: "Writing", heading: "writing", type: "writing" },
-  { id: "notes", label: "Notes", heading: "notes from teammates", type: "note" },
+  { id: "notes", label: "Notes from teammates", heading: "notes from teammates", type: "note" },
   { id: "everything", label: "Everything", heading: "everything" },
 ];
 

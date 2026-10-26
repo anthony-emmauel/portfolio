@@ -20,7 +20,7 @@ const SQUARE = r("assets/source/emmanuel-avatar-1500.png");
 const ORIGINAL = r("assets/source/emmanuel-photo-original.png");
 
 // Crops, in source pixels. FACE is tight (cap brim to chin) so it reads at 16px.
-const FACE = { left: 290, top: 300, width: 920, height: 920 };
+const FACE = { left: 110, top: 130, width: 1280, height: 1280 };
 const PORTRAIT = { left: 269, top: 941, width: 2554, height: 3091 };
 
 // Site tokens (src/app/globals.css, light theme) — the preview is a static image.

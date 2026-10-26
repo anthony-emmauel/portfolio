@@ -9,6 +9,7 @@ export const notes: Note[] = [
     name: "Peter Brania",
     role: "Head of Software Development",
     company: "OneCart",
+    linkedin: "https://www.linkedin.com/in/peter-brania-075b69223/",
   },
   {
     quote:
@@ -48,6 +49,7 @@ export const notes: Note[] = [
     name: "Theto Mokganya",
     role: "Mobile App Engineer",
     company: "OneCart",
+    linkedin: "https://www.linkedin.com/in/theto-mokganya/",
   },
   {
     quote:
@@ -55,5 +57,6 @@ export const notes: Note[] = [
     name: "Philip Onyango",
     role: "Senior Software Engineer",
     company: "OneCart",
+    linkedin: "https://www.linkedin.com/in/philip-onyango",
   },
 ];
