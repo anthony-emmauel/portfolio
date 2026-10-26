@@ -109,12 +109,12 @@ const study: CaseStudy = {
           text: "The redesign became the main product change of its period. Support saw fewer “where is my order?” queries, app-store sentiment on tracking improved, and growth held up after launch.",
         },
         {
-          // EXACT: +27% new users, +29% returning users, +18% revenue (YoY 2023–2025)
+          // EXACT (matches the CV): +29% customer growth, +27% returning users, +18% revenue (YoY 2023–2025)
           type: "outcomes",
           label: "RESULTS · YEAR ON YEAR, 2023–2025",
           items: [
-            { value: "+27%", label: "average new-user growth" },
-            { value: "+29%", label: "average returning-user growth" },
+            { value: "+29%", label: "average customer growth" },
+            { value: "+27%", label: "average returning-user growth" },
             { value: "+18%", label: "average revenue growth" },
           ],
           note: "The redesign was the main product change in this period, though other factors contributed to growth.",

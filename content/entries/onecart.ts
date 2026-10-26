@@ -11,11 +11,11 @@ const entry: ReleaseEntry = {
   summary: "Discovery and order transparency for a multi-store grocery marketplace.",
   summaryShort: "Discovery and order transparency for a grocery marketplace.",
   role: "Lead product designer · research, discovery, order tracking",
-  tag: "+29% RETURNING USERS",
+  tag: "+27% RETURNING USERS",
   cover: "/work/onecart/poster.png",
   coverVideo: { src: "/work/onecart/cover", startAt: 6 },
   diff: [
-    { sign: "+", text: "27% new users · 18% revenue (YoY)" },
+    { sign: "+", text: "29% customer growth · 18% revenue (YoY)" },
     { sign: "-", text: "“where is my order?” tickets" },
   ],
 };
