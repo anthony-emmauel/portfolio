@@ -33,11 +33,11 @@ export function Changelog({
   return (
     <section aria-labelledby="changelog-heading">
       <div className="flex items-baseline justify-between border-b border-subtle pb-2.5 font-mono lg:pb-3">
-        <h2 id="changelog-heading" className="text-[12px] text-secondary">
+        <h2 id="changelog-heading" className="text-[0.75rem] text-secondary">
           <span className="hidden lg:inline">changelog / </span>
           {current.heading}
         </h2>
-        <p aria-live="polite" className="text-[10px] tracking-[0.2px] text-tertiary">
+        <p aria-live="polite" className="text-[0.625rem] tracking-[0.2px] text-tertiary">
           <span className="hidden lg:inline">{summary.desktop}</span>
           <span className="lg:hidden">{summary.mobile}</span>
         </p>
@@ -74,12 +74,12 @@ export function Changelog({
       <button
         type="button"
         onClick={() => setFilter(next, { scroll: true })}
-        className="mt-0 inline-flex items-center gap-2 rounded-eb border border-subtle bg-surface px-3 py-2 text-[13px] text-secondary hover:text-primary lg:gap-2.5 lg:bg-transparent lg:px-4 lg:py-2.5 lg:font-mono lg:text-[10px] lg:tracking-[0.2px] lg:text-tertiary"
+        className="mt-0 inline-flex items-center gap-2 rounded-eb border border-subtle bg-surface px-3 py-2 text-[0.8125rem] text-secondary hover:text-primary lg:gap-2.5 lg:bg-transparent lg:px-4 lg:py-2.5 lg:font-mono lg:text-[0.625rem] lg:tracking-[0.2px] lg:text-tertiary"
       >
         <span className="lg:hidden">
           Show {nextLabel} <span aria-hidden>→</span>
         </span>
-        <span className="font-mono text-[10px] text-tertiary lg:hidden">{pad2(counts[next])}</span>
+        <span className="font-mono text-[0.625rem] text-tertiary lg:hidden">{pad2(counts[next])}</span>
         <span className="hidden lg:inline">
           SHOW {nextLabel.toUpperCase()} ({pad2(counts[next])}) <span aria-hidden>→</span>
         </span>

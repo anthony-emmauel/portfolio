@@ -62,7 +62,8 @@ export function ExplorationModal({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
-      if (t.closest("input, textarea, [role=radiogroup]")) return;
+      // Arrow keys belong to inputs, radio groups and the image viewer (pan) when they have focus.
+      if (t.closest("input, textarea, [role=radiogroup], [role=img][tabindex]")) return;
       if (e.key === "ArrowLeft") go(prev);
       if (e.key === "ArrowRight") go(next);
     };
@@ -77,7 +78,7 @@ export function ExplorationModal({
       href={entry.links!.live}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-center rounded-eb bg-accent px-3.5 py-3 text-[14px] font-medium text-accent-on lg:py-[9px] lg:text-[13px]"
+      className="flex items-center justify-center rounded-eb bg-accent px-3.5 py-3 text-[0.875rem] font-medium text-accent-on lg:py-[9px] lg:text-[0.8125rem]"
     >
       Open live site <span aria-hidden>&nbsp;↗</span>
       <span className="sr-only"> (opens in a new tab)</span>
@@ -85,7 +86,7 @@ export function ExplorationModal({
   ) : entry.links?.caseStudy ? (
     <Link
       href={entry.links.caseStudy}
-      className="flex items-center justify-center rounded-eb border border-strong bg-surface px-3.5 py-3 text-[14px] font-medium text-primary lg:py-[9px] lg:text-[13px]"
+      className="flex items-center justify-center rounded-eb border border-strong bg-surface px-3.5 py-3 text-[0.875rem] font-medium text-primary lg:py-[9px] lg:text-[0.8125rem]"
     >
       Built with NokGridCore <span aria-hidden>&nbsp;→</span>
     </Link>
@@ -93,7 +94,7 @@ export function ExplorationModal({
 
   const navLink = (e: Exploration | undefined, dir: "prev" | "next") =>
     e ? (
-      <button type="button" onClick={() => go(e)} className="font-mono text-[11px] text-secondary hover:text-primary">
+      <button type="button" onClick={() => go(e)} className="font-mono text-[0.6875rem] text-secondary hover:text-primary">
         {dir === "prev" && <span aria-hidden>← </span>}
         <span className="sr-only">{dir === "prev" ? "Previous: " : "Next: "}</span>
         <span className="lg:hidden">{short(e)}</span>
@@ -101,7 +102,7 @@ export function ExplorationModal({
         {dir === "next" && <span aria-hidden> →</span>}
       </button>
     ) : (
-      <span aria-hidden className="font-mono text-[11px] opacity-0">
+      <span aria-hidden className="font-mono text-[0.6875rem] opacity-0">
         —
       </span>
     );
@@ -117,7 +118,7 @@ export function ExplorationModal({
       onClick={(e) => e.target === e.currentTarget && close()}
       className="m-0 hidden h-[100dvh] open:flex max-h-none w-screen max-w-none flex-col overflow-hidden bg-surface p-0 text-primary backdrop:bg-scrim-strong lg:m-auto lg:h-[min(760px,calc(100dvh-64px))] lg:w-[min(1200px,calc(100vw-64px))] lg:rounded-[6px] lg:border lg:border-subtle lg:shadow-modal"
     >
-      <header className="flex flex-col gap-1.5 border-b border-subtle px-4 pb-3 pt-3.5 lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:py-4 lg:pl-6 lg:pr-4">
+      <div className="flex flex-col gap-1.5 border-b border-subtle px-4 pb-3 pt-3.5 lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:py-4 lg:pl-6 lg:pr-4">
         <div className="flex min-w-0 flex-col gap-1.5 lg:gap-1">
           <div className="flex items-center justify-between gap-2 lg:justify-start">
             <div className="flex min-w-0 items-center gap-2 lg:gap-2.5">
@@ -127,15 +128,15 @@ export function ExplorationModal({
                 id="exploration-title"
                 tabIndex={-1}
                 autoFocus
-                className="truncate text-[18px] font-medium text-primary focus:outline-none lg:text-[20px]"
+                className="truncate text-[1.125rem] font-medium text-primary focus:outline-none lg:text-[1.25rem]"
               >
                 <span className="lg:hidden">{short(entry)}</span>
                 <span className="hidden lg:inline">{entry.title}</span>
               </h2>
-              <span className="shrink-0 rounded-eb bg-sunken px-[7px] py-[3px] font-mono text-[10px] tracking-[0.1px] text-secondary">
+              <span className="shrink-0 rounded-eb bg-sunken px-[7px] py-[3px] font-mono text-[0.625rem] tracking-[0.1px] text-secondary">
                 {entry.kind.toUpperCase()}
               </span>
-              <span className="hidden font-mono text-[10px] tracking-[0.1px] text-tertiary lg:inline">
+              <span className="hidden font-mono text-[0.625rem] tracking-[0.1px] text-tertiary lg:inline">
                 {formatEntryDate(entry)}
               </span>
             </div>
@@ -143,12 +144,12 @@ export function ExplorationModal({
               type="button"
               onClick={close}
               aria-label="Close"
-              className="flex size-9 shrink-0 items-center justify-center rounded-eb border border-subtle text-[14px] lg:hidden"
+              className="flex size-9 shrink-0 items-center justify-center rounded-eb border border-subtle text-[0.875rem] lg:hidden"
             >
               ✕
             </button>
           </div>
-          <p className="text-[13px] text-secondary">
+          <p className="text-[0.8125rem] text-secondary">
             <span className="lg:hidden">{entry.modal?.contextShort ?? context}</span>
             <span className="hidden lg:inline">{context}</span>
           </p>
@@ -159,12 +160,12 @@ export function ExplorationModal({
             type="button"
             onClick={close}
             aria-label="Close (Esc)"
-            className="flex size-[34px] items-center justify-center rounded-eb border border-subtle text-[14px] hover:border-strong"
+            className="flex size-[34px] items-center justify-center rounded-eb border border-subtle text-[0.875rem] hover:border-strong"
           >
             ✕
           </button>
         </div>
-      </header>
+      </div>
 
       <div className="min-h-0 flex-1 bg-stage px-4 py-3 lg:px-6 lg:py-5">
         {live ? (
@@ -176,14 +177,14 @@ export function ExplorationModal({
 
       <footer className="flex flex-col gap-2.5 border-t border-subtle px-4 pb-7 pt-3 lg:flex-row lg:items-center lg:justify-between lg:py-3 lg:pl-6 lg:pr-4">
         <div className="lg:hidden">{primary}</div>
-        <p className="hidden font-mono text-[11px] text-secondary lg:block">{entry.modal?.footer ?? entry.role}</p>
+        <p className="hidden font-mono text-[0.6875rem] text-secondary lg:block">{entry.modal?.footer ?? entry.role}</p>
         <nav aria-label="Explorations" className="flex items-center justify-between lg:gap-4">
           {navLink(prev, "prev")}
-          <span className="font-mono text-[10px] text-tertiary">
+          <span className="font-mono text-[0.625rem] text-tertiary">
             {i + 1} / {all.length}
           </span>
           {navLink(next, "next")}
-          <span className="hidden font-mono text-[10px] tracking-[0.1px] text-tertiary lg:inline">ESC · ← →</span>
+          <span className="hidden font-mono text-[0.625rem] tracking-[0.1px] text-tertiary lg:inline">ESC · ← →</span>
         </nav>
       </footer>
     </dialog>

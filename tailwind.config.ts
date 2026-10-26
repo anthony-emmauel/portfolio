@@ -58,6 +58,8 @@ const config: Config = {
       },
     },
   },
+  // Tailwind 3 applies hover: on touch too, where it sticks after a tap.
+  future: { hoverOnlyWhenSupported: true },
   plugins: [containerQueries],
 };
 export default config;

@@ -20,7 +20,7 @@ export function Filters({ layout, counts }: { layout: "list" | "chips"; counts: 
 
   return (
     <nav aria-label="Filter the changelog" className="flex w-full flex-col gap-1">
-      <p className="font-mono text-[10px] tracking-[0.2px] text-tertiary">SHOW</p>
+      <p className="font-mono text-[0.625rem] tracking-[0.2px] text-tertiary">SHOW</p>
       <ul
         ref={row}
         className={
@@ -37,7 +37,7 @@ export function Filters({ layout, counts }: { layout: "list" | "chips"; counts: 
                 type="button"
                 aria-pressed={active}
                 onClick={() => setFilter(f.id, { scroll: !list })}
-                className={`flex items-center rounded-eb text-[13px] ${
+                className={`flex items-center rounded-eb text-[0.8125rem] ${
                   list ? "w-full justify-between px-2.5 py-2" : "gap-2 border px-3 py-2"
                 } ${
                   active
@@ -46,7 +46,7 @@ export function Filters({ layout, counts }: { layout: "list" | "chips"; counts: 
                 }`}
               >
                 <span>{f.label}</span>
-                <span className={`font-mono text-[10px] font-normal ${active ? "" : "text-tertiary"}`}>
+                <span className={`font-mono text-[0.625rem] font-normal ${active ? "" : "text-tertiary"}`}>
                   {pad2(counts[f.id])}
                 </span>
               </button>

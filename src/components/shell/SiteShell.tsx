@@ -23,7 +23,7 @@ export function SiteShell({
       {/* Desktop sidebar */}
       <aside data-intro-part="side" className="sticky top-0 hidden h-screen w-[360px] shrink-0 overflow-y-auto border-r border-subtle px-10 pb-9 pt-10 lg:block">
         <div className="flex w-[280px] flex-col gap-[22px]">
-          <ProfileHeader />
+          <ProfileHeader asHeading />
           <Bio />
           <MetaRows />
           <SiteLinks />
@@ -36,7 +36,7 @@ export function SiteShell({
 
       {/* Mobile header */}
       <header data-intro-part="main" className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
-        <ProfileHeader trailing={<MobileMenu />} />
+        <ProfileHeader asHeading trailing={<MobileMenu />} />
         <Bio />
         <MetaPills />
         <SiteLinks />

@@ -21,7 +21,7 @@
   --bg-inverse: #141413;
   --text-primary: #141413;
   --text-secondary: #5c5b56;
-  --text-tertiary: #8c8a84;
+  --text-tertiary: #6b6a64; /* was #8c8a84 (3.1:1); ≥4.5:1 on page, surface and sunken */
   --text-inverse: #f5f4f0;
   --border-subtle: #e3e1da;
   --border-strong: #c9c6bd;
@@ -37,7 +37,7 @@
   --eb-orange: #ff5b1f;
   --eb-blue: #2d5bff;
   --eb-yellow: #ffd60a;
-  --eb-on-orange: #ffffff;
+  --eb-on-orange: #141413; /* white on #ff5b1f is 3.1:1; ink is 5.95:1 */
   --eb-on-blue: #ffffff;
   --eb-on-yellow: #141413;
 
@@ -58,7 +58,7 @@
     --bg-inverse: #f2f1ed;
     --text-primary: #f2f1ed;
     --text-secondary: #a6a49e;
-    --text-tertiary: #6e6c67;
+    --text-tertiary: #86847e; /* was #6e6c67 (3.2:1); ≥4.5:1 on page, surface and sunken */
     --text-inverse: #0d0d0c;
     --border-subtle: #262624;
     --border-strong: #3a3936;
@@ -82,7 +82,7 @@
   --bg-inverse: #f2f1ed;
   --text-primary: #f2f1ed;
   --text-secondary: #a6a49e;
-  --text-tertiary: #6e6c67;
+  --text-tertiary: #86847e;
   --text-inverse: #0d0d0c;
   --border-subtle: #262624;
   --border-strong: #3a3936;
@@ -216,6 +216,23 @@ body {
   }
 }
 
+/* "Make it yours" → Motion: Off does the same, whatever the OS setting. */
+[data-motion="off"] *,
+[data-motion="off"] *::before,
+[data-motion="off"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-delay: 0ms !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Theme/accent switch: no colour transitions for that one frame. */
+[data-switching] *,
+[data-switching] *::before,
+[data-switching] *::after {
+  transition: none !important;
+}
+
 /* ── First-visit intro (Figma 611:11802) ──────────────────────────────────
    Only active while <html data-intro="play">, set by the pre-paint script.
    Timings follow the 10.5s Figma timeline: counter 0–1.1s, tag springs to
@@ -265,7 +282,7 @@ body {
   background: var(--eb-accent);
   color: var(--eb-on-accent);
   padding: 3px 7px;
-  font: 11px/normal var(--font-geist-mono), ui-monospace, monospace;
+  font: 0.6875rem/normal var(--font-geist-mono), ui-monospace, monospace;
   letter-spacing: 0.11px;
   opacity: 0;
 }
@@ -303,7 +320,7 @@ body {
   animation: introOn 1ms linear var(--d) forwards;
 }
 .intro-label {
-  font: 10px/normal var(--font-geist-mono), ui-monospace, monospace;
+  font: 0.625rem/normal var(--font-geist-mono), ui-monospace, monospace;
   letter-spacing: 0.3px;
   color: var(--text-tertiary);
 }

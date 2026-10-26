@@ -36,7 +36,7 @@ export function generateMetadata({ params }: Props): Metadata {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex rounded-eb bg-accent px-[9px] py-1 font-mono text-[10px] tracking-[0.1px] text-accent-on">
+    <span className="inline-flex rounded-eb bg-accent px-[9px] py-1 font-mono text-[0.625rem] tracking-[0.1px] text-accent-on">
       {children}
     </span>
   );
@@ -59,8 +59,8 @@ function NavCard({ link, align }: { link: NavLink; align: "start" | "end" }) {
         align === "end" ? "@[720px]:items-end @[720px]:text-right" : ""
       }`}
     >
-      <span className="font-mono text-[11px] text-tertiary">{link.label}</span>
-      <span className="text-[18px] font-medium text-primary @[720px]:text-[22px]">{link.title}</span>
+      <span className="font-mono text-[0.6875rem] text-tertiary">{link.label}</span>
+      <span className="text-[1.125rem] font-medium text-primary @[720px]:text-[1.375rem]">{link.title}</span>
     </Link>
   );
 }
@@ -82,7 +82,7 @@ export default function CaseStudyPage({ params }: Props) {
     ),
   }));
   const backLink = (
-    <Link href="/" className="text-[13px] text-primary hover:underline">
+    <Link href="/" className="text-[0.8125rem] text-primary hover:underline">
       <span aria-hidden>← </span>Back to changelog
     </Link>
   );
@@ -104,14 +104,14 @@ export default function CaseStudyPage({ params }: Props) {
       </aside>
 
       {/* Mobile header + sticky section picker */}
-      <div className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
+      <header className="flex flex-col gap-5 px-4 pt-4 lg:hidden">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-[14px] font-medium text-primary">
+          <Link href="/" className="text-[0.875rem] font-medium text-primary">
             <span aria-hidden>← </span>Changelog
           </Link>
           <MobileMenu />
         </div>
-      </div>
+      </header>
       <div className="sticky top-2 z-20 mx-4 mt-5 lg:hidden">
         <OnThisPageDropdown items={toc} />
       </div>
@@ -119,21 +119,21 @@ export default function CaseStudyPage({ params }: Props) {
       <main id="main" tabIndex={-1} className="min-w-0 flex-1 px-4 pb-12 pt-6 focus:outline-none lg:px-20 lg:pb-[140px] lg:pt-12">
         <article className="@container mx-0 flex w-full max-w-[920px] flex-col gap-8 lg:gap-12">
           <header className="flex flex-col gap-[18px]">
-            <p className="font-mono text-[12px] text-tertiary">
+            <p className="font-mono text-[0.75rem] text-tertiary">
               <Link href="/" className="hover:text-primary">
                 changelog
               </Link>{" "}
               / {cs.entry.version} / {cs.slug}
             </p>
             <div className="flex flex-col items-start gap-3.5 lg:flex-row lg:items-center">
-              <h1 className="text-[36px] font-medium text-primary lg:text-[48px]">{cs.entry.title}</h1>
+              <h1 className="text-[2.25rem] font-medium text-primary lg:text-[3rem]">{cs.entry.title}</h1>
               <span className="flex gap-1.5">
                 {cs.tags.map((t) => (
                   <Tag key={t}>{t}</Tag>
                 ))}
               </span>
             </div>
-            <p className="max-w-[680px] text-[18px] leading-[1.45] text-secondary lg:text-[20px]">{cs.lede}</p>
+            <p className="max-w-[680px] text-[1.125rem] leading-[1.45] text-secondary lg:text-[1.25rem]">{cs.lede}</p>
           </header>
 
           <aside
@@ -141,9 +141,9 @@ export default function CaseStudyPage({ params }: Props) {
             className="flex flex-col items-start gap-3 rounded-[4px] border border-subtle bg-surface px-4 py-3 @[720px]:flex-row @[720px]:items-center"
           >
             <Tag>{cs.notice.tag}</Tag>
-            <p className="flex-1 text-[13px] text-secondary">{cs.notice.text ?? site.ndaNotice}</p>
+            <p className="flex-1 text-[0.8125rem] text-secondary">{cs.notice.text ?? site.ndaNotice}</p>
             {cs.notice.links?.map((l) => (
-              <External key={l.href} href={l.href} className="text-[13px] font-medium text-primary hover:underline">
+              <External key={l.href} href={l.href} className="text-[0.8125rem] font-medium text-primary hover:underline">
                 {l.label} <span aria-hidden>↗</span>
               </External>
             ))}
@@ -151,7 +151,7 @@ export default function CaseStudyPage({ params }: Props) {
               <WalkthroughButton
                 links={walkthrough(cs.cta.button.walkthrough ?? cs.entry.title)}
                 align="end"
-                className="text-[13px] font-medium text-primary hover:underline"
+                className="text-[0.8125rem] font-medium text-primary hover:underline"
               >
                 Request a walkthrough <span aria-hidden>→</span>
               </WalkthroughButton>
@@ -169,7 +169,7 @@ export default function CaseStudyPage({ params }: Props) {
           </div>
 
           <section aria-labelledby="glance" className="flex flex-col gap-3.5">
-            <h2 id="glance" className="flex gap-3 font-mono text-[11px] text-tertiary">
+            <h2 id="glance" className="flex gap-3 font-mono text-[0.6875rem] text-tertiary">
               <span>AT A GLANCE</span>
               <span>
                 {cs.entry.version} · {cs.glance.label}
@@ -186,8 +186,8 @@ export default function CaseStudyPage({ params }: Props) {
               className="flex scroll-mt-24 flex-col items-start gap-[22px] border-t border-subtle pt-10 lg:scroll-mt-6"
             >
               <h2 id={`${s.id}-title`} className="flex items-baseline gap-4">
-                <span className="font-mono text-[12px] text-tertiary">{pad2(i + 1)}</span>
-                <span className="text-[22px] font-medium text-primary lg:text-[28px]">{s.title}</span>
+                <span className="font-mono text-[0.75rem] text-tertiary">{pad2(i + 1)}</span>
+                <span className="text-[1.375rem] font-medium text-primary lg:text-[1.75rem]">{s.title}</span>
               </h2>
               {s.blocks.map((b, j) => (
                 <BlockView key={j} block={b} />
@@ -200,28 +200,28 @@ export default function CaseStudyPage({ params }: Props) {
             className="flex flex-col items-start gap-4 rounded-[4px] border border-subtle bg-surface px-7 py-[26px] @[720px]:flex-row @[720px]:items-center @[720px]:gap-6"
           >
             <div className="flex flex-1 flex-col gap-2">
-              <p className="text-[18px] font-medium text-primary @[720px]:text-[22px]">{cs.cta.title}</p>
-              <p className="max-w-[520px] text-[14px] leading-[1.55] text-secondary">{cs.cta.text}</p>
+              <p className="text-[1.125rem] font-medium text-primary @[720px]:text-[1.375rem]">{cs.cta.title}</p>
+              <p className="max-w-[520px] text-[0.875rem] leading-[1.55] text-secondary">{cs.cta.text}</p>
             </div>
             {cs.cta.button.walkthrough ? (
               <WalkthroughButton
                 links={walkthrough(cs.cta.button.walkthrough)}
                 align="end"
-                className="block rounded-[4px] bg-inverse px-[18px] py-3 text-[14px] font-medium text-on-inverse"
+                className="block rounded-[4px] bg-inverse px-[18px] py-3 text-[0.875rem] font-medium text-on-inverse"
               >
                 {cs.cta.button.label}
               </WalkthroughButton>
             ) : cs.cta.button.external ? (
               <External
                 href={cs.cta.button.href}
-                className="shrink-0 rounded-[4px] bg-inverse px-[18px] py-3 text-[14px] font-medium text-on-inverse"
+                className="shrink-0 rounded-[4px] bg-inverse px-[18px] py-3 text-[0.875rem] font-medium text-on-inverse"
               >
                 {cs.cta.button.label}
               </External>
             ) : (
               <a
                 href={cs.cta.button.href}
-                className="shrink-0 rounded-[4px] bg-inverse px-[18px] py-3 text-[14px] font-medium text-on-inverse"
+                className="shrink-0 rounded-[4px] bg-inverse px-[18px] py-3 text-[0.875rem] font-medium text-on-inverse"
               >
                 {cs.cta.button.label}
               </a>

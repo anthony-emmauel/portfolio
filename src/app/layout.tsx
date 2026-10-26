@@ -14,6 +14,8 @@ const newsreader = Newsreader({
   style: "italic",
   // Variable font with optical sizing, like Figma: the 28px quote uses a different cut than 17px notes.
   axes: ["opsz"],
+  // next/font has no fallback metrics for the variable cut; quotes are below the fold.
+  adjustFontFallback: false,
   variable: "--font-newsreader",
   display: "swap",
 });
@@ -47,7 +49,7 @@ export default function RootLayout({
       <body className={`${GeistSans.variable} ${GeistMono.variable} ${newsreader.variable} bg-page font-sans text-primary`}>
         <a
           href="#main"
-          className="sr-only z-50 rounded-eb bg-accent px-3 py-2 text-[13px] text-accent-on focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          className="sr-only z-50 rounded-eb bg-accent px-3 py-2 text-[0.8125rem] text-accent-on focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
         >
           Skip to content
         </a>

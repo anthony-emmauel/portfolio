@@ -72,6 +72,27 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
     if (pointers.current.size < 2) pinch.current = null;
   };
 
+  // Keyboard path for everything the pointer does (WCAG 2.1.1).
+  const PAN = 48;
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    const step = e.shiftKey ? PAN * 4 : PAN;
+    const moves: Record<string, [number, number]> = {
+      ArrowLeft: [step, 0],
+      ArrowRight: [-step, 0],
+      ArrowUp: [0, step],
+      ArrowDown: [0, -step],
+    };
+    if (moves[e.key]) {
+      const [dx, dy] = moves[e.key];
+      setOffset((o) => ({ x: o.x + dx, y: o.y + dy }));
+    } else if (e.key === "+" || e.key === "=") zoom(scale * STEP);
+    else if (e.key === "-" || e.key === "_") zoom(scale / STEP);
+    else if (e.key === "0") fit();
+    else return;
+    e.preventDefault();
+    e.stopPropagation(); // keep ← → from stepping to the next exploration while panning
+  };
+
   const fullscreen = () => {
     const el = stage.current?.parentElement;
     if (!el) return;
@@ -79,7 +100,7 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
     else void el.requestFullscreen?.();
   };
 
-  const btn = "flex size-[34px] items-center justify-center rounded-eb border border-subtle bg-surface text-[14px] text-primary hover:border-strong";
+  const btn = "flex size-[34px] items-center justify-center rounded-eb border border-subtle bg-surface text-[0.875rem] text-primary hover:border-strong";
 
   return (
     <div className="flex h-full min-h-0 flex-col gap-3 bg-stage">
@@ -93,7 +114,7 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
                 role="radio"
                 aria-checked={mode === m}
                 onClick={() => setMode(m)}
-                className={`rounded-eb px-3 py-[5px] text-[12px] font-medium ${
+                className={`rounded-eb px-3 py-[5px] text-[0.75rem] font-medium ${
                   mode === m ? "bg-accent text-accent-on" : "text-secondary hover:text-primary"
                 }`}
               >
@@ -105,7 +126,7 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
           <span />
         )}
         <div className="hidden items-center gap-2 lg:flex">
-          <output aria-live="polite" className="font-mono text-[11px] text-secondary">
+          <output aria-live="polite" className="font-mono text-[0.6875rem] text-secondary">
             {Math.round(scale * 100)}%
           </output>
           <button type="button" aria-label="Zoom out" className={btn} onClick={() => zoom(scale / STEP)}>
@@ -114,7 +135,7 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
           <button type="button" aria-label="Zoom in" className={btn} onClick={() => zoom(scale * STEP)}>
             +
           </button>
-          <button type="button" aria-label="Fit" className={`${btn} w-auto px-2.5 font-mono text-[11px]`} onClick={fit}>
+          <button type="button" aria-label="Fit" className={`${btn} w-auto px-2.5 font-mono text-[0.6875rem]`} onClick={fit}>
             FIT
           </button>
           <button type="button" aria-label="Full screen" className={btn} onClick={fullscreen}>
@@ -126,7 +147,9 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
       <div
         ref={stage}
         role="img"
-        aria-label={`${title}, ${mode} theme. Drag to pan; pinch or use the zoom buttons to zoom.`}
+        tabIndex={0}
+        aria-label={`${title}, ${mode} theme. Drag or use the arrow keys to pan; pinch, the zoom buttons or + and − to zoom; 0 to fit.`}
+        onKeyDown={onKeyDown}
         onWheel={onWheel}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
@@ -153,7 +176,7 @@ export function ImageViewer({ images, title, theme }: { images: Images; title: s
           />
         </picture>
       </div>
-      <span aria-hidden className="self-start rounded-eb bg-surface px-2 py-1 font-mono text-[10px] tracking-[0.1px] text-secondary lg:hidden">
+      <span aria-hidden className="self-start rounded-eb bg-surface px-2 py-1 font-mono text-[0.625rem] tracking-[0.1px] text-secondary lg:hidden">
         DRAG TO PAN →
       </span>
     </div>

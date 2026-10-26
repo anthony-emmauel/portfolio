@@ -42,7 +42,7 @@ function VersionTag({ version, latest }: { version: string; latest: boolean }) {
     <span
       // The intro's v4.3.0 tag flies to whichever of these is visible (FLIP target).
       data-intro-target={latest || undefined}
-      className={`inline-flex rounded-eb px-[7px] py-[3px] font-mono text-[11px] tracking-[0.11px] ${
+      className={`inline-flex rounded-eb px-[7px] py-[3px] font-mono text-[0.6875rem] tracking-[0.11px] ${
         latest ? "bg-accent text-accent-on" : "bg-sunken text-primary"
       }`}
     >
@@ -75,9 +75,9 @@ function Row({
             <VersionTag version={entry.version} latest={latest} />
           </span>
         ) : (
-          <span className="text-[11px] text-secondary">{entry.version}</span>
+          <span className="text-[0.6875rem] text-secondary">{entry.version}</span>
         )}
-        <span className="text-[9px] tracking-[0.09px] text-tertiary">{date}</span>
+        <span className="text-[0.5625rem] tracking-[0.09px] text-tertiary">{date}</span>
       </div>
 
       <div
@@ -91,9 +91,9 @@ function Row({
           {release ? (
             <VersionTag version={entry.version} latest={latest} />
           ) : (
-            <span className="text-[11px] text-secondary">{entry.version}</span>
+            <span className="text-[0.6875rem] text-secondary">{entry.version}</span>
           )}
-          <span className="text-[9px] tracking-[0.09px] text-tertiary">
+          <span className="text-[0.5625rem] tracking-[0.09px] text-tertiary">
             {date} · {typeLabel}
           </span>
         </p>
@@ -109,10 +109,10 @@ function Row({
 function DesktopLabel({ label, title }: { label: string; title?: string }) {
   return (
     <p className="hidden items-center gap-2 lg:flex">
-      <span className={`font-mono text-[10px] tracking-[0.2px] ${title ? "text-secondary" : "text-tertiary"}`}>
+      <span className={`font-mono text-[0.625rem] tracking-[0.2px] ${title ? "text-secondary" : "text-tertiary"}`}>
         {label}
       </span>
-      {title && <span className="text-[14px] font-medium text-primary">{title}</span>}
+      {title && <span className="text-[0.875rem] font-medium text-primary">{title}</span>}
     </p>
   );
 }
@@ -120,7 +120,7 @@ function DesktopLabel({ label, title }: { label: string; title?: string }) {
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span className="pt-1 lg:pt-1.5">
-      <span className="inline-flex rounded-eb bg-accent px-[9px] py-1 font-mono text-[10px] tracking-[0.1px] text-accent-on">
+      <span className="inline-flex rounded-eb bg-accent px-[9px] py-1 font-mono text-[0.625rem] tracking-[0.1px] text-accent-on">
         {children}
       </span>
     </span>
@@ -130,8 +130,8 @@ function Tag({ children }: { children: React.ReactNode }) {
 function Diff({ label, lines }: { label?: string; lines: DiffLine[] }) {
   return (
     <>
-      {label && <p className="font-mono text-[9px] tracking-[0.09px] text-tertiary lg:text-[10px] lg:tracking-[0.2px]">{label}</p>}
-      <ul className="flex flex-col gap-[5px] rounded-eb bg-sunken px-3 py-2.5 font-mono text-[11px] lg:gap-1.5 lg:px-3.5 lg:py-3 lg:text-[12px]">
+      {label && <p className="font-mono text-[0.5625rem] tracking-[0.09px] text-tertiary lg:text-[0.625rem] lg:tracking-[0.2px]">{label}</p>}
+      <ul className="flex flex-col gap-[5px] rounded-eb bg-sunken px-3 py-2.5 font-mono text-[0.6875rem] lg:gap-1.5 lg:px-3.5 lg:py-3 lg:text-[0.75rem]">
         {lines.map((l) => (
           <li key={l.text} className="flex gap-2 lg:gap-2.5">
             <span aria-hidden className={`tracking-[0.12px] ${l.sign === "+" ? "text-live" : "text-tertiary"}`}>
@@ -172,7 +172,7 @@ function MediaCard({
           sizes="(min-width: 1024px) 596px, calc(100vw - 48px)"
         />
         <span className="intro-skeleton" style={{ "--i": coverIndex } as React.CSSProperties} />
-        <span className="absolute left-2.5 top-2.5 flex items-center gap-1.5 rounded-eb bg-surface px-2 py-1 font-mono text-[10px] tracking-[0.1px] text-primary lg:left-3 lg:top-3">
+        <span className="absolute left-2.5 top-2.5 flex items-center gap-1.5 rounded-eb bg-surface px-2 py-1 font-mono text-[0.625rem] tracking-[0.1px] text-primary lg:left-3 lg:top-3">
           <span className="size-1.5 rounded-full bg-accent" />
           {badge}
         </span>
@@ -180,13 +180,13 @@ function MediaCard({
       <div className="flex flex-col gap-1.5 px-3.5 pb-3.5 pt-3 lg:gap-2 lg:px-[18px] lg:pb-[18px] lg:pt-4">
         <h3
           id={`${entry.type}-${entry.slug}`}
-          className="text-[19px] font-medium tracking-[-0.19px] text-primary lg:text-[22px] lg:tracking-[-0.22px]"
+          className="text-[1.1875rem] font-medium tracking-[-0.19px] text-primary lg:text-[1.375rem] lg:tracking-[-0.22px]"
         >
           <Link href={href} className="after:absolute after:inset-0 focus-visible:outline-none after:focus-visible:outline after:focus-visible:outline-2 after:focus-visible:-outline-offset-2 after:focus-visible:outline-primary">
             {entry.title}
           </Link>
         </h3>
-        <p className="text-[13px] leading-[1.5] text-secondary lg:text-[14px]">
+        <p className="text-[0.8125rem] leading-[1.5] text-secondary lg:text-[0.875rem]">
           {entry.summaryShort ? (
             <>
               <span className="lg:hidden">{entry.summaryShort}</span>
@@ -196,7 +196,7 @@ function MediaCard({
             entry.summary
           )}
         </p>
-        <p className="font-mono text-[11px] text-secondary">{entry.role}</p>
+        <p className="font-mono text-[0.6875rem] text-secondary">{entry.role}</p>
         {tag && <Tag>{tag}</Tag>}
       </div>
     </div>
@@ -258,15 +258,15 @@ function SideProjectItem({ entry }: { entry: Versioned<ExplorationEntry> }) {
           />
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-1 lg:gap-[5px]">
-          <h3 id={`${entry.type}-${entry.slug}`} className="text-[15px] font-medium text-primary lg:sr-only">
+          <h3 id={`${entry.type}-${entry.slug}`} className="text-[0.9375rem] font-medium text-primary lg:sr-only">
             {entry.title}
           </h3>
-          <p className="hidden text-[14px] text-secondary lg:block">{entry.summary}</p>
-          <p className="font-mono text-[11px] text-secondary">
+          <p className="hidden text-[0.875rem] text-secondary lg:block">{entry.summary}</p>
+          <p className="font-mono text-[0.6875rem] text-secondary">
             <span className="lg:hidden">{entry.roleShort ?? entry.role}</span>
             <span className="hidden lg:inline">{entry.role}</span>
           </p>
-          <p className="flex gap-3.5 text-[13px] font-medium text-primary lg:pt-0.5">
+          <p className="flex gap-3.5 text-[0.8125rem] font-medium text-primary lg:pt-0.5">
             {entry.links?.live && (
               <a href={entry.links.live} target="_blank" rel="noopener noreferrer" className="hover:underline">
                 Visit live <span aria-hidden>↗</span>
@@ -285,21 +285,21 @@ export function WritingItem({ entry }: { entry: Versioned<WritingEntry> }) {
     <Row entry={entry} latest={false}>
       <DesktopLabel label="WRITING" title={entry.title} />
       <div className="relative flex flex-col gap-1.5 rounded-eb border border-subtle bg-surface px-3.5 pb-3.5 pt-3 transition-colors hover:border-strong lg:gap-2 lg:px-[18px] lg:py-4">
-        <p className="font-mono text-[10px] tracking-[0.2px] text-tertiary">
+        <p className="font-mono text-[0.625rem] tracking-[0.2px] text-tertiary">
           {entry.kind.toUpperCase()} · {entry.readingMinutes} MIN READ
         </p>
         <h3
           id={`${entry.type}-${entry.slug}`}
-          className="text-[17px] font-medium tracking-[-0.17px] text-primary lg:text-[19px] lg:tracking-[-0.19px]"
+          className="text-[1.0625rem] font-medium tracking-[-0.17px] text-primary lg:text-[1.1875rem] lg:tracking-[-0.19px]"
         >
           {entry.title}
         </h3>
-        <p className="text-[13px] leading-[1.5] text-secondary lg:text-[14px]">{entry.excerpt}</p>
+        <p className="text-[0.8125rem] leading-[1.5] text-secondary lg:text-[0.875rem]">{entry.excerpt}</p>
         <a
           href={entry.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[13px] font-medium text-primary after:absolute after:inset-0 focus-visible:outline-none after:focus-visible:outline after:focus-visible:outline-2 after:focus-visible:-outline-offset-2 after:focus-visible:outline-primary"
+          className="text-[0.8125rem] font-medium text-primary after:absolute after:inset-0 focus-visible:outline-none after:focus-visible:outline after:focus-visible:outline-2 after:focus-visible:-outline-offset-2 after:focus-visible:outline-primary"
         >
           Read on Medium <span aria-hidden>↗</span>
           <span className="sr-only">: {entry.title} (opens in a new tab)</span>
@@ -333,7 +333,7 @@ function Quote({ note, size }: { note: Note; size: "group" | "full" }) {
   return (
     <blockquote
       className={`font-serif italic leading-[1.4] text-primary ${
-        size === "group" ? "text-[15px] lg:text-[17px]" : "text-[17px]"
+        size === "group" ? "text-[0.9375rem] lg:text-[1.0625rem]" : "text-[1.0625rem]"
       }`}
     >
       “{note.quote}”
@@ -371,8 +371,8 @@ export function NotesItem({
               <figure className="flex flex-col gap-3 rounded-eb border border-subtle bg-surface px-[19px] py-[18px]">
                 <Quote note={n} size="full" />
                 <figcaption className="flex flex-col gap-0.5">
-                  <Who note={n} className="self-start text-[13px] font-medium text-primary" />
-                  <span className="text-[12px] text-tertiary">
+                  <Who note={n} className="self-start text-[0.8125rem] font-medium text-primary" />
+                  <span className="text-[0.75rem] text-tertiary">
                     {n.role}, {n.company}
                   </span>
                 </figcaption>
@@ -383,8 +383,8 @@ export function NotesItem({
       ) : (
         <figure className="flex flex-col gap-2.5 rounded-eb border border-subtle bg-surface px-3.5 pb-3.5 pt-3 lg:gap-3 lg:px-[18px] lg:py-4">
           <Quote note={first} size="group" />
-          <figcaption className="text-[12px] text-tertiary lg:flex lg:flex-col lg:gap-px">
-            <Who note={first} className="lg:self-start lg:text-[13px] lg:font-medium lg:text-primary" />
+          <figcaption className="text-[0.75rem] text-tertiary lg:flex lg:flex-col lg:gap-px">
+            <Who note={first} className="lg:self-start lg:text-[0.8125rem] lg:font-medium lg:text-primary" />
             <span className="lg:hidden"> · </span>
             <span>
               {first.role}, {first.company}
@@ -396,17 +396,17 @@ export function NotesItem({
                 {rest.map((n) => (
                   <span
                     key={n.name}
-                    className="-mr-1.5 flex size-[26px] items-center justify-center rounded-full border border-[color:var(--bg-surface)] bg-sunken font-mono text-[9px] text-secondary last:mr-0"
+                    className="-mr-1.5 flex size-[26px] items-center justify-center rounded-full border border-[color:var(--bg-surface)] bg-sunken font-mono text-[0.5625rem] text-secondary last:mr-0"
                   >
                     {initials(n.name)}
                   </span>
                 ))}
               </span>
-              <span className="text-[12px] text-secondary">
+              <span className="text-[0.75rem] text-secondary">
                 +{rest.length} more from {companyList}
               </span>
             </div>
-            <button type="button" onClick={onReadAll} className="text-[13px] font-medium text-primary hover:underline">
+            <button type="button" onClick={onReadAll} className="text-[0.8125rem] font-medium text-primary hover:underline">
               Read all {notes.length}
               <span className="lg:hidden"> notes</span> <span aria-hidden>→</span>
             </button>

@@ -8,12 +8,12 @@ import type { Block } from "@content/case-studies/types";
  * 390px frames. The page wraps content in `@container`.
  */
 
-const mono11 = "font-mono text-[11px] text-tertiary";
+const mono11 = "font-mono text-[0.6875rem] text-tertiary";
 const card = "rounded-[4px] border border-subtle bg-surface";
 
 export function Diff({ lines }: { lines: DiffLine[] }) {
   return (
-    <ul className="flex flex-col gap-1.5 rounded-eb bg-sunken px-3.5 py-3 font-mono text-[12px]">
+    <ul className="flex flex-col gap-1.5 rounded-eb bg-sunken px-3.5 py-3 font-mono text-[0.75rem]">
       {lines.map((l) => (
         <li key={l.text} className="flex gap-2.5">
           <span aria-hidden className={`tracking-[0.12px] ${l.sign === "+" ? "text-live" : "text-tertiary"}`}>
@@ -33,12 +33,12 @@ function Chip({ children, tone = "plain" }: { children: React.ReactNode; tone?: 
     soft: "border border-transparent bg-accent-soft text-primary",
     inverse: "border border-transparent bg-inverse text-on-inverse",
   };
-  return <span className={`inline-flex rounded-[3px] px-2.5 py-1.5 font-mono text-[12px] ${tones[tone]}`}>{children}</span>;
+  return <span className={`inline-flex rounded-[3px] px-2.5 py-1.5 font-mono text-[0.75rem] ${tones[tone]}`}>{children}</span>;
 }
 
 function Arrow({ size = 16 }: { size?: 12 | 16 }) {
   return (
-    <span aria-hidden className={`font-mono text-tertiary ${size === 12 ? "text-[12px]" : "text-[16px]"}`}>
+    <span aria-hidden className={`font-mono text-tertiary ${size === 12 ? "text-[0.75rem]" : "text-[1rem]"}`}>
       <span className="@[720px]:hidden">↓</span>
       <span className="hidden @[720px]:inline">→</span>
     </span>
@@ -54,7 +54,7 @@ export function BlockView({ block }: { block: Block }) {
       return (
         <p
           className={`max-w-[680px] text-secondary ${
-            block.lead ? "text-[17px] leading-[1.55]" : "text-[15px] leading-[1.6]"
+            block.lead ? "text-[1.0625rem] leading-[1.55]" : "text-[0.9375rem] leading-[1.6]"
           }`}
         >
           {block.text}
@@ -69,7 +69,7 @@ export function BlockView({ block }: { block: Block }) {
             {block.rows.map((r) => (
               <div
                 key={r.title}
-                className="flex flex-col gap-4 border-t border-subtle py-3.5 text-[14px] last:border-b @[720px]:flex-row @[720px]:gap-6"
+                className="flex flex-col gap-4 border-t border-subtle py-3.5 text-[0.875rem] last:border-b @[720px]:flex-row @[720px]:gap-6"
               >
                 <dt className="font-medium leading-[1.45] text-primary @[720px]:w-[260px] @[720px]:shrink-0">{r.title}</dt>
                 <dd className="leading-[1.55] text-secondary @[720px]:flex-1">{r.text}</dd>
@@ -84,7 +84,7 @@ export function BlockView({ block }: { block: Block }) {
         <ul className={`grid w-full grid-cols-1 gap-3 ${cols(block.items.length)}`}>
           {block.items.map((s) => (
             <li key={s.label} className={`${card} flex flex-col gap-1.5 px-[18px] py-4`}>
-              <span className="text-[22px] font-medium text-primary @[720px]:text-[32px]">{s.value}</span>
+              <span className="text-[1.375rem] font-medium text-primary @[720px]:text-[2rem]">{s.value}</span>
               <span className={mono11}>{s.label}</span>
             </li>
           ))}
@@ -117,10 +117,10 @@ export function BlockView({ block }: { block: Block }) {
           <dl>
             {rows.map((r) => (
               <div key={r.label} className="flex flex-col gap-4 border-t border-subtle px-5 py-3.5 @[720px]:flex-row">
-                <dt className={`font-mono text-[11px] @[720px]:w-[110px] @[720px]:shrink-0 ${r.muted ? "text-tertiary" : "text-primary"}`}>
+                <dt className={`font-mono text-[0.6875rem] @[720px]:w-[110px] @[720px]:shrink-0 ${r.muted ? "text-tertiary" : "text-primary"}`}>
                   {r.label}
                 </dt>
-                <dd className={`text-[14px] leading-[1.55] @[720px]:flex-1 ${r.muted ? "text-tertiary" : "text-secondary"}`}>
+                <dd className={`text-[0.875rem] leading-[1.55] @[720px]:flex-1 ${r.muted ? "text-tertiary" : "text-secondary"}`}>
                   {r.text}
                 </dd>
               </div>
@@ -137,8 +137,8 @@ export function BlockView({ block }: { block: Block }) {
             <li key={s.label} className="contents">
               {i > 0 && <Arrow />}
               <div className={`${card} flex flex-col gap-1.5 px-4 py-3.5 font-mono @[720px]:min-w-0 @[720px]:flex-1`}>
-                <span className="text-[11px] text-tertiary">{s.label}</span>
-                <span className="text-[13px] text-primary">{s.value}</span>
+                <span className="text-[0.6875rem] text-tertiary">{s.label}</span>
+                <span className="text-[0.8125rem] text-primary">{s.value}</span>
               </div>
             </li>
           ))}
@@ -159,8 +159,8 @@ export function BlockView({ block }: { block: Block }) {
                   i > 0 ? "border-t border-subtle @[720px]:border-l @[720px]:border-t-0" : ""
                 }`}
               >
-                <span className="text-[27px] font-medium text-primary @[720px]:text-[36px]">{s.value}</span>
-                <span className="text-[13px] text-secondary">{s.label}</span>
+                <span className="text-[1.6875rem] font-medium text-primary @[720px]:text-[2.25rem]">{s.value}</span>
+                <span className="text-[0.8125rem] text-secondary">{s.label}</span>
               </li>
             ))}
           </ul>
@@ -176,14 +176,14 @@ export function BlockView({ block }: { block: Block }) {
               key={c.title}
               className={`flex flex-wrap items-center gap-x-3.5 gap-y-2 px-5 py-3.5 ${i > 0 ? "border-t border-subtle" : ""}`}
             >
-              <span aria-hidden className="rounded-[3px] bg-inverse px-2.5 py-1.5 font-mono text-[12px] text-on-inverse">
+              <span aria-hidden className="rounded-[3px] bg-inverse px-2.5 py-1.5 font-mono text-[0.75rem] text-on-inverse">
                 ✓
               </span>
-              <span className="text-[14px] font-medium text-primary @[720px]:w-[200px]">
+              <span className="text-[0.875rem] font-medium text-primary @[720px]:w-[200px]">
                 {c.title}
                 <span className="sr-only"> — done:</span>
               </span>
-              <span className="font-mono text-[13px] text-tertiary">{c.detail}</span>
+              <span className="font-mono text-[0.8125rem] text-tertiary">{c.detail}</span>
             </li>
           ))}
         </ul>
@@ -192,7 +192,7 @@ export function BlockView({ block }: { block: Block }) {
     case "quote":
       return (
         <blockquote className="w-full border-l-2 border-primary pl-6">
-          <p className="max-w-[680px] font-serif text-[22px] italic leading-[1.3] text-primary @[720px]:text-[28px]">
+          <p className="max-w-[680px] font-serif text-[1.375rem] italic leading-[1.3] text-primary @[720px]:text-[1.75rem]">
             {block.text}
           </p>
         </blockquote>
@@ -204,8 +204,8 @@ export function BlockView({ block }: { block: Block }) {
           {block.items.map((g) => (
             <li key={g.title} className={`${card} flex flex-col gap-2 px-5 py-[18px]`}>
               <span className={mono11}>{g.eyebrow}</span>
-              <span className="text-[15px] font-medium leading-[1.4] text-primary">{g.title}</span>
-              <span className="text-[13px] leading-[1.55] text-secondary">{g.text}</span>
+              <span className="text-[0.9375rem] font-medium leading-[1.4] text-primary">{g.title}</span>
+              <span className="text-[0.8125rem] leading-[1.55] text-secondary">{g.text}</span>
             </li>
           ))}
         </ul>
@@ -267,8 +267,8 @@ function Diagram({ block }: { block: Extract<Block, { type: "diagram" }> }) {
               {block.before.items.map((v) => (
                 <li key={v.name} className={`${card} flex items-center gap-3 px-3 py-2.5 @[720px]:w-[300px]`}>
                   <span aria-hidden className="size-[18px] shrink-0 rounded-[3px]" style={{ background: v.value }} />
-                  <span className="flex-1 text-[13px] text-primary">{v.name}</span>
-                  <span className="font-mono text-[11px] text-tertiary">{v.value}</span>
+                  <span className="flex-1 text-[0.8125rem] text-primary">{v.name}</span>
+                  <span className="font-mono text-[0.6875rem] text-tertiary">{v.value}</span>
                 </li>
               ))}
             </ul>
@@ -279,7 +279,7 @@ function Diagram({ block }: { block: Extract<Block, { type: "diagram" }> }) {
             <div className={`${card} flex flex-col gap-2 px-[18px] py-4 @[720px]:w-[320px]`}>
               <span className="flex items-center gap-2.5">
                 <span aria-hidden className="size-[18px] shrink-0 rounded-[3px]" style={{ background: block.after.swatch }} />
-                <span className="font-mono text-[14px] text-primary">{block.after.token}</span>
+                <span className="font-mono text-[0.875rem] text-primary">{block.after.token}</span>
               </span>
               <span className={mono11}>{block.after.alias}</span>
               <span className={mono11}>{block.after.usedBy}</span>
@@ -304,11 +304,11 @@ function Diagram({ block }: { block: Extract<Block, { type: "diagram" }> }) {
             key={r.stage}
             className="flex flex-col gap-4 border-t border-subtle py-3 @[720px]:flex-row @[720px]:items-center @[720px]:gap-6"
           >
-            <span className="font-mono text-[12px] text-tertiary @[720px]:w-[340px] @[720px]:shrink-0">{r.events}</span>
+            <span className="font-mono text-[0.75rem] text-tertiary @[720px]:w-[340px] @[720px]:shrink-0">{r.events}</span>
             <Arrow />
             <span className="flex flex-wrap items-center gap-2.5">
               <span aria-hidden className="size-2 rounded-full bg-inverse" />
-              <span className="text-[15px] font-medium text-primary">{r.stage}</span>
+              <span className="text-[0.9375rem] font-medium text-primary">{r.stage}</span>
               {r.flag && <Chip tone="soft">{r.flag}</Chip>}
             </span>
           </li>

@@ -63,14 +63,14 @@ export default function AboutRightImage() {
         className="flex flex-col gap-3 pl-5 py-3 border-l-2 border-[#262626]"
         style={{ transition: "opacity 0.3s", opacity: fading ? 0 : 1 }}
       >
-        <p className="text-[10px] font-semibold tracking-[1px] uppercase text-white/80">
+        <p className="text-[0.625rem] font-semibold tracking-[1px] uppercase text-white/80">
           {slide.label}
         </p>
         <div className="flex flex-col gap-0.5">
-          <p className="text-[12px] font-medium tracking-[0.9px] capitalize text-white/80">
+          <p className="text-[0.75rem] font-medium tracking-[0.9px] capitalize text-white/80">
             {slide.line1}
           </p>
-          <p className="text-[12px] font-medium tracking-[0.9px] capitalize text-white/80">
+          <p className="text-[0.75rem] font-medium tracking-[0.9px] capitalize text-white/80">
             {slide.line2}
           </p>
         </div>

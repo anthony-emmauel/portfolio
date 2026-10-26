@@ -32,7 +32,7 @@ export function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen((v) => !v)}
-        className="font-mono text-[11px] tracking-[0.22px] text-primary"
+        className="font-mono text-[0.6875rem] tracking-[0.22px] text-primary"
       >
         MENU
       </button>
@@ -43,7 +43,7 @@ export function MobileMenu() {
         >
           {ITEMS.map((i) => (
             <li key={i.href}>
-              <Link href={i.href} className="block px-3 py-2 text-[13px] text-primary hover:bg-sunken">
+              <Link href={i.href} className="block px-3 py-2 text-[0.8125rem] text-primary hover:bg-sunken">
                 {i.label}
               </Link>
             </li>

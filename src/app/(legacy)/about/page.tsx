@@ -88,7 +88,7 @@ export default function About() {
           {/* Left column */}
           <div className="flex flex-col gap-0 flex-1 min-w-0">
             {/* Heading */}
-            <h1 className="text-[28px] md:text-[36px] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white mb-6">
+            <h1 className="text-[1.75rem] md:text-[2.25rem] font-bold leading-tight md:leading-10 tracking-[-0.9px] text-white mb-6">
               Designing systems at the edge of code
             </h1>
 
@@ -146,7 +146,7 @@ export default function About() {
         <section className="mt-16 md:mt-20">
           {/* Section header */}
           <div className="pb-4 mb-10 md:mb-12">
-            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80 mb-4">
+            <p className="text-[0.75rem] leading-5 tracking-[2px] uppercase text-white/80 mb-4">
               What people say
             </p>
             <GrowLine color="bg-[#262626]" />
@@ -166,10 +166,10 @@ export default function About() {
                   {t.quote}
                 </p>
                 <div className="flex flex-col gap-0.5">
-                  <p className="text-[14px] font-medium leading-[17px] tracking-[-0.9px] text-white">
+                  <p className="text-[0.875rem] font-medium leading-[17px] tracking-[-0.9px] text-white">
                     {t.name}
                   </p>
-                  <p className="text-[12px] leading-[15px] tracking-[-0.9px] text-white/50">
+                  <p className="text-[0.75rem] leading-[15px] tracking-[-0.9px] text-white/50">
                     {t.role}
                   </p>
                 </div>
@@ -182,7 +182,7 @@ export default function About() {
         <section className="mt-16 md:mt-20 pb-20">
           {/* Section header */}
           <div className="pb-4 mb-8">
-            <p className="text-[12px] leading-5 tracking-[2px] uppercase text-white/80 mb-4">
+            <p className="text-[0.75rem] leading-5 tracking-[2px] uppercase text-white/80 mb-4">
               Tools &amp; Skills
             </p>
             <GrowLine color="bg-[#262626]" />
@@ -197,7 +197,7 @@ export default function About() {
                     {row.map((pill) => (
                       <span
                         key={pill}
-                        className="text-[10px] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1 hover:bg-white/5 transition-colors duration-150"
+                        className="text-[0.625rem] tracking-[-0.9px] uppercase text-[#A1A1AA] border border-[#A1A1AA] rounded-full px-2 py-1 hover:bg-white/5 transition-colors duration-150"
                       >
                         {pill}
                       </span>

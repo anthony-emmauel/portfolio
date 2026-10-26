@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useAppearance } from "@/components/appearance/AppearanceProvider";
 
 /*
  * Animated cover: poster image (always rendered — it's what LCP and
@@ -55,12 +56,15 @@ export function CoverMedia({
   className?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [motionOK, setMotionOK] = useState(false);
+  const { appearance } = useAppearance();
+  const [systemOK, setSystemOK] = useState(false);
+  // Plays only when the OS allows motion and "Make it yours" → Motion is On.
+  const motionOK = systemOK && appearance.motion !== "off";
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const mq = matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setMotionOK(!mq.matches);
+    const update = () => setSystemOK(!mq.matches);
     update();
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
@@ -102,6 +106,7 @@ export function CoverMedia({
           preload="none"
           disablePictureInPicture
           onPlaying={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
           className={`absolute inset-0 size-full object-cover transition-opacity duration-200 ${
             playing ? "opacity-100" : "opacity-0"
           }`}

@@ -35,7 +35,7 @@ export function OnThisPageList({ items }: { items: Item[] }) {
   const active = useActiveSection(items);
   return (
     <nav aria-label="On this page" className="flex w-full flex-col gap-1">
-      <p className="font-mono text-[10px] tracking-[0.2px] text-tertiary">ON THIS PAGE</p>
+      <p className="font-mono text-[0.625rem] tracking-[0.2px] text-tertiary">ON THIS PAGE</p>
       <ol className="flex w-full flex-col gap-1">
         {items.map((it, i) => {
           const on = it.id === active;
@@ -44,12 +44,12 @@ export function OnThisPageList({ items }: { items: Item[] }) {
               <a
                 href={`#${it.id}`}
                 aria-current={on ? "location" : undefined}
-                className={`flex w-full items-center justify-between rounded-eb px-2.5 py-2 text-[13px] ${
+                className={`flex w-full items-center justify-between rounded-eb px-2.5 py-2 text-[0.8125rem] ${
                   on ? "bg-accent font-medium text-accent-on" : "text-secondary hover:bg-sunken hover:text-primary"
                 }`}
               >
                 <span>{it.title}</span>
-                <span className={`font-mono text-[10px] font-normal ${on ? "" : "text-tertiary"}`}>{pad2(i + 1)}</span>
+                <span className={`font-mono text-[0.625rem] font-normal ${on ? "" : "text-tertiary"}`}>{pad2(i + 1)}</span>
               </a>
             </li>
           );
@@ -88,10 +88,10 @@ export function OnThisPageDropdown({ items }: { items: Item[] }) {
         className="flex w-full items-center justify-between rounded-eb border border-subtle bg-surface py-2.5 pl-3.5 pr-3"
       >
         <span className="flex items-center gap-2">
-          <span className="font-mono text-[11px] text-tertiary">{pad2(index + 1)}</span>
-          <span className="text-[13px] font-medium text-primary">{items[index]?.title}</span>
+          <span className="font-mono text-[0.6875rem] text-tertiary">{pad2(index + 1)}</span>
+          <span className="text-[0.8125rem] font-medium text-primary">{items[index]?.title}</span>
         </span>
-        <span className="font-mono text-[10px] text-secondary">
+        <span className="font-mono text-[0.625rem] text-secondary">
           ON THIS PAGE <span aria-hidden>{open ? "▴" : "▾"}</span>
         </span>
       </button>
@@ -106,9 +106,9 @@ export function OnThisPageDropdown({ items }: { items: Item[] }) {
                 href={`#${it.id}`}
                 onClick={() => setOpen(false)}
                 aria-current={it.id === active ? "location" : undefined}
-                className="flex items-center gap-2 px-3.5 py-2.5 text-[13px] text-primary hover:bg-sunken aria-[current]:font-medium"
+                className="flex items-center gap-2 px-3.5 py-2.5 text-[0.8125rem] text-primary hover:bg-sunken aria-[current]:font-medium"
               >
-                <span className="font-mono text-[11px] text-tertiary">{pad2(i + 1)}</span>
+                <span className="font-mono text-[0.6875rem] text-tertiary">{pad2(i + 1)}</span>
                 {it.title}
               </a>
             </li>

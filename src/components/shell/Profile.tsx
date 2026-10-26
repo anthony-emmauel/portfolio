@@ -6,7 +6,9 @@ export function StatusDot() {
 }
 
 /** Avatar + name + role. Desktop 48px avatar, mobile 44px with a MENU slot. */
-export function ProfileHeader({ trailing }: { trailing?: React.ReactNode }) {
+/** `asHeading`: the name is the page's <h1> (home), otherwise a paragraph (case studies have their own h1). */
+export function ProfileHeader({ trailing, asHeading = false }: { trailing?: React.ReactNode; asHeading?: boolean }) {
+  const Name = asHeading ? "h1" : "p";
   return (
     <div className="flex w-full items-center justify-between">
       <div className="flex min-w-0 flex-1 items-center gap-2.5 lg:gap-3">
@@ -25,8 +27,8 @@ export function ProfileHeader({ trailing }: { trailing?: React.ReactNode }) {
           />
         </picture>
         <div className="flex min-w-0 flex-1 flex-col gap-px lg:gap-0.5">
-          <p className="text-[15px] font-medium text-primary lg:text-[16px]">{site.name}</p>
-          <p className="text-[12px] text-secondary">{site.role}</p>
+          <Name className="text-[0.9375rem] font-medium text-primary lg:text-[1rem]">{site.name}</Name>
+          <p className="text-[0.75rem] leading-[1.4] text-secondary">{site.role}</p>
         </div>
       </div>
       {trailing}
@@ -36,7 +38,7 @@ export function ProfileHeader({ trailing }: { trailing?: React.ReactNode }) {
 
 export function Bio() {
   return (
-    <p className="text-[16px] leading-[1.5] text-primary lg:text-[15px] lg:leading-[1.55]">
+    <p className="text-[1rem] leading-[1.5] text-primary lg:text-[0.9375rem] lg:leading-[1.55]">
       {site.bio}
     </p>
   );
@@ -73,8 +75,8 @@ export function MetaList({ rows }: { rows: MetaRow[] }) {
             r.align === "start" ? "items-start" : "items-center"
           }`}
         >
-          <dt className="font-mono text-[10px] tracking-[0.2px] text-tertiary">{r.label}</dt>
-          <dd className="text-right text-[12px] text-secondary">{r.value}</dd>
+          <dt className="font-mono text-[0.625rem] tracking-[0.2px] text-tertiary">{r.label}</dt>
+          <dd className="text-right text-[0.75rem] leading-[1.4] text-secondary">{r.value}</dd>
         </div>
       ))}
     </dl>
@@ -115,7 +117,7 @@ export function MetaRows() {
  * than the 358px column and stays on one line, so pills don't wrap from 380px up.
  */
 export function MetaPills() {
-  const pill = "flex items-center gap-1.5 rounded-full border border-subtle bg-surface px-2.5 py-1.5 text-[12px] text-secondary min-[380px]:whitespace-nowrap";
+  const pill = "flex items-center gap-1.5 rounded-full border border-subtle bg-surface px-2.5 py-1.5 text-[0.75rem] leading-[1.4] text-secondary min-[380px]:whitespace-nowrap";
   return (
     <ul className="flex flex-wrap gap-1.5">
       <li className={pill}>{site.meta.now}</li>
@@ -138,7 +140,7 @@ export function MetaPills() {
 
 export function SiteLinks() {
   return (
-    <ul className="flex gap-3.5 text-[12px] text-secondary">
+    <ul className="flex gap-3.5 text-[0.75rem] text-secondary">
       {site.links.map((l) => {
         const external = l.href.startsWith("http") || l.href.endsWith(".pdf");
         return (

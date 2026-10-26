@@ -30,17 +30,17 @@ export function LiveFrame({ url, poster, title }: { url: string; poster: string;
           ))}
         </span>
         <span className="flex min-w-0 flex-1 items-center gap-1.5 rounded-eb bg-surface px-2.5 py-[5px] font-mono">
-          <span aria-hidden className="text-[9px] text-tertiary">
+          <span aria-hidden className="text-[0.5625rem] text-tertiary">
             🔒
           </span>
-          <span className="truncate text-[11px] text-secondary">{host}</span>
+          <span className="truncate text-[0.6875rem] text-secondary">{host}</span>
         </span>
-        <span className="flex items-center gap-1.5 font-mono text-[10px] tracking-[0.1px] text-secondary">
+        <span className="flex items-center gap-1.5 font-mono text-[0.625rem] tracking-[0.1px] text-secondary">
           <span aria-hidden className="size-[7px] rounded-full bg-live" />
           LIVE · SCROLL AND CLICK
         </span>
       </div>
-      <div className="flex items-center gap-2 self-start rounded-eb bg-surface px-2.5 py-1.5 font-mono text-[10px] text-secondary lg:hidden">
+      <div className="flex items-center gap-2 self-start rounded-eb bg-surface px-2.5 py-1.5 font-mono text-[0.625rem] text-secondary lg:hidden">
         <span aria-hidden className="size-[7px] rounded-full bg-live" />
         {host}
       </div>
@@ -65,12 +65,12 @@ export function LiveFrame({ url, poster, title }: { url: string; poster: string;
             <Image src={poster} alt="" fill sizes="(min-width: 1024px) 1152px, 100vw" className="object-cover object-top" />
             {state === "failed" && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-page/80 p-6 text-center">
-                <p className="text-[13px] text-secondary">The live preview didn&apos;t load here.</p>
+                <p className="text-[0.8125rem] text-secondary">The live preview didn&apos;t load here.</p>
                 <a
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-eb bg-accent px-3.5 py-[9px] text-[13px] font-medium text-accent-on"
+                  className="rounded-eb bg-accent px-3.5 py-[9px] text-[0.8125rem] font-medium text-accent-on"
                 >
                   Open live site <span aria-hidden>↗</span>
                   <span className="sr-only"> (opens in a new tab)</span>

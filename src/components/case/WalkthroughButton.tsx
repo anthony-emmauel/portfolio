@@ -54,7 +54,7 @@ export function WalkthroughButton({
     setTimeout(() => setCopied(false), 1800);
   };
 
-  const item = "flex w-full items-center justify-between gap-4 px-3.5 py-2.5 text-left text-[13px] text-primary hover:bg-sunken focus:bg-sunken focus:outline-none";
+  const item = "flex w-full items-center justify-between gap-4 px-3.5 py-2.5 text-left text-[0.8125rem] text-primary hover:bg-sunken";
 
   return (
     <div ref={root} className="relative shrink-0">
@@ -88,7 +88,7 @@ export function WalkthroughButton({
           </a>
           <button role="menuitem" type="button" onClick={copy} className={`${item} flex-col !items-start !gap-0.5`}>
             <span>{copied ? "Copied ✓" : "Copy email address"}</span>
-            <span className="font-mono text-[11px] text-tertiary">{links.email}</span>
+            <span className="font-mono text-[0.6875rem] text-tertiary">{links.email}</span>
           </button>
           <span aria-live="polite" className="sr-only">
             {copied ? "Email address copied" : ""}

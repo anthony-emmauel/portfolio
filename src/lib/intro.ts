@@ -1,9 +1,9 @@
 // The changelog intro (Figma 611:11802). Decided before first paint so the
 // overlay never flashes: home page only, default view only, once per session,
-// never with prefers-reduced-motion. If storage is unavailable it doesn't play.
+// never with prefers-reduced-motion or Motion: Off ("Make it yours"; runs after the appearance boot script). If storage is unavailable it doesn't play.
 export const INTRO_KEY = "ea:intro";
 
-export const introBootScript = `(function(){try{if(location.pathname!=="/"||location.search)return;if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;if(sessionStorage.getItem(${JSON.stringify(
+export const introBootScript = `(function(){try{if(location.pathname!=="/"||location.search)return;if(matchMedia("(prefers-reduced-motion: reduce)").matches||document.documentElement.getAttribute("data-motion")==="off")return;if(sessionStorage.getItem(${JSON.stringify(
   INTRO_KEY,
 )}))return;sessionStorage.setItem(${JSON.stringify(INTRO_KEY)},"1");document.documentElement.setAttribute("data-intro","play")}catch(e){}})();`;
 

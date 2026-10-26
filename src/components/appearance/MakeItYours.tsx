@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { site } from "@content/site";
-import { ACCENTS, RADIUS_MAX, RADIUS_MIN, type ThemePref } from "@/lib/appearance";
+import { ACCENTS, RADIUS_MAX, RADIUS_MIN, type MotionPref, type ThemePref } from "@/lib/appearance";
 import { useAppearance } from "./AppearanceProvider";
 
 const THEMES: { id: ThemePref; label: string }[] = [
@@ -11,13 +11,59 @@ const THEMES: { id: ThemePref; label: string }[] = [
   { id: "auto", label: "Auto" },
 ];
 
+// Off is the pause control for the looping covers and the intro (WCAG 2.2.2).
+const MOTION: { id: MotionPref; label: string }[] = [
+  { id: "on", label: "On" },
+  { id: "off", label: "Off" },
+];
+
+/** Segmented radio group (Figma "Theme segment"). */
+function Segmented<T extends string>({
+  name,
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  name: string;
+  label: string;
+  options: { id: T; label: string }[];
+  value: T;
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="flex w-full flex-col gap-1.5">
+      <span id={`${name}-label`}>
+        <FieldLabel label={label} />
+      </span>
+      <div role="radiogroup" aria-labelledby={`${name}-label`} className="flex w-full gap-0.5 rounded-[8px] bg-sunken p-[3px]">
+        {options.map((o) => (
+          <label key={o.id} className="flex-1 cursor-pointer">
+            <input
+              type="radio"
+              name={name}
+              value={o.id}
+              checked={value === o.id}
+              onChange={() => onChange(o.id)}
+              className="peer sr-only"
+            />
+            <span className="flex justify-center rounded-[6px] py-[5px] text-[0.75rem] text-tertiary peer-checked:bg-surface peer-checked:font-medium peer-checked:text-primary peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-primary">
+              {o.label}
+            </span>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function AccentDot() {
   return <span aria-hidden className="size-2 shrink-0 rounded-full bg-accent" />;
 }
 
 function FieldLabel({ label, value }: { label: string; value?: string }) {
   return (
-    <span className="flex w-full items-start justify-between font-mono text-[10px]">
+    <span className="flex w-full items-start justify-between font-mono text-[0.625rem]">
       <span className="tracking-[0.2px] text-tertiary">{label}</span>
       {value && <span className="text-primary">{value}</span>}
     </span>
@@ -34,14 +80,14 @@ function Controls({ track }: { track: "subtle" | "strong" }) {
   return (
     <div className="flex w-full flex-col gap-3.5">
       <div className="flex w-full items-center justify-between">
-        <h2 className="flex items-center gap-2 text-[13px] font-medium text-primary">
+        <h2 className="flex items-center gap-2 text-[0.8125rem] font-medium text-primary">
           <AccentDot />
           Make it yours
         </h2>
         <button
           type="button"
           onClick={reset}
-          className="font-mono text-[10px] tracking-[0.2px] text-tertiary hover:text-primary"
+          className="font-mono text-[0.625rem] tracking-[0.2px] text-tertiary hover:text-primary"
         >
           RESET
         </button>
@@ -97,32 +143,20 @@ function Controls({ track }: { track: "subtle" | "strong" }) {
         />
       </label>
 
-      <div className="flex w-full flex-col gap-1.5">
-        <span id={`${name}-theme-label`}>
-          <FieldLabel label="THEME" />
-        </span>
-        <div
-          role="radiogroup"
-          aria-labelledby={`${name}-theme-label`}
-          className="flex w-full gap-0.5 rounded-[8px] bg-sunken p-[3px]"
-        >
-          {THEMES.map((t) => (
-            <label key={t.id} className="flex-1 cursor-pointer">
-              <input
-                type="radio"
-                name={`${name}-theme`}
-                value={t.id}
-                checked={appearance.theme === t.id}
-                onChange={() => update({ theme: t.id })}
-                className="peer sr-only"
-              />
-              <span className="flex justify-center rounded-[6px] py-[5px] text-[12px] text-tertiary peer-checked:bg-surface peer-checked:font-medium peer-checked:text-primary peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-primary">
-                {t.label}
-              </span>
-            </label>
-          ))}
-        </div>
-      </div>
+      <Segmented
+        name={`${name}-theme`}
+        label="THEME"
+        options={THEMES}
+        value={appearance.theme}
+        onChange={(theme) => update({ theme })}
+      />
+      <Segmented
+        name={`${name}-motion`}
+        label="MOTION"
+        options={MOTION}
+        value={appearance.motion}
+        onChange={(motion) => update({ motion })}
+      />
     </div>
   );
 }
@@ -134,7 +168,7 @@ export function MakeItYoursCard() {
       <div className="w-full rounded-[14px] border border-subtle bg-surface px-4 py-3.5">
         <Controls track="strong" />
       </div>
-      <p className="font-mono text-[9px] tracking-[0.18px] text-tertiary">{site.credit.long}</p>
+      <p className="font-mono text-[0.5625rem] tracking-[0.18px] text-tertiary">{site.credit.long}</p>
     </section>
   );
 }
@@ -156,11 +190,11 @@ export function MakeItYoursCollapsed() {
         className="flex w-full items-center justify-between rounded-[12px] border border-subtle bg-surface py-2.5 pl-3.5 pr-2.5 text-left"
       >
         <span className="flex flex-col gap-0.5">
-          <span className="flex items-center gap-2 text-[13px] font-medium text-primary">
+          <span className="flex items-center gap-2 text-[0.8125rem] font-medium text-primary">
             <AccentDot />
             Make it yours
           </span>
-          <span className="font-mono text-[8px] tracking-[0.08px] text-tertiary">
+          <span className="font-mono text-[0.5625rem] tracking-[0.09px] text-tertiary">
             {site.credit.short}
           </span>
         </span>
@@ -214,7 +248,7 @@ function BottomSheet({ open, onClose }: { open: boolean; onClose: () => void }) 
         <div className="w-full py-3.5">
           <Controls track="subtle" />
         </div>
-        <p className="font-mono text-[9px] tracking-[0.18px] text-tertiary">{site.credit.long}</p>
+        <p className="font-mono text-[0.5625rem] tracking-[0.18px] text-tertiary">{site.credit.long}</p>
       </div>
     </dialog>
   );
