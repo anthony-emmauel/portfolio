@@ -1,5 +1,6 @@
 import type { Bump, Entry, EntryInput, EntryType, Versioned, WritingEntry } from "@content/types";
 import writing from "@content/writing.json";
+import { fetchFeed, mergePosts, parseFeed, type Post } from "../../scripts/lib/medium.mjs";
 import { site } from "@content/site";
 import { FILTERS, type FilterId } from "./feed";
 
@@ -8,19 +9,20 @@ import { FILTERS, type FilterId } from "./feed";
 const ctx = require.context("../../content/entries", false, /\.ts$/);
 const fileEntries: EntryInput[] = ctx.keys().map((k) => (ctx(k) as { default: EntryInput }).default);
 
-const writingEntries: WritingEntry[] = writing
-  .filter((p) => p.date >= site.writing.since)
-  .map((p) => ({
-    type: "writing",
-    kind: "essay",
-    slug: p.url.split("/").pop()!,
-    title: p.title,
-    date: p.date,
-    excerpt: p.excerpt,
-    readingMinutes: p.readingMinutes,
-    url: p.url,
-    tags: p.tags,
-  }));
+const toWritingEntries = (posts: Post[]): WritingEntry[] =>
+  posts
+    .filter((p) => p.date >= site.writing.since)
+    .map((p) => ({
+      type: "writing",
+      kind: "essay",
+      slug: p.url.split("/").pop()!,
+      title: p.title,
+      date: p.date,
+      excerpt: p.excerpt,
+      readingMinutes: p.readingMinutes,
+      url: p.url,
+      tags: p.tags,
+    }));
 
 /** Same-day tie-break: a release lands before the patches that follow it. */
 const TYPE_ORDER: Record<EntryType, number> = { release: 0, exploration: 1, writing: 2, note: 3 };
@@ -59,14 +61,34 @@ export function versionEntries(entries: Entry[], start: string): Versioned[] {
   return out.reverse(); // newest first
 }
 
-export const entries: Versioned[] = versionEntries([...fileEntries, ...writingEntries], site.startVersion);
+const build = (posts: Post[]) => versionEntries([...fileEntries, ...toWritingEntries(posts)], site.startVersion);
 
-/** The newest release gets the filled marker and the accent version tag. */
-export const latestReleaseSlug = entries.find((e) => e.type === "release")?.slug;
+/** From committed content only (content/writing.json). Used by case studies and explorations. */
+export const entries: Versioned[] = build(writing);
 
-export const entriesFor = (id: FilterId) => {
-  const type = FILTERS.find((f) => f.id === id)?.type;
-  return type ? entries.filter((e) => e.type === type) : entries;
-};
+export const DAY = 60 * 60 * 24;
 
-export const counts = Object.fromEntries(FILTERS.map((f) => [f.id, entriesFor(f.id).length])) as Record<FilterId, number>;
+/**
+ * The feed: committed content plus any Medium posts newer than the last sync.
+ * Fetched at build and refreshed at most daily (ISR); a failed fetch falls
+ * back to the stored posts. The daily GitHub Action commits them for good.
+ */
+export async function loadFeed() {
+  let posts: Post[] = writing;
+  try {
+    const xml = await fetchFeed({ next: { revalidate: DAY } });
+    posts = mergePosts(writing, parseFeed(xml)).posts;
+  } catch (e) {
+    console.warn(`[writing] using stored posts: ${(e as Error).message}`);
+  }
+  const all = build(posts);
+  const counts = Object.fromEntries(
+    FILTERS.map((f) => [f.id, f.type ? all.filter((e) => e.type === f.type).length : all.length]),
+  ) as Record<FilterId, number>;
+  return {
+    entries: all,
+    counts,
+    /** The newest release gets the filled marker and the accent version tag. */
+    latestReleaseSlug: all.find((e) => e.type === "release")?.slug,
+  };
+}

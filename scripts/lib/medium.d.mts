@@ -1,0 +1,11 @@
+export type Post = { title: string; url: string; date: string; readingMinutes: number; tags: string[]; excerpt: string };
+export const FEED_URL: string;
+export const WORDS_PER_MINUTE: number;
+export function decode(s: string): string;
+export function stripTags(html: string): string;
+export function cleanUrl(url: string): string;
+export function readingMinutes(html: string): number;
+export function excerptOf(html: string): string;
+export function parseFeed(xml: string): Post[];
+export function mergePosts(stored: Post[], incoming: Post[]): { posts: Post[]; added: Post[] };
+export function fetchFeed(init?: RequestInit & { next?: { revalidate?: number } }): Promise<string>;

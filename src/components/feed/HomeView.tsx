@@ -1,6 +1,6 @@
 import { notes } from "@content/notes";
 import { SiteShell } from "@/components/shell/SiteShell";
-import { counts, entries, latestReleaseSlug } from "@/lib/entries";
+import { loadFeed } from "@/lib/entries";
 import type { FilterId } from "@/lib/feed";
 import { Changelog } from "./Changelog";
 import { FeedProvider } from "./FeedState";
@@ -8,7 +8,8 @@ import { Filters } from "./Filters";
 import { IntroOverlay } from "./IntroOverlay";
 
 /** The changelog home. Also rendered under a directly-opened exploration. */
-export function HomeView({ initialFilter }: { initialFilter?: FilterId }) {
+export async function HomeView({ initialFilter }: { initialFilter?: FilterId }) {
+  const { entries, counts, latestReleaseSlug } = await loadFeed();
   return (
     <FeedProvider initial={initialFilter}>
       <SiteShell

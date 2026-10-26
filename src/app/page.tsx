@@ -1,6 +1,6 @@
 import { HomeView } from "@/components/feed/HomeView";
 
-// Rebuild daily so new Medium posts appear even without a content commit.
+// Regenerate daily (ISR) so new Medium posts appear even before the sync commits them.
 export const revalidate = 86400;
 
 export default function Home() {

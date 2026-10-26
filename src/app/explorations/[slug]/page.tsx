@@ -8,11 +8,22 @@ import { explorations, getExploration } from "@/lib/explorations";
 type Props = { params: { slug: string } };
 
 export const dynamicParams = false;
+export const revalidate = 86400;
 export const generateStaticParams = () => explorations.map((e) => ({ slug: e.slug }));
 
 export function generateMetadata({ params }: Props): Metadata {
   const e = getExploration(params.slug);
-  return e ? { title: `${e.title} — ${site.name}`, description: e.modal?.context ?? e.summary } : {};
+  if (!e) return {};
+  const title = `${e.title} — ${site.name}`;
+  const description = e.modal?.context ?? e.summary;
+  const image = { url: "/opengraph-image.png", width: 1200, height: 630, alt: site.name };
+  return {
+    title,
+    description,
+    alternates: { canonical: `/explorations/${e.slug}` },
+    openGraph: { url: `/explorations/${e.slug}`, siteName: site.name, title, description, images: [image] },
+    twitter: { card: "summary_large_image", title, description, images: [image.url] },
+  };
 }
 
 /** Direct visit / shared link: the Explorations view with the modal open on top. */

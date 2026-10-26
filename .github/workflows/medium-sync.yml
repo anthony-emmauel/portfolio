@@ -1,0 +1,44 @@
+# Daily: append new Medium posts to content/writing.json and commit only if
+# something changed. The push to main triggers the Netlify deploy. Stored posts
+# are never removed (the RSS feed only holds the latest 10).
+name: Medium sync
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: medium-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The sync script only uses Node built-ins, so no npm install is needed.
+      - name: Sync from the RSS feed
+        run: node scripts/medium-sync.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- content/writing.json; then
+            echo "No new posts."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/writing.json
+          git commit -m "content: sync Medium posts"
+          git push

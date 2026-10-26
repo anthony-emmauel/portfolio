@@ -19,7 +19,17 @@ export const generateStaticParams = () => caseStudySlugs().map((slug) => ({ slug
 export function generateMetadata({ params }: Props): Metadata {
   const cs = getCaseStudy(params.slug);
   if (!cs) return {};
-  return { title: `${cs.entry.title} — ${site.name}`, description: cs.lede };
+  const title = `${cs.entry.title} — ${site.name}`;
+  // A page-level openGraph object replaces the inherited one entirely, so the
+  // site image is named here. Swap in a per-study image once one exists.
+  const image = { url: "/opengraph-image.png", width: 1200, height: 630, alt: site.name };
+  return {
+    title,
+    description: cs.lede,
+    alternates: { canonical: `/work/${cs.slug}` },
+    openGraph: { type: "article", url: `/work/${cs.slug}`, siteName: site.name, title, description: cs.lede, images: [image] },
+    twitter: { card: "summary_large_image", title, description: cs.lede, images: [image.url] },
+  };
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
