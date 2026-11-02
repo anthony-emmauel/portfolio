@@ -14,7 +14,7 @@ const entry: ExplorationEntry = {
   cover: "/work/users-admin/poster.png",
   coverVideo: { src: "/work/users-admin/cover" },
   media: "live",
-  links: { live: "https://nokgrid-blocks.netlify.app/blocks/users-admin" },
+  links: { live: "https://blocks.nokgrid.com/blocks/users-admin" },
   modal: {
     context: "An admin users screen built only from NokGridCore parts. Try the filter, search and row selection.",
     contextShort: "Built only from NokGridCore parts. Try the filter and selection.",
