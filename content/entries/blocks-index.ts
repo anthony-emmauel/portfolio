@@ -4,7 +4,7 @@ const entry: ExplorationEntry = {
   type: "exploration",
   slug: "blocks-index",
   kind: "landing page",
-  title: "Blocks 00 · Blocks index",
+  title: "Block index",
   date: "2026-11-02",
   summary:
     "The home of NokGridCore Blocks: a library of blocks generated from a registry, with tag filters and a live preview of each block, built only from NokGridCore parts. Light and dark.",
@@ -18,7 +18,7 @@ const entry: ExplorationEntry = {
   modal: {
     context: "The NokGridCore Blocks library. Filter by tag, then open a block to try it live.",
     contextShort: "Filter by tag, then open a block to try it live.",
-    titleShort: "Blocks index",
+    titleShort: "Block index",
   },
 };
 export default entry;
