@@ -4,7 +4,7 @@ const entry: ExplorationEntry = {
   type: "exploration",
   slug: "users-admin",
   kind: "dashboard",
-  title: "Blocks 01 · Users admin",
+  title: "Users admin",
   date: "2026-10-28",
   summary:
     "An admin-centre users screen built only from NokGridCore parts: sidebar nav, command bar and a users table with search, filters and row selection. Light and dark.",
