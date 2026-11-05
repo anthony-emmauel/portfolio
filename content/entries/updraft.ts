@@ -3,12 +3,12 @@ import type { ExplorationEntry } from "../types";
 const entry: ExplorationEntry = {
   type: "exploration",
   slug: "updraft",
-  kind: "product flow",
+  kind: "dashboard",
   title: "Updraft",
   date: "2026-11-05",
   summary:
-    "An AI agents workspace built only from NokGridCore parts: a home feed, an agent page, chat and an integrations library with category filters and search. Light and dark.",
-  summaryShort: "An AI agents workspace built only from NokGridCore parts.",
+    "An integrations library for an AI agents workspace, built only from NokGridCore parts, with category filters and search. Light and dark.",
+  summaryShort: "An integrations library built only from NokGridCore parts.",
   role: "Design + build · NokGridCore blocks",
   tag: "NOKGRID",
   cover: "/work/updraft/poster.png",
@@ -16,8 +16,8 @@ const entry: ExplorationEntry = {
   media: "live",
   links: { live: "https://blocks.nokgrid.com/blocks/updraft" },
   modal: {
-    context: "An AI agents workspace built only from NokGridCore parts. Open the avatar for Integrations, and try its filters and search.",
-    contextShort: "Open the avatar for Integrations, and try its filters and search.",
+    context: "An integrations library built only from NokGridCore parts. Try the category filters and search.",
+    contextShort: "Try the category filters and search.",
     titleShort: "Updraft",
   },
 };
